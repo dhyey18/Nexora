@@ -291,7 +291,7 @@ export default function Footer() {
                     }}
                 >
                     <p style={{ color: "rgba(248,250,252,0.3)", fontSize: 13 }}>
-                        © 2026 NexaWeb. All rights reserved. Built with ❤️ and lots of coffee.
+                        © 2026 Nexora. All rights reserved. Built with ❤️ and lots of coffee.
                     </p>
                     <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                         {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((item) => (
