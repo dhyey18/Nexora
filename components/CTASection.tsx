@@ -94,7 +94,7 @@ export default function CTASection() {
                             className="space-y-4 mb-8"
                         >
                             {[
-                                { icon: Mail, label: "Email us", value: "hello@nexaweb.agency" },
+                                { icon: Mail, label: "Email us", value: "hello@Nexora.agency" },
                                 { icon: Phone, label: "Call us", value: "+1 (555) 000-0000" },
                                 { icon: MapPin, label: "We work with", value: "Clients worldwide 🌍" },
                                 { icon: MessageCircle, label: "Response time", value: "Within 2 hours" },
@@ -129,7 +129,7 @@ export default function CTASection() {
                             style={{ borderColor: "rgba(99,102,241,0.2)" }}
                         >
                             <p className="text-white/65 text-sm italic mb-3 leading-relaxed">
-                                &ldquo;NexaWeb delivered our dream website in just 2 weeks. The results
+                                &ldquo;Nexora delivered our dream website in just 2 weeks. The results
                                 exceeded every expectation.&rdquo;
                             </p>
                             <div className="flex items-center gap-3">
