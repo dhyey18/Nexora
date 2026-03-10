@@ -20,6 +20,7 @@ const services = [
         description:
             "Custom-built, pixel-perfect websites tailored to your brand and business goals. Fast, secure, and built on modern tech.",
         color: "from-indigo-500 to-blue-600",
+        gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
         glow: "rgba(99,102,241,0.25)",
         tags: ["React", "Next.js", "TypeScript"],
     },
@@ -29,6 +30,7 @@ const services = [
         description:
             "Transform your outdated website into a modern, conversion-optimized digital experience that impresses visitors.",
         color: "from-purple-500 to-pink-600",
+        gradient: "linear-gradient(135deg, #a855f7, #db2777)",
         glow: "rgba(168,85,247,0.25)",
         tags: ["UI/UX", "Figma", "Branding"],
     },
@@ -38,6 +40,7 @@ const services = [
         description:
             "Rank higher on Google with our data-driven SEO strategies. Get found by customers actively searching for your services.",
         color: "from-green-500 to-emerald-600",
+        gradient: "linear-gradient(135deg, #22c55e, #059669)",
         glow: "rgba(16,185,129,0.25)",
         tags: ["On-Page SEO", "Schema", "Core Web Vitals"],
     },
@@ -47,6 +50,7 @@ const services = [
         description:
             "Lightning-fast page speeds that boost user retention and conversion rates. Optimize every millisecond that counts.",
         color: "from-yellow-500 to-orange-500",
+        gradient: "linear-gradient(135deg, #eab308, #f97316)",
         glow: "rgba(245,158,11,0.25)",
         tags: ["Web Vitals", "CDN", "Caching"],
     },
@@ -56,6 +60,7 @@ const services = [
         description:
             "Powerful online stores with seamless checkout experiences, inventory management, and payment gateway integrations.",
         color: "from-sky-500 to-cyan-600",
+        gradient: "linear-gradient(135deg, #0ea5e9, #0891b2)",
         glow: "rgba(14,165,233,0.25)",
         tags: ["Shopify", "WooCommerce", "Stripe"],
     },
@@ -65,6 +70,7 @@ const services = [
         description:
             "High-converting landing pages engineered to turn visitors into leads and leads into loyal customers.",
         color: "from-rose-500 to-red-600",
+        gradient: "linear-gradient(135deg, #f43f5e, #dc2626)",
         glow: "rgba(244,63,94,0.25)",
         tags: ["A/B Testing", "CRO", "Analytics"],
     },
@@ -81,50 +87,122 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card rounded-2xl p-6 group relative overflow-hidden cursor-pointer"
-            style={{ "--glow-color": service.glow } as React.CSSProperties}
+            className="glass-card rounded-2xl group"
+            style={{
+                padding: "28px",
+                position: "relative",
+                overflow: "hidden",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+            }}
         >
             {/* Hover glow */}
             <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: 0,
+                    transition: "opacity 0.5s ease",
                     background: `radial-gradient(circle at center, ${service.glow} 0%, transparent 70%)`,
+                    borderRadius: "inherit",
+                    pointerEvents: "none",
                 }}
+                className="group-hover:opacity-100"
             />
 
             {/* Icon */}
             <div
-                className={`relative w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 12,
+                    background: service.gradient,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 16,
+                    flexShrink: 0,
+                    transition: "transform 0.3s ease",
+                }}
+                className="group-hover:scale-110"
             >
-                <Icon size={24} className="text-white" />
+                <Icon size={22} color="#ffffff" />
             </div>
 
             {/* Content */}
-            <h3 className="text-white font-semibold text-lg mb-3 group-hover:text-white transition-colors">
+            <h3
+                style={{
+                    color: "#f8fafc",
+                    fontWeight: 600,
+                    fontSize: 17,
+                    marginBottom: 10,
+                    lineHeight: 1.3,
+                }}
+            >
                 {service.title}
             </h3>
-            <p className="text-white/55 text-sm leading-relaxed mb-4">{service.description}</p>
+            <p style={{ color: "rgba(248,250,252,0.55)", fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
+                {service.description}
+            </p>
 
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-4">
-                {service.tags.map((tag) => (
-                    <span
-                        key={tag}
-                        className="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/60"
-                    >
-                        {tag}
-                    </span>
-                ))}
+            {/* Tags (Wrapped in a container that allows the parent to breathe) */}
+            <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
+                    {service.tags.map((tag) => (
+                        <span
+                            key={tag}
+                            style={{
+                                fontSize: 11,
+                                padding: "4px 10px",
+                                borderRadius: 100,
+                                background: "rgba(255,255,255,0.05)",
+                                border: "1px solid rgba(255,255,255,0.1)",
+                                color: "rgba(248,250,252,0.6)",
+                                fontWeight: 500,
+                            }}
+                        >
+                            {tag}
+                        </span>
+                    ))}
+                </div>
             </div>
 
             {/* CTA */}
-            <div className="flex items-center gap-1 text-indigo-400 text-sm font-medium group-hover:gap-2 transition-all">
-                Learn more <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                    color: "#818cf8",
+                    fontSize: 13,
+                    fontWeight: 500,
+                    transition: "gap 0.2s ease",
+                }}
+                className="group-hover:gap-2"
+            >
+                Learn more{" "}
+                <ArrowRight
+                    size={14}
+                    style={{ transition: "transform 0.2s ease" }}
+                    className="group-hover:translate-x-1"
+                />
             </div>
 
             {/* Corner decoration */}
             <div
-                className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full opacity-10 bg-gradient-to-br ${service.color}`}
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    width: 96,
+                    height: 96,
+                    borderBottomLeftRadius: "100%",
+                    opacity: 0.1,
+                    background: service.gradient,
+                    pointerEvents: "none",
+                }}
             />
         </motion.div>
     );
@@ -135,29 +213,25 @@ export default function ServicesSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="services" className="py-24 relative overflow-hidden">
+        <section id="services" className="section">
             {/* Background */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div
-                    style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        width: "800px",
-                        height: "400px",
-                        background: "radial-gradient(ellipse at center, rgba(99,102,241,0.07) 0%, transparent 70%)",
-                    }}
-                />
-            </div>
+            <div
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
+                    background:
+                        "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.07) 0%, transparent 70%)",
+                }}
+            />
 
-            <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} className="text-center mb-16">
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        className="flex justify-center mb-4"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
                         <div className="section-tag">✦ Our Services</div>
                     </motion.div>
@@ -166,8 +240,14 @@ export default function ServicesSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
+                        style={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontWeight: 800,
+                            marginBottom: 16,
+                            color: "#f8fafc",
+                            lineHeight: 1.15,
+                        }}
                     >
                         Everything You Need to
                         <br />
@@ -178,7 +258,13 @@ export default function ServicesSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="text-white/55 text-lg max-w-xl mx-auto"
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 17,
+                            maxWidth: 560,
+                            margin: "0 auto",
+                            lineHeight: 1.7,
+                        }}
                     >
                         From initial concept to launch and beyond, we provide end-to-end web solutions
                         that make your business stand out in a crowded digital landscape.
@@ -186,7 +272,13 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                        gap: 24,
+                    }}
+                >
                     {services.map((service, index) => (
                         <ServiceCard key={service.title} service={service} index={index} />
                     ))}

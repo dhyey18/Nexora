@@ -12,7 +12,7 @@ const plans = [
         icon: Zap,
         description: "Perfect for small businesses and freelancers who need a clean, professional online presence.",
         color: "#0ea5e9",
-        gradient: "from-sky-500 to-blue-600",
+        gradient: "linear-gradient(135deg, #0ea5e9, #2563eb)",
         bg: "rgba(14,165,233,0.08)",
         border: "rgba(14,165,233,0.2)",
         featured: false,
@@ -36,7 +36,7 @@ const plans = [
         icon: Star,
         description: "Our most popular package for growing businesses ready to dominate their market online.",
         color: "#6366f1",
-        gradient: "from-indigo-500 to-purple-600",
+        gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)",
         bg: "rgba(99,102,241,0.1)",
         border: "rgba(99,102,241,0.4)",
         featured: true,
@@ -62,7 +62,7 @@ const plans = [
         icon: Crown,
         description: "The complete solution for ambitious companies that demand the best without compromise.",
         color: "#8b5cf6",
-        gradient: "from-purple-500 to-pink-600",
+        gradient: "linear-gradient(135deg, #8b5cf6, #db2777)",
         bg: "rgba(139,92,246,0.08)",
         border: "rgba(139,92,246,0.2)",
         featured: false,
@@ -95,21 +95,37 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className={`pricing-card ${plan.featured ? "featured" : ""} relative`}
+            whileHover={{ y: -8 }}
+            className="pricing-card"
             style={{
                 background: plan.featured
-                    ? `linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))`
+                    ? "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))"
                     : plan.bg,
                 border: `1px solid ${plan.border}`,
             }}
-            whileHover={{ y: -8 }}
         >
             {/* Most popular badge */}
             {plan.featured && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                <div
+                    style={{
+                        position: "absolute",
+                        top: -16,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        zIndex: 10,
+                    }}
+                >
                     <div
-                        className="px-5 py-1.5 rounded-full text-white text-xs font-bold"
-                        style={{ background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }}
+                        style={{
+                            padding: "6px 20px",
+                            borderRadius: 100,
+                            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                            color: "#fff",
+                            fontSize: 11,
+                            fontWeight: 700,
+                            letterSpacing: "0.08em",
+                            whiteSpace: "nowrap",
+                        }}
                     >
                         ✦ MOST POPULAR
                     </div>
@@ -118,60 +134,150 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
 
             {/* Shimmer for featured */}
             {plan.featured && (
-                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
-                    <div className="shimmer absolute inset-0" />
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        borderRadius: 24,
+                        overflow: "hidden",
+                        pointerEvents: "none",
+                    }}
+                >
+                    <div className="shimmer" style={{ position: "absolute", inset: 0 }} />
                 </div>
             )}
 
             {/* Header */}
-            <div className="flex items-start justify-between mb-6 relative z-10">
+            <div
+                style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    justifyContent: "space-between",
+                    marginBottom: 24,
+                    position: "relative",
+                    zIndex: 10,
+                }}
+            >
                 <div>
                     <div
-                        className="w-11 h-11 rounded-xl flex items-center justify-center mb-3"
                         style={{
-                            background: `linear-gradient(135deg, ${plan.color}20, ${plan.color}10)`,
+                            width: 44,
+                            height: 44,
+                            borderRadius: 12,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginBottom: 12,
+                            background: `${plan.color}1a`,
                             border: `1px solid ${plan.color}30`,
                         }}
                     >
-                        <Icon size={22} style={{ color: plan.color }} />
+                        <Icon size={20} style={{ color: plan.color }} />
                     </div>
-                    <div className="text-white font-bold text-xl" style={{ fontFamily: "Poppins" }}>
+                    <div
+                        style={{
+                            color: "#f8fafc",
+                            fontWeight: 700,
+                            fontSize: 18,
+                            fontFamily: "Poppins, sans-serif",
+                        }}
+                    >
                         {plan.name}
                     </div>
                 </div>
 
-                <div className="text-right">
-                    <div className="text-white font-bold text-3xl" style={{ fontFamily: "Poppins" }}>
+                <div style={{ textAlign: "right" }}>
+                    <div
+                        style={{
+                            color: "#f8fafc",
+                            fontWeight: 700,
+                            fontSize: 28,
+                            fontFamily: "Poppins, sans-serif",
+                            lineHeight: 1.2,
+                        }}
+                    >
                         {plan.price}
                     </div>
-                    <div className="text-white/40 text-sm">{plan.period}</div>
+                    <div style={{ color: "rgba(248,250,252,0.4)", fontSize: 13 }}>{plan.period}</div>
                 </div>
             </div>
 
             {/* Description */}
-            <p className="text-white/55 text-sm leading-relaxed mb-7 relative z-10">{plan.description}</p>
+            <p
+                style={{
+                    color: "rgba(248,250,252,0.55)",
+                    fontSize: 14,
+                    lineHeight: 1.65,
+                    marginBottom: 24,
+                    position: "relative",
+                    zIndex: 10,
+                }}
+            >
+                {plan.description}
+            </p>
 
             {/* Divider */}
             <div
-                className="h-px mb-6 relative z-10"
-                style={{ background: `linear-gradient(90deg, ${plan.color}30, transparent)` }}
+                style={{
+                    height: 1,
+                    marginBottom: 24,
+                    background: `linear-gradient(90deg, ${plan.color}40, transparent)`,
+                    position: "relative",
+                    zIndex: 10,
+                }}
             />
 
             {/* Features */}
-            <div className="space-y-3 mb-8 relative z-10">
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 12,
+                    marginBottom: 28,
+                    position: "relative",
+                    zIndex: 10,
+                }}
+            >
                 {plan.features.map((feature) => (
-                    <div key={feature} className="flex items-center gap-3">
-                        <Check size={16} style={{ color: plan.color }} className="flex-shrink-0" />
-                        <span className="text-white/75 text-sm">{feature}</span>
+                    <div key={feature} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <Check size={15} style={{ color: plan.color, flexShrink: 0 }} />
+                        <span style={{ color: "rgba(248,250,252,0.75)", fontSize: 13 }}>{feature}</span>
                     </div>
                 ))}
                 {plan.notIncluded &&
                     plan.notIncluded.map((feature) => (
-                        <div key={feature} className="flex items-center gap-3 opacity-30">
-                            <div className="w-4 h-4 flex-shrink-0 flex items-center justify-center">
-                                <span className="text-white/50 text-xs">✕</span>
+                        <div
+                            key={feature}
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 10,
+                                opacity: 0.3,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: 15,
+                                    height: 15,
+                                    flexShrink: 0,
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    fontSize: 11,
+                                    color: "rgba(248,250,252,0.5)",
+                                }}
+                            >
+                                ✕
                             </div>
-                            <span className="text-white/50 text-sm line-through">{feature}</span>
+                            <span
+                                style={{
+                                    color: "rgba(248,250,252,0.5)",
+                                    fontSize: 13,
+                                    textDecoration: "line-through",
+                                }}
+                            >
+                                {feature}
+                            </span>
                         </div>
                     ))}
             </div>
@@ -180,17 +286,62 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
             <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer border-none ${plan.featured
-                        ? "btn-primary"
-                        : "bg-transparent border text-white hover:bg-white/5"
-                    }`}
                 style={
-                    !plan.featured
-                        ? { borderColor: `${plan.color}40`, color: plan.color }
-                        : {}
+                    plan.featured
+                        ? {
+                            width: "100%",
+                            padding: "14px 24px",
+                            borderRadius: 12,
+                            fontWeight: 600,
+                            fontSize: 14,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 8,
+                            cursor: "pointer",
+                            border: "none",
+                            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                            color: "#fff",
+                            position: "relative",
+                            zIndex: 10,
+                            transition: "box-shadow 0.25s ease",
+                        }
+                        : {
+                            width: "100%",
+                            padding: "13px 24px",
+                            borderRadius: 12,
+                            fontWeight: 600,
+                            fontSize: 14,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            gap: 8,
+                            cursor: "pointer",
+                            background: "transparent",
+                            border: `1px solid ${plan.color}50`,
+                            color: plan.color,
+                            position: "relative",
+                            zIndex: 10,
+                            transition: "background 0.25s ease",
+                        }
                 }
+                onMouseEnter={(e) => {
+                    if (!plan.featured) {
+                        (e.currentTarget as HTMLButtonElement).style.background = `${plan.color}15`;
+                    } else {
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow =
+                            "0 8px 30px rgba(99,102,241,0.5)";
+                    }
+                }}
+                onMouseLeave={(e) => {
+                    if (!plan.featured) {
+                        (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+                    } else {
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
+                    }
+                }}
             >
-                {plan.cta} <ArrowRight size={16} />
+                {plan.cta} <ArrowRight size={15} />
             </motion.button>
         </motion.div>
     );
@@ -201,23 +352,25 @@ export default function PricingSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="pricing" className="py-24 relative overflow-hidden">
+        <section id="pricing" className="section">
             {/* BG */}
             <div
-                className="absolute inset-0 pointer-events-none"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
                     background:
                         "radial-gradient(ellipse at 50% 100%, rgba(99,102,241,0.08) 0%, transparent 60%)",
                 }}
             />
 
-            <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} className="text-center mb-16">
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        className="flex justify-center mb-4"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
                         <div className="section-tag">✦ Pricing</div>
                     </motion.div>
@@ -226,8 +379,14 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
+                        style={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontWeight: 800,
+                            marginBottom: 16,
+                            color: "#f8fafc",
+                            lineHeight: 1.15,
+                        }}
                     >
                         Transparent Pricing,
                         <br />
@@ -238,7 +397,13 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="text-white/55 text-lg max-w-xl mx-auto"
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 17,
+                            maxWidth: 520,
+                            margin: "0 auto",
+                            lineHeight: 1.7,
+                        }}
                     >
                         All plans include our quality guarantee. If you&apos;re not 100% satisfied,
                         we&apos;ll work until you are — no questions asked.
@@ -246,7 +411,14 @@ export default function PricingSection() {
                 </div>
 
                 {/* Plans */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                        gap: 24,
+                        alignItems: "start",
+                    }}
+                >
                     {plans.map((plan, index) => (
                         <PricingCard key={plan.name} plan={plan} index={index} />
                     ))}
@@ -257,23 +429,28 @@ export default function PricingSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.6 }}
-                    className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 text-white/50 text-sm"
+                    style={{
+                        textAlign: "center",
+                        marginTop: 48,
+                        display: "flex",
+                        flexWrap: "wrap",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "12px 24px",
+                        color: "rgba(248,250,252,0.5)",
+                        fontSize: 13,
+                    }}
                 >
-                    <span className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> 100% Satisfaction Guarantee
-                    </span>
-                    <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
-                    <span className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> No Hidden Fees
-                    </span>
-                    <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
-                    <span className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> Free Consultation Call
-                    </span>
-                    <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
-                    <span className="flex items-center gap-2">
-                        <span className="text-green-400">✓</span> Ongoing Support Included
-                    </span>
+                    {[
+                        "100% Satisfaction Guarantee",
+                        "No Hidden Fees",
+                        "Free Consultation Call",
+                        "Ongoing Support Included",
+                    ].map((item, i) => (
+                        <span key={item} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <span style={{ color: "#4ade80" }}>✓</span> {item}
+                        </span>
+                    ))}
                 </motion.div>
             </div>
         </section>

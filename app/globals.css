@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
 :root {
   --background: #020817;
   --foreground: #f8fafc;
@@ -11,14 +14,19 @@
   --border: rgba(255, 255, 255, 0.08);
   --card-bg: rgba(15, 23, 42, 0.8);
   --glass: rgba(255, 255, 255, 0.05);
+
+  /* Spacing */
+  --section-py: 6rem;
+  --container-px: 1rem;
+  --max-width: 72rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
-
-* {
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -26,19 +34,51 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -50,13 +90,49 @@ body {
   border-radius: 3px;
 }
 
-/* Selection */
+/* ============================================================
+   SELECTION
+   ============================================================ */
 ::selection {
   background: rgba(99, 102, 241, 0.3);
   color: #f8fafc;
 }
 
-/* Glass morphism utility */
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-px);
+  padding-right: var(--container-px);
+}
+
+@media (min-width: 640px) {
+  .container {
+    --container-px: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    --container-px: 2rem;
+  }
+}
+
+/* Section wrapper */
+.section {
+  position: relative;
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+  overflow: hidden;
+}
+
+/* ============================================================
+   GLASSMORPHISM
+   ============================================================ */
 .glass {
   background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(20px);
@@ -69,19 +145,21 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
   background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(99, 102, 241, 0.4);
+  border-color: rgba(99, 102, 241, 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12);
 }
 
-/* Gradient text */
+/* ============================================================
+   GRADIENT TEXT
+   ============================================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #0ea5e9 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #0ea5e9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -94,7 +172,9 @@ body {
   background-clip: text;
 }
 
-/* Glow effects */
+/* ============================================================
+   GLOW EFFECTS
+   ============================================================ */
 .glow-purple {
   box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
 }
@@ -103,7 +183,9 @@ body {
   box-shadow: 0 0 40px rgba(14, 165, 233, 0.3);
 }
 
-/* Animated gradient background */
+/* ============================================================
+   ANIMATED BACKGROUND
+   ============================================================ */
 .animated-bg {
   background: linear-gradient(-45deg, #020817, #0f172a, #1e1b4b, #0c0a3e, #020817);
   background-size: 400% 400%;
@@ -124,7 +206,9 @@ body {
   }
 }
 
-/* Floating animation */
+/* ============================================================
+   FLOATING ANIMATION
+   ============================================================ */
 @keyframes float {
 
   0%,
@@ -141,7 +225,9 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Pulse glow */
+/* ============================================================
+   PULSE GLOW
+   ============================================================ */
 @keyframes pulseGlow {
 
   0%,
@@ -160,22 +246,90 @@ body {
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
-/* Button styles */
+/* ============================================================
+   SHIMMER
+   ============================================================ */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 50%, transparent 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+/* ============================================================
+   STARS BACKGROUND
+   ============================================================ */
+.stars-bg {
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(2px 2px at 70% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(1px 1px at 80% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(2px 2px at 10% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(1px 1px at 60% 90%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+/* ============================================================
+   SECTION TAG / BADGE
+   ============================================================ */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.28);
+  color: #a5b4fc;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   GRADIENT BORDER
+   ============================================================ */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(#0f172a, #0f172a) padding-box,
+    linear-gradient(135deg, #6366f1, #8b5cf6, #0ea5e9) border-box;
+  border: 1px solid transparent;
+  border-radius: 16px;
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
+  color: #ffffff;
   padding: 14px 32px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 15px;
+  line-height: 1;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   overflow: hidden;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .btn-primary::before {
@@ -198,45 +352,167 @@ body {
   box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
 }
 
+.btn-primary:active {
+  transform: translateY(0px);
+}
+
 .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: transparent;
-  color: white;
+  color: rgba(248, 250, 252, 0.9);
   padding: 13px 32px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.07);
   border-color: rgba(99, 102, 241, 0.5);
   transform: translateY(-2px);
 }
 
-/* Section styles */
-.section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  color: #818cf8;
-  padding: 6px 16px;
-  border-radius: 100px;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+.btn-secondary:active {
+  transform: translateY(0px);
 }
 
-/* Noise texture overlay */
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.nav-link {
+  position: relative;
+  color: rgba(248, 250, 252, 0.65);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 4px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.nav-link:hover {
+  color: rgba(248, 250, 252, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   TESTIMONIAL CARD
+   ============================================================ */
+.testimonial-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.1);
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   PRICING CARD
+   ============================================================ */
+.pricing-card {
+  border-radius: 24px;
+  padding: 36px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   FORM ELEMENTS
+   ============================================================ */
+.form-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #f8fafc;
+  font-size: 14px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.form-input:focus {
+  border-color: rgba(99, 102, 241, 0.6);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.form-input option {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* ============================================================
+   STEP NUMBER (Large BG Watermark)
+   ============================================================ */
+.step-number {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.08) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ============================================================
+   DIVIDER LINE GRADIENT
+   ============================================================ */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+}
+
+/* ============================================================
+   NOISE OVERLAY
+   ============================================================ */
 .noise-overlay {
   position: relative;
 }
@@ -250,140 +526,106 @@ body {
   z-index: 0;
 }
 
-/* Gradient borders */
-.gradient-border {
-  position: relative;
-  background: linear-gradient(#0f172a, #0f172a) padding-box,
-    linear-gradient(135deg, #6366f1, #8b5cf6, #0ea5e9) border-box;
-  border: 1px solid transparent;
-  border-radius: 16px;
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Pointer events */
+.pointer-none {
+  pointer-events: none;
 }
 
-/* Number counter style */
-.step-number {
-  font-size: 80px;
-  font-weight: 900;
-  line-height: 1;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'Poppins', sans-serif;
+/* Text colors with specific opacities */
+.text-muted {
+  color: rgba(248, 250, 252, 0.55);
 }
 
-/* Nav link hover effect */
-.nav-link {
-  position: relative;
-  color: rgba(248, 250, 252, 0.7);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 4px 0;
+.text-dimmed {
+  color: rgba(248, 250, 252, 0.4);
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  transition: width 0.3s ease;
+.text-faint {
+  color: rgba(248, 250, 252, 0.3);
 }
 
-.nav-link:hover {
-  color: white;
+/* Flex utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Testimonial card */
-.testimonial-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 32px;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(20px);
-}
-
-.testimonial-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.1);
-  transform: translateY(-4px);
-}
-
-/* Pricing card */
-.pricing-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 40px;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(20px);
-  position: relative;
-  overflow: hidden;
-}
-
-.pricing-card.featured {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
-  border-color: rgba(99, 102, 241, 0.4);
-}
-
-.pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-}
-
-/* Orbital animation for hero */
-@keyframes orbit {
-  from {
-    transform: rotate(0deg) translateX(120px) rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg) translateX(120px) rotate(-360deg);
-  }
-}
-
-@keyframes orbit2 {
-  from {
-    transform: rotate(0deg) translateX(180px) rotate(0deg);
-  }
-
-  to {
-    transform: rotate(-360deg) translateX(180px) rotate(360deg);
-  }
-}
-
-/* Shimmer effect */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-.shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.05) 50%, transparent 100%);
-  background-size: 1000px 100%;
-  animation: shimmer 3s infinite linear;
-}
-
-/* Stars/dots background */
-.stars-bg {
+/* ============================================================
+   GRID PATTERN BACKGROUND
+   ============================================================ */
+.grid-pattern {
   background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-    radial-gradient(2px 2px at 70% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
-    radial-gradient(1px 1px at 80% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(2px 2px at 10% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 60% 90%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ============================================================
+   RESPONSIVE HELPERS
+   ============================================================ */
+@media (max-width: 640px) {
+  .pricing-card {
+    padding: 28px 24px;
+  }
+
+  .testimonial-card {
+    padding: 24px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE UTILITIES (Bypassing Tailwind v4 issues)
+   ============================================================ */
+.custom-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .sm-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .md-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .md-grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .md-flex {
+    display: flex !important;
+  }
+
+  .md-hidden {
+    display: none !important;
+  }
+
+  .md-block {
+    display: block !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lg-grid-cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }

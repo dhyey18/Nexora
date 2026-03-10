@@ -13,7 +13,7 @@ const testimonials = [
         rating: 5,
         text: "NexaWeb transformed our online presence completely. Our new website loads 4x faster, looks absolutely stunning, and our conversion rate went from 2% to 11% in just 3 months. Best investment we've made.",
         highlight: "conversion rate went from 2% to 11%",
-        color: "from-indigo-500 to-purple-600",
+        color: "linear-gradient(135deg, #6366f1, #8b5cf6)",
     },
     {
         name: "Marco Romano",
@@ -23,7 +23,7 @@ const testimonials = [
         rating: 5,
         text: "We were losing customers to competitors with better websites. NexaWeb designed us something beautiful, and now 40% of our reservations come through the website. The ROI is incredible.",
         highlight: "40% of reservations come through the website",
-        color: "from-orange-500 to-rose-600",
+        color: "linear-gradient(135deg, #f97316, #be123c)",
     },
     {
         name: "Priya Nair",
@@ -33,7 +33,7 @@ const testimonials = [
         rating: 5,
         text: "The team at NexaWeb understood our vision immediately. They delivered a world-class startup website that impresses investors and has helped us raise our seed round. Absolutely exceptional work.",
         highlight: "helped us raise our seed round",
-        color: "from-sky-500 to-blue-600",
+        color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
     },
     {
         name: "David Chen",
@@ -43,7 +43,7 @@ const testimonials = [
         rating: 5,
         text: "From our first call to launch day was just 3 weeks. The turnaround is unmatched, and so is the quality. Our new e-commerce site drove $50K in revenue in the first month alone.",
         highlight: "$50K in revenue in the first month",
-        color: "from-pink-500 to-purple-600",
+        color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
     },
     {
         name: "Jennifer Walsh",
@@ -53,7 +53,7 @@ const testimonials = [
         rating: 5,
         text: "Our old website was embarrassing. Now prospects tell us our site was the reason they chose us over competitors. NexaWeb's attention to detail is extraordinary — every pixel is perfect.",
         highlight: "every pixel is perfect",
-        color: "from-emerald-500 to-teal-600",
+        color: "linear-gradient(135deg, #10b981, #0d9488)",
     },
     {
         name: "Alex Thompson",
@@ -63,7 +63,7 @@ const testimonials = [
         rating: 5,
         text: "Partnering with NexaWeb was a game-changer. The online ordering system they built increased our average order value by 25%. Customer feedback on the website has been overwhelmingly positive.",
         highlight: "increased our average order value by 25%",
-        color: "from-yellow-500 to-green-600",
+        color: "linear-gradient(135deg, #eab308, #22c55e)",
     },
 ];
 
@@ -71,14 +71,13 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-    // Highlight specific text in the review
     const boldify = (text: string, highlight: string) => {
         const parts = text.split(highlight);
         if (parts.length < 2) return text;
         return (
             <>
                 {parts[0]}
-                <strong className="text-white font-semibold">{highlight}</strong>
+                <strong style={{ color: "#f8fafc", fontWeight: 600 }}>{highlight}</strong>
                 {parts[1]}
             </>
         );
@@ -90,42 +89,64 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-            className="testimonial-card relative"
+            className="testimonial-card"
         >
             {/* Quote icon */}
-            <div className="absolute top-6 right-6">
-                <Quote size={28} className="text-indigo-500/20" />
+            <div style={{ position: "absolute", top: 24, right: 24 }}>
+                <Quote size={26} style={{ color: "rgba(99,102,241,0.2)" }} />
             </div>
 
             {/* Stars */}
-            <div className="flex gap-1 mb-4">
+            <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>
                 {Array.from({ length: review.rating }).map((_, i) => (
-                    <Star key={i} size={14} className="text-yellow-400 fill-yellow-400" />
+                    <Star key={i} size={14} style={{ color: "#facc15", fill: "#facc15" }} />
                 ))}
             </div>
 
             {/* Text */}
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
+            <p style={{ color: "rgba(248,250,252,0.7)", fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>
                 &ldquo;{boldify(review.text, review.highlight)}&rdquo;
             </p>
 
             {/* Author */}
-            <div className="flex items-center gap-3">
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                 <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}
+                    style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: "50%",
+                        background: review.color,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#fff",
+                        fontSize: 13,
+                        fontWeight: 700,
+                        flexShrink: 0,
+                    }}
                 >
                     {review.avatar}
                 </div>
-                <div>
-                    <div className="text-white font-semibold text-sm">{review.name}</div>
-                    <div className="text-white/45 text-xs">
+                <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ color: "#f8fafc", fontWeight: 600, fontSize: 14 }}>{review.name}</div>
+                    <div style={{ color: "rgba(248,250,252,0.45)", fontSize: 12 }}>
                         {review.role}, {review.company}
                     </div>
                 </div>
-                <div className="ml-auto">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-white/5 to-white/10 border border-white/10 flex items-center justify-center">
-                        <span className="text-xs text-green-400">✓</span>
-                    </div>
+                <div
+                    style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: 8,
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                    }}
+                >
+                    <span style={{ color: "#4ade80", fontSize: 12, fontWeight: 600 }}>✓</span>
                 </div>
             </div>
         </motion.div>
@@ -137,23 +158,25 @@ export default function TestimonialsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="testimonials" className="py-24 relative overflow-hidden">
+        <section id="testimonials" className="section">
             {/* BG */}
             <div
-                className="absolute inset-0 pointer-events-none"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
                     background:
                         "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 50%)",
                 }}
             />
 
-            <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} className="text-center mb-16">
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        className="flex justify-center mb-4"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
                         <div className="section-tag">✦ Client Love</div>
                     </motion.div>
@@ -162,8 +185,14 @@ export default function TestimonialsSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
+                        style={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontWeight: 800,
+                            marginBottom: 16,
+                            color: "#f8fafc",
+                            lineHeight: 1.15,
+                        }}
                     >
                         Don&apos;t Take Our Word
                         <br />
@@ -174,7 +203,14 @@ export default function TestimonialsSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="text-white/55 text-lg max-w-xl mx-auto mb-6"
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 17,
+                            maxWidth: 520,
+                            margin: "0 auto",
+                            marginBottom: 24,
+                            lineHeight: 1.7,
+                        }}
                     >
                         Real results from real businesses who trusted us with their online presence.
                     </motion.p>
@@ -184,20 +220,39 @@ export default function TestimonialsSection() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: 0.3 }}
-                        className="inline-flex items-center gap-3 glass rounded-2xl px-6 py-3"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
-                        <div className="flex gap-1">
-                            {[1, 2, 3, 4, 5].map((i) => (
-                                <Star key={i} size={18} className="text-yellow-400 fill-yellow-400" />
-                            ))}
+                        <div
+                            className="glass"
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 12,
+                                borderRadius: 16,
+                                padding: "12px 24px",
+                            }}
+                        >
+                            <div style={{ display: "flex", gap: 4 }}>
+                                {[1, 2, 3, 4, 5].map((i) => (
+                                    <Star key={i} size={17} style={{ color: "#facc15", fill: "#facc15" }} />
+                                ))}
+                            </div>
+                            <span style={{ color: "#f8fafc", fontWeight: 700, fontSize: 17 }}>5.0</span>
+                            <span style={{ color: "rgba(248,250,252,0.5)", fontSize: 13 }}>
+                                from 50+ verified reviews
+                            </span>
                         </div>
-                        <span className="text-white font-bold text-lg">5.0</span>
-                        <span className="text-white/50 text-sm">from 50+ verified reviews</span>
                     </motion.div>
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                        gap: 24,
+                    }}
+                >
                     {testimonials.map((review, index) => (
                         <TestimonialCard key={review.name} review={review} index={index} />
                     ))}

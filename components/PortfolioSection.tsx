@@ -12,54 +12,54 @@ const projects = [
         category: "Restaurant",
         description: "Elegant restaurant website with online reservations, menu showcase, and food photography.",
         tech: ["Next.js", "Tailwind", "Stripe"],
-        color: "from-orange-500 to-rose-600",
+        color: "linear-gradient(135deg, #f97316, #be123c)",
         metrics: { visits: "12K+/mo", conversion: "8.5%", rating: "4.9★" },
-        gradient: "linear-gradient(135deg, rgba(249,115,22,0.8), rgba(225,29,72,0.8))",
+        gradient: "linear-gradient(135deg, rgba(249,115,22,0.85), rgba(225,29,72,0.85))",
     },
     {
         title: "LaunchPad SaaS",
         category: "SaaS",
         description: "Full-featured SaaS marketing site with pricing, feature showcase, and seamless trial signup flow.",
         tech: ["React", "Framer", "Analytics"],
-        color: "from-blue-500 to-indigo-600",
+        color: "linear-gradient(135deg, #3b82f6, #6366f1)",
         metrics: { visits: "28K+/mo", conversion: "12%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(59,130,246,0.8), rgba(99,102,241,0.8))",
+        gradient: "linear-gradient(135deg, rgba(59,130,246,0.85), rgba(99,102,241,0.85))",
     },
     {
         title: "Urban Boutique",
         category: "Local Business",
         description: "Chic fashion boutique store with e-commerce capability, lookbooks, and loyalty program.",
         tech: ["Shopify", "Custom CSS", "SEO"],
-        color: "from-pink-500 to-purple-600",
+        color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
         metrics: { visits: "9K+/mo", conversion: "6.2%", rating: "4.8★" },
-        gradient: "linear-gradient(135deg, rgba(236,72,153,0.8), rgba(139,92,246,0.8))",
+        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(139,92,246,0.85))",
     },
     {
         title: "GreenLeaf Café",
         category: "Restaurant",
         description: "Farm-to-table café with online ordering, catering inquiries, and event booking system.",
         tech: ["Next.js", "Sanity CMS", "Maps API"],
-        color: "from-emerald-500 to-teal-600",
+        color: "linear-gradient(135deg, #10b981, #0d9488)",
         metrics: { visits: "7K+/mo", conversion: "9.1%", rating: "4.9★" },
-        gradient: "linear-gradient(135deg, rgba(16,185,129,0.8), rgba(20,184,166,0.8))",
+        gradient: "linear-gradient(135deg, rgba(16,185,129,0.85), rgba(20,184,166,0.85))",
     },
     {
         title: "TechFounders Co.",
         category: "Startup",
         description: "Clean startup landing page with investor-ready design, product demo, and team presentation.",
         tech: ["Next.js", "TypeScript", "Vercel"],
-        color: "from-sky-500 to-blue-600",
+        color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
         metrics: { visits: "15K+/mo", conversion: "14%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(14,165,233,0.8), rgba(37,99,235,0.8))",
+        gradient: "linear-gradient(135deg, rgba(14,165,233,0.85), rgba(37,99,235,0.85))",
     },
     {
         title: "Prime Properties",
         category: "Local Business",
         description: "Real estate agency website with property listings, virtual tours, and mortgage calculator.",
         tech: ["React", "Google Maps", "Mailchimp"],
-        color: "from-yellow-500 to-amber-600",
+        color: "linear-gradient(135deg, #eab308, #d97706)",
         metrics: { visits: "6K+/mo", conversion: "7.8%", rating: "4.7★" },
-        gradient: "linear-gradient(135deg, rgba(234,179,8,0.8), rgba(245,158,11,0.8))",
+        gradient: "linear-gradient(135deg, rgba(234,179,8,0.85), rgba(245,158,11,0.85))",
     },
 ];
 
@@ -74,54 +74,98 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="relative rounded-2xl overflow-hidden cursor-pointer group"
-            style={{ aspectRatio: "4/3" }}
+            style={{
+                position: "relative",
+                borderRadius: 20,
+                overflow: "hidden",
+                cursor: "pointer",
+                aspectRatio: "4/3",
+            }}
+            className="group"
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
         >
             {/* Background gradient */}
             <div
-                className="absolute inset-0 transition-transform duration-700 group-hover:scale-110"
-                style={{ background: project.gradient }}
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: project.gradient,
+                    transition: "transform 0.7s ease",
+                }}
+                className="group-hover:scale-110"
             />
 
             {/* Pattern overlay */}
             <div
-                className="absolute inset-0 opacity-20"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: 0.15,
                     backgroundImage: `repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,0.1) 0px,
-            rgba(255,255,255,0.1) 1px,
-            transparent 1px,
-            transparent 20px
-          )`,
+                        45deg,
+                        rgba(255,255,255,0.12) 0px,
+                        rgba(255,255,255,0.12) 1px,
+                        transparent 1px,
+                        transparent 20px
+                    )`,
                 }}
             />
 
             {/* Mock UI elements */}
-            <div className="absolute inset-4 rounded-xl bg-white/5 backdrop-blur-sm border border-white/20 flex flex-col p-4">
-                <div className="flex items-center gap-2 mb-3">
-                    <div className="w-3 h-3 rounded-full bg-red-400/70" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
-                    <div className="w-3 h-3 rounded-full bg-green-400/70" />
-                    <div className="flex-1 bg-white/10 rounded-full h-4 ml-2" />
+            <div
+                style={{
+                    position: "absolute",
+                    inset: 16,
+                    borderRadius: 12,
+                    background: "rgba(255,255,255,0.05)",
+                    backdropFilter: "blur(4px)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: 16,
+                }}
+            >
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(248,113,113,0.7)" }} />
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(250,204,21,0.7)" }} />
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(74,222,128,0.7)" }} />
+                    <div style={{ flex: 1, height: 12, borderRadius: 100, background: "rgba(255,255,255,0.12)", marginLeft: 6 }} />
                 </div>
-                <div className="flex-1 flex flex-col gap-2">
-                    <div className="h-8 bg-white/10 rounded-lg" />
-                    <div className="h-4 bg-white/8 rounded w-3/4" />
-                    <div className="h-4 bg-white/8 rounded w-1/2" />
-                    <div className="flex-1" />
-                    <div className="flex gap-2">
-                        <div className={`h-8 flex-1 rounded-lg bg-gradient-to-r ${project.color} opacity-60`} />
-                        <div className="h-8 w-16 rounded-lg bg-white/10" />
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div style={{ height: 28, background: "rgba(255,255,255,0.12)", borderRadius: 8 }} />
+                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "75%" }} />
+                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "50%" }} />
+                    <div style={{ flex: 1 }} />
+                    <div style={{ display: "flex", gap: 8 }}>
+                        <div
+                            style={{
+                                height: 28,
+                                flex: 1,
+                                borderRadius: 8,
+                                background: project.color,
+                                opacity: 0.7,
+                            }}
+                        />
+                        <div style={{ height: 28, width: 56, borderRadius: 8, background: "rgba(255,255,255,0.12)" }} />
                     </div>
                 </div>
             </div>
 
             {/* Category badge */}
-            <div className="absolute top-4 left-4 z-10">
-                <span className="text-xs text-white font-medium px-3 py-1 rounded-full bg-black/30 backdrop-blur-sm border border-white/20">
+            <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10 }}>
+                <span
+                    style={{
+                        fontSize: 11,
+                        color: "#fff",
+                        fontWeight: 600,
+                        padding: "5px 12px",
+                        borderRadius: 100,
+                        background: "rgba(0,0,0,0.35)",
+                        backdropFilter: "blur(8px)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                    }}
+                >
                     {project.category}
                 </span>
             </div>
@@ -131,38 +175,93 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-black/70 backdrop-blur-sm flex flex-col justify-end p-6 z-10"
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.75)",
+                    backdropFilter: "blur(4px)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
+                    padding: 24,
+                    zIndex: 10,
+                }}
             >
-                <h3 className="text-white font-bold text-xl mb-2">{project.title}</h3>
-                <p className="text-white/70 text-sm mb-4 leading-relaxed">{project.description}</p>
+                <h3
+                    style={{
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 18,
+                        marginBottom: 8,
+                        fontFamily: "Poppins, sans-serif",
+                    }}
+                >
+                    {project.title}
+                </h3>
+                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 16, lineHeight: 1.6 }}>
+                    {project.description}
+                </p>
 
                 {/* Metrics */}
-                <div className="flex gap-3 mb-4">
-                    <div className="flex-1 text-center bg-white/10 rounded-lg py-2">
-                        <div className="text-white font-semibold text-sm">{project.metrics.visits}</div>
-                        <div className="text-white/50 text-xs">Visits</div>
-                    </div>
-                    <div className="flex-1 text-center bg-white/10 rounded-lg py-2">
-                        <div className="text-white font-semibold text-sm">{project.metrics.conversion}</div>
-                        <div className="text-white/50 text-xs">CVR</div>
-                    </div>
-                    <div className="flex-1 text-center bg-white/10 rounded-lg py-2">
-                        <div className="text-white font-semibold text-sm">{project.metrics.rating}</div>
-                        <div className="text-white/50 text-xs">Rating</div>
-                    </div>
+                <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+                    {[
+                        { val: project.metrics.visits, lbl: "Visits" },
+                        { val: project.metrics.conversion, lbl: "CVR" },
+                        { val: project.metrics.rating, lbl: "Rating" },
+                    ].map((m) => (
+                        <div
+                            key={m.lbl}
+                            style={{
+                                flex: 1,
+                                textAlign: "center",
+                                background: "rgba(255,255,255,0.1)",
+                                borderRadius: 10,
+                                padding: "8px 4px",
+                            }}
+                        >
+                            <div style={{ color: "#fff", fontWeight: 600, fontSize: 13 }}>{m.val}</div>
+                            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 11 }}>{m.lbl}</div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Tech tags */}
-                <div className="flex flex-wrap gap-2">
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
                     {project.tech.map((t) => (
-                        <span key={t} className="text-xs px-2 py-1 rounded-full bg-white/15 text-white/80">
+                        <span
+                            key={t}
+                            style={{
+                                fontSize: 11,
+                                padding: "4px 10px",
+                                borderRadius: 100,
+                                background: "rgba(255,255,255,0.15)",
+                                color: "rgba(255,255,255,0.85)",
+                                fontWeight: 500,
+                            }}
+                        >
                             {t}
                         </span>
                     ))}
                 </div>
 
-                <button className="mt-4 flex items-center gap-2 text-white text-sm font-medium hover:text-indigo-300 transition-colors bg-transparent border-none cursor-pointer">
-                    <ExternalLink size={14} /> View Case Study
+                <button
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 6,
+                        color: "#fff",
+                        fontSize: 13,
+                        fontWeight: 500,
+                        background: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        padding: 0,
+                        transition: "color 0.2s",
+                    }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
+                >
+                    <ExternalLink size={13} /> View Case Study
                 </button>
             </motion.div>
         </motion.div>
@@ -174,25 +273,26 @@ export default function PortfolioSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
     const [active, setActive] = useState("All");
 
-    const filtered =
-        active === "All" ? projects : projects.filter((p) => p.category === active);
+    const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
     return (
-        <section id="portfolio" className="py-24 relative">
+        <section id="portfolio" className="section">
             <div
-                className="absolute inset-0 pointer-events-none"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
                     background: "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.05) 0%, transparent 60%)",
                 }}
             />
 
-            <div className="max-w-6xl mx-auto px-4 relative z-10">
+            <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} className="text-center mb-12">
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 48 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        className="flex justify-center mb-4"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
                         <div className="section-tag">✦ Our Work</div>
                     </motion.div>
@@ -201,8 +301,14 @@ export default function PortfolioSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
+                        style={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontWeight: 800,
+                            marginBottom: 16,
+                            color: "#f8fafc",
+                            lineHeight: 1.15,
+                        }}
                     >
                         Websites We&apos;re
                         <br />
@@ -213,7 +319,14 @@ export default function PortfolioSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="text-white/55 text-lg max-w-xl mx-auto mb-8"
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 17,
+                            maxWidth: 560,
+                            margin: "0 auto",
+                            marginBottom: 32,
+                            lineHeight: 1.7,
+                        }}
                     >
                         Every project is a unique story of business transformation. Here are some of our favorites.
                     </motion.p>
@@ -223,18 +336,28 @@ export default function PortfolioSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.3 }}
-                        className="flex flex-wrap justify-center gap-2"
+                        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}
                     >
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActive(cat)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all cursor-pointer border ${active === cat
-                                        ? "bg-indigo-600 border-indigo-500 text-white"
-                                        : "bg-transparent border-white/15 text-white/60 hover:border-white/30 hover:text-white/80"
-                                    }`}
+                                style={{
+                                    padding: "8px 18px",
+                                    borderRadius: 100,
+                                    fontSize: 13,
+                                    fontWeight: 500,
+                                    cursor: "pointer",
+                                    border: `1px solid ${active === cat ? "#6366f1" : "rgba(255,255,255,0.15)"}`,
+                                    background: active === cat ? "#6366f1" : "transparent",
+                                    color: active === cat ? "#fff" : "rgba(255,255,255,0.6)",
+                                    transition: "all 0.2s ease",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: 6,
+                                }}
                             >
-                                <Layers size={12} className="inline mr-1.5 opacity-60" />
+                                <Layers size={11} style={{ opacity: 0.7 }} />
                                 {cat}
                             </button>
                         ))}
@@ -244,7 +367,11 @@ export default function PortfolioSection() {
                 {/* Grid */}
                 <motion.div
                     layout
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+                        gap: 24,
+                    }}
                 >
                     {filtered.map((project, index) => (
                         <ProjectCard key={project.title} project={project} index={index} />
@@ -256,11 +383,9 @@ export default function PortfolioSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.5 }}
-                    className="text-center mt-12"
+                    style={{ textAlign: "center", marginTop: 48 }}
                 >
-                    <button className="btn-secondary">
-                        View All Projects →
-                    </button>
+                    <button className="btn-secondary">View All Projects →</button>
                 </motion.div>
             </div>
         </section>

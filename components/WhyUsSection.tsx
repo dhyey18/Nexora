@@ -84,42 +84,97 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="relative rounded-2xl p-6 group overflow-hidden cursor-pointer"
+            whileHover={{ y: -4 }}
+            className="group"
             style={{
+                position: "relative",
+                borderRadius: 16,
+                padding: "20px 24px",
                 background: feature.bg,
                 border: `1px solid ${feature.border}`,
-                transition: "all 0.3s ease",
+                transition: "border-color 0.3s ease",
+                overflow: "hidden",
+                cursor: "pointer",
             }}
-            whileHover={{ y: -4, scale: 1.01 }}
         >
-            {/* Glow on hover */}
+            {/* Subtle glow on hover */}
             <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: 0,
+                    transition: "opacity 0.5s ease",
                     background: `radial-gradient(circle at 50% 0%, ${feature.bg} 0%, transparent 100%)`,
+                    pointerEvents: "none",
                 }}
+                className="group-hover:opacity-100"
             />
 
-            <div className="relative z-10 flex items-start gap-4">
+            <div
+                style={{
+                    position: "relative",
+                    zIndex: 1,
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 16,
+                }}
+            >
                 {/* Icon */}
                 <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5"
-                    style={{ background: feature.bg, border: `1px solid ${feature.border}` }}
+                    style={{
+                        width: 44,
+                        height: 44,
+                        borderRadius: 12,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        background: feature.bg,
+                        border: `1px solid ${feature.border}`,
+                    }}
                 >
-                    <Icon size={22} style={{ color: feature.color }} />
+                    <Icon size={20} style={{ color: feature.color }} />
                 </div>
 
-                <div className="flex-1">
-                    <h3 className="text-white font-semibold text-base mb-2">{feature.title}</h3>
-                    <p className="text-white/55 text-sm leading-relaxed">{feature.description}</p>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                    <h3
+                        style={{
+                            color: "#f8fafc",
+                            fontWeight: 600,
+                            fontSize: 15,
+                            marginBottom: 6,
+                            lineHeight: 1.3,
+                        }}
+                    >
+                        {feature.title}
+                    </h3>
+                    <p
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 13,
+                            lineHeight: 1.6,
+                        }}
+                    >
+                        {feature.description}
+                    </p>
                 </div>
 
                 {/* Stat badge */}
-                <div className="flex-shrink-0 text-right">
-                    <div className="text-xl font-bold" style={{ color: feature.color, fontFamily: "Poppins" }}>
+                <div style={{ flexShrink: 0, textAlign: "right" }}>
+                    <div
+                        style={{
+                            fontSize: 20,
+                            fontWeight: 700,
+                            color: feature.color,
+                            fontFamily: "Poppins, sans-serif",
+                            lineHeight: 1.2,
+                        }}
+                    >
                         {feature.stat}
                     </div>
-                    <div className="text-xs text-white/40">{feature.statLabel}</div>
+                    <div style={{ fontSize: 11, color: "rgba(248,250,252,0.4)", marginTop: 2 }}>
+                        {feature.statLabel}
+                    </div>
                 </div>
             </div>
         </motion.div>
@@ -131,25 +186,41 @@ export default function WhyUsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="why-us" className="py-24 relative overflow-hidden">
-            {/* Purple background glow */}
+        <section id="why-us" className="section" style={{ position: "relative", overflow: "hidden" }}>
+            {/* Top/bottom accent lines */}
             <div
-                className="absolute top-0 left-0 right-0 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)" }}
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 1,
+                    background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
+                }}
             />
             <div
-                className="absolute bottom-0 left-0 right-0 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)" }}
+                style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: 1,
+                    background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+                }}
             />
 
-            <div className="max-w-6xl mx-auto px-4">
-                <div ref={ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div className="container">
+                <div
+                    ref={ref}
+                    className="custom-grid lg-grid-cols-2"
+                    style={{ gap: 48, alignItems: "flex-start" }}
+                >
                     {/* Left */}
-                    <div className="lg:sticky lg:top-32">
+                    <div style={{ position: "sticky", top: 128 }}>
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            className="flex mb-5"
+                            style={{ display: "flex", marginBottom: 20 }}
                         >
                             <div className="section-tag">✦ Why Choose Us</div>
                         </motion.div>
@@ -158,8 +229,14 @@ export default function WhyUsSection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
-                            style={{ fontFamily: "Poppins, sans-serif" }}
+                            style={{
+                                fontFamily: "Poppins, sans-serif",
+                                fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                                fontWeight: 800,
+                                marginBottom: 20,
+                                color: "#f8fafc",
+                                lineHeight: 1.15,
+                            }}
                         >
                             We Don&apos;t Just Build
                             <br />
@@ -172,7 +249,12 @@ export default function WhyUsSection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
-                            className="text-white/55 text-lg leading-relaxed mb-8"
+                            style={{
+                                color: "rgba(248,250,252,0.55)",
+                                fontSize: 17,
+                                lineHeight: 1.7,
+                                marginBottom: 32,
+                            }}
                         >
                             We combine cutting-edge technology with proven design strategies to create websites
                             that don&apos;t just look good — they perform. Our websites are built to rank, convert,
@@ -183,25 +265,40 @@ export default function WhyUsSection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.3 }}
-                            className="flex gap-4"
+                            style={{ display: "flex", gap: 12 }}
                         >
-                            <div className="glass-card rounded-2xl p-5 flex-1 text-center">
-                                <div className="text-3xl font-bold gradient-text mb-1" style={{ fontFamily: "Poppins" }}>150+</div>
-                                <div className="text-white/50 text-sm">Websites Built</div>
-                            </div>
-                            <div className="glass-card rounded-2xl p-5 flex-1 text-center">
-                                <div className="text-3xl font-bold gradient-text mb-1" style={{ fontFamily: "Poppins" }}>4yr+</div>
-                                <div className="text-white/50 text-sm">Years of Experience</div>
-                            </div>
-                            <div className="glass-card rounded-2xl p-5 flex-1 text-center">
-                                <div className="text-3xl font-bold gradient-text mb-1" style={{ fontFamily: "Poppins" }}>24/7</div>
-                                <div className="text-white/50 text-sm">Support Available</div>
-                            </div>
+                            {[
+                                { value: "150+", label: "Websites Built" },
+                                { value: "4yr+", label: "Experience" },
+                                { value: "24/7", label: "Support" },
+                            ].map((item) => (
+                                <div
+                                    key={item.label}
+                                    className="glass-card rounded-2xl"
+                                    style={{ flex: 1, padding: "20px 12px", textAlign: "center" }}
+                                >
+                                    <div
+                                        className="gradient-text"
+                                        style={{
+                                            fontSize: "1.6rem",
+                                            fontWeight: 800,
+                                            fontFamily: "Poppins, sans-serif",
+                                            display: "block",
+                                            marginBottom: 4,
+                                        }}
+                                    >
+                                        {item.value}
+                                    </div>
+                                    <div style={{ color: "rgba(248,250,252,0.5)", fontSize: 12 }}>
+                                        {item.label}
+                                    </div>
+                                </div>
+                            ))}
                         </motion.div>
                     </div>
 
                     {/* Right */}
-                    <div className="flex flex-col gap-4">
+                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                         {features.map((feature, index) => (
                             <FeatureCard key={feature.title} feature={feature} index={index} />
                         ))}

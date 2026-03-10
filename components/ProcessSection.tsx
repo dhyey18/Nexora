@@ -66,74 +66,168 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
             initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40, y: 20 }}
             animate={isInView ? { opacity: 1, x: 0, y: 0 } : {}}
             transition={{ duration: 0.6, delay: index * 0.15 }}
-            className="relative"
+            style={{ position: "relative" }}
         >
             {/* Connector line */}
             {index < steps.length - 1 && (
                 <div
-                    className="absolute left-8 top-full w-[1px] h-12 hidden md:block"
+                    className="md-block"
                     style={{
+                        display: "none",
+                        position: "absolute",
+                        left: 32,
+                        top: "100%",
+                        width: 1,
+                        height: 28,
                         background: `linear-gradient(180deg, ${step.color} 0%, transparent 100%)`,
                     }}
                 />
             )}
 
             <div
-                className="rounded-2xl p-6 md:p-8 group hover:shadow-2xl transition-all duration-300 cursor-default"
                 style={{
+                    borderRadius: 20,
+                    padding: "28px 32px",
                     background: step.bg,
                     border: `1px solid ${step.border}`,
+                    transition: "box-shadow 0.3s ease",
+                    cursor: "default",
+                    position: "relative",
+                    overflow: "hidden",
                 }}
+                className="group hover:shadow-2xl"
             >
-                <div className="flex items-start gap-5">
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 20 }}>
                     {/* Step icon with number */}
-                    <div className="flex-shrink-0 relative">
+                    <div style={{ flexShrink: 0, position: "relative" }}>
                         <div
-                            className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                            style={{ background: step.bg, border: `1px solid ${step.border}` }}
+                            style={{
+                                width: 56,
+                                height: 56,
+                                borderRadius: 16,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                background: step.bg,
+                                border: `1px solid ${step.border}`,
+                            }}
                         >
-                            <Icon size={26} style={{ color: step.color }} />
+                            <Icon size={24} style={{ color: step.color }} />
                         </div>
                         <div
-                            className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
-                            style={{ background: step.color }}
+                            style={{
+                                position: "absolute",
+                                top: -8,
+                                right: -8,
+                                width: 22,
+                                height: 22,
+                                borderRadius: "50%",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                background: step.color,
+                                color: "#fff",
+                                fontSize: 11,
+                                fontWeight: 700,
+                            }}
                         >
                             {index + 1}
                         </div>
                     </div>
 
-                    <div className="flex-1">
+                    <div style={{ flex: 1, minWidth: 0 }}>
                         {/* Head */}
-                        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                            <h3 className="text-white font-bold text-xl" style={{ fontFamily: "Poppins, sans-serif" }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                alignItems: "center",
+                                justifyContent: "space-between",
+                                gap: 12,
+                                marginBottom: 12,
+                            }}
+                        >
+                            <h3
+                                style={{
+                                    color: "#f8fafc",
+                                    fontWeight: 700,
+                                    fontSize: 18,
+                                    fontFamily: "Poppins, sans-serif",
+                                    lineHeight: 1.2,
+                                }}
+                            >
                                 {step.title}
                             </h3>
                             <span
-                                className="text-xs font-medium px-3 py-1 rounded-full"
-                                style={{ background: step.bg, color: step.color, border: `1px solid ${step.border}` }}
+                                style={{
+                                    fontSize: 11,
+                                    fontWeight: 600,
+                                    padding: "4px 12px",
+                                    borderRadius: 100,
+                                    background: step.bg,
+                                    color: step.color,
+                                    border: `1px solid ${step.border}`,
+                                    whiteSpace: "nowrap",
+                                }}
                             >
                                 ⏱ {step.duration}
                             </span>
                         </div>
 
-                        <p className="text-white/60 text-sm leading-relaxed mb-5">{step.description}</p>
+                        <p
+                            style={{
+                                color: "rgba(248,250,252,0.6)",
+                                fontSize: 14,
+                                lineHeight: 1.65,
+                                marginBottom: 20,
+                            }}
+                        >
+                            {step.description}
+                        </p>
 
                         {/* Deliverables */}
-                        <div className="grid grid-cols-2 gap-2">
+                        <div
+                            style={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(2, 1fr)",
+                                gap: 8,
+                            }}
+                        >
                             {step.deliverables.map((item) => (
-                                <div key={item} className="flex items-center gap-2">
-                                    <CheckCircle2 size={14} style={{ color: step.color }} className="flex-shrink-0" />
-                                    <span className="text-white/65 text-xs">{item}</span>
+                                <div
+                                    key={item}
+                                    style={{ display: "flex", alignItems: "center", gap: 8 }}
+                                >
+                                    <CheckCircle2
+                                        size={13}
+                                        style={{ color: step.color, flexShrink: 0 }}
+                                    />
+                                    <span
+                                        style={{ color: "rgba(248,250,252,0.65)", fontSize: 12 }}
+                                    >
+                                        {item}
+                                    </span>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
 
-                {/* Background step number */}
+                {/* Background step number watermark */}
                 <div
-                    className="absolute top-4 right-6 text-7xl font-black opacity-5 pointer-events-none select-none"
-                    style={{ color: step.color, fontFamily: "Poppins" }}
+                    style={{
+                        position: "absolute",
+                        top: 16,
+                        right: 24,
+                        fontSize: 72,
+                        fontWeight: 900,
+                        opacity: 0.06,
+                        color: step.color,
+                        fontFamily: "Poppins, sans-serif",
+                        lineHeight: 1,
+                        pointerEvents: "none",
+                        userSelect: "none",
+                    }}
                 >
                     {step.number}
                 </div>
@@ -147,23 +241,28 @@ export default function ProcessSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="process" className="py-24 relative overflow-hidden">
+        <section id="process" className="section">
             {/* BG */}
             <div
-                className="absolute inset-0 pointer-events-none"
                 style={{
+                    position: "absolute",
+                    inset: 0,
+                    pointerEvents: "none",
                     background:
                         "radial-gradient(ellipse at 0% 50%, rgba(99,102,241,0.06) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(14,165,233,0.06) 0%, transparent 50%)",
                 }}
             />
 
-            <div className="max-w-4xl mx-auto px-4 relative z-10">
+            <div
+                className="container"
+                style={{ position: "relative", zIndex: 10, maxWidth: "56rem" }}
+            >
                 {/* Header */}
-                <div ref={ref} className="text-center mb-16">
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        className="flex justify-center mb-4"
+                        style={{ display: "flex", justifyContent: "center" }}
                     >
                         <div className="section-tag">✦ Our Process</div>
                     </motion.div>
@@ -172,8 +271,14 @@ export default function ProcessSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{ fontFamily: "Poppins, sans-serif" }}
+                        style={{
+                            fontFamily: "Poppins, sans-serif",
+                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontWeight: 800,
+                            marginBottom: 16,
+                            color: "#f8fafc",
+                            lineHeight: 1.15,
+                        }}
                     >
                         Simple, Transparent &amp;
                         <br />
@@ -184,7 +289,13 @@ export default function ProcessSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        className="text-white/55 text-lg max-w-xl mx-auto"
+                        style={{
+                            color: "rgba(248,250,252,0.55)",
+                            fontSize: 17,
+                            maxWidth: 520,
+                            margin: "0 auto",
+                            lineHeight: 1.7,
+                        }}
                     >
                         No surprises, no delays. Our battle-tested 4-step process delivers exceptional
                         results on time, every time.
@@ -192,7 +303,7 @@ export default function ProcessSection() {
                 </div>
 
                 {/* Steps */}
-                <div className="flex flex-col gap-6">
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                     {steps.map((step, index) => (
                         <StepCard key={step.title} step={step} index={index} />
                     ))}

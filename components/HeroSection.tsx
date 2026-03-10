@@ -16,25 +16,61 @@ export default function HeroSection() {
     };
 
     return (
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden animated-bg stars-bg">
+        <section
+            id="hero"
+            className="animated-bg stars-bg"
+            style={{
+                position: "relative",
+                minHeight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+            }}
+        >
             {/* Background glow orbs */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+                style={{
+                    position: "absolute",
+                    inset: 0,
+                    overflow: "hidden",
+                    pointerEvents: "none",
+                }}
+            >
                 <div
-                    className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full pulse-glow"
+                    className="pulse-glow"
                     style={{
+                        position: "absolute",
+                        top: "25%",
+                        left: "25%",
+                        width: 600,
+                        height: 600,
+                        borderRadius: "50%",
                         background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)",
                     }}
                 />
                 <div
-                    className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full pulse-glow"
+                    className="pulse-glow"
                     style={{
+                        position: "absolute",
+                        bottom: "25%",
+                        right: "25%",
+                        width: 500,
+                        height: 500,
+                        borderRadius: "50%",
                         background: "radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)",
                         animationDelay: "2s",
                     }}
                 />
                 <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
                     style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: 800,
+                        height: 800,
+                        borderRadius: "50%",
                         background: "radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 60%)",
                     }}
                 />
@@ -43,46 +79,90 @@ export default function HeroSection() {
                 <motion.div
                     animate={{ y: [-20, 20, -20], rotate: [0, 180, 360] }}
                     transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                    className="absolute top-20 right-20 w-16 h-16 rounded-xl border border-indigo-500/20 bg-indigo-500/5"
+                    style={{
+                        position: "absolute",
+                        top: 80,
+                        right: 80,
+                        width: 64,
+                        height: 64,
+                        borderRadius: 12,
+                        border: "1px solid rgba(99,102,241,0.2)",
+                        background: "rgba(99,102,241,0.05)",
+                    }}
                 />
                 <motion.div
                     animate={{ y: [20, -20, 20], rotate: [360, 180, 0] }}
                     transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    className="absolute bottom-32 left-16 w-10 h-10 rounded-full border border-purple-500/30 bg-purple-500/5"
+                    style={{
+                        position: "absolute",
+                        bottom: 128,
+                        left: 64,
+                        width: 40,
+                        height: 40,
+                        borderRadius: "50%",
+                        border: "1px solid rgba(139,92,246,0.3)",
+                        background: "rgba(139,92,246,0.05)",
+                    }}
                 />
                 <motion.div
                     animate={{ y: [-15, 15, -15], x: [-10, 10, -10] }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute top-1/3 right-12 w-6 h-6 rounded-full bg-sky-400/30"
+                    style={{
+                        position: "absolute",
+                        top: "33%",
+                        right: 48,
+                        width: 24,
+                        height: 24,
+                        borderRadius: "50%",
+                        background: "rgba(56,189,248,0.3)",
+                    }}
                 />
                 <motion.div
                     animate={{ y: [10, -10, 10], x: [10, -10, 10] }}
                     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute bottom-1/3 left-1/4 w-4 h-4 rounded-sm border border-indigo-400/40"
-                    style={{ transform: "rotate(45deg)" }}
+                    style={{
+                        position: "absolute",
+                        bottom: "33%",
+                        left: "25%",
+                        width: 16,
+                        height: 16,
+                        borderRadius: 2,
+                        border: "1px solid rgba(99,102,241,0.4)",
+                        transform: "rotate(45deg)",
+                    }}
                 />
 
                 {/* Grid lines */}
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px)`,
-                        backgroundSize: "60px 60px",
-                    }}
-                />
+                <div className="grid-pattern absolute inset-0" />
             </div>
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 text-center pt-24 pb-16">
+            <div
+                className="container relative"
+                style={{
+                    zIndex: 10,
+                    textAlign: "center",
+                    paddingTop: "6rem",
+                    paddingBottom: "4rem",
+                }}
+            >
                 {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="flex justify-center mb-8"
+                    style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}
                 >
                     <div className="section-tag">
-                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                        <span
+                            style={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: "50%",
+                                background: "#4ade80",
+                                display: "inline-block",
+                                animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                            }}
+                        />
                         Trusted by 50+ businesses worldwide
                     </div>
                 </motion.div>
@@ -92,8 +172,14 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
-                    style={{ fontFamily: "Poppins, sans-serif" }}
+                    style={{
+                        fontFamily: "Poppins, sans-serif",
+                        fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                        fontWeight: 800,
+                        lineHeight: 1.1,
+                        marginBottom: 24,
+                        color: "#f8fafc",
+                    }}
                 >
                     We Build{" "}
                     <span className="gradient-text">Modern Websites</span>
@@ -106,7 +192,14 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+                    style={{
+                        fontSize: "clamp(1rem, 2vw, 1.2rem)",
+                        color: "rgba(248,250,252,0.6)",
+                        maxWidth: "38rem",
+                        margin: "0 auto",
+                        marginBottom: 40,
+                        lineHeight: 1.7,
+                    }}
                 >
                     Your online presence is your most powerful business asset. We craft stunning,
                     high-performance websites that attract customers, build trust, and drive real revenue growth.
@@ -117,13 +210,21 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.3 }}
-                    className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
+                    style={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        gap: 16,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: 64,
+                    }}
                 >
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleScroll("contact")}
-                        className="btn-primary text-base px-8 py-4"
+                        className="btn-primary"
+                        style={{ padding: "15px 36px", fontSize: 16 }}
                         id="hero-get-started-btn"
                     >
                         Get Started Free <ArrowRight size={18} />
@@ -132,10 +233,11 @@ export default function HeroSection() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => handleScroll("portfolio")}
-                        className="btn-secondary text-base px-8 py-4"
+                        className="btn-secondary"
+                        style={{ padding: "14px 36px", fontSize: 16 }}
                         id="hero-portfolio-btn"
                     >
-                        <Play size={16} className="fill-white" />
+                        <Play size={16} style={{ fill: "currentColor" }} />
                         View Portfolio
                     </motion.button>
                 </motion.div>
@@ -145,7 +247,8 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto"
+                    className="custom-grid sm-grid-cols-2 md-grid-cols-4"
+                    style={{ gap: 16, maxWidth: 768, margin: "0 auto" }}
                 >
                     {stats.map((stat, i) => (
                         <motion.div
@@ -153,12 +256,24 @@ export default function HeroSection() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                            className="glass-card rounded-2xl p-4 text-center"
+                            className="glass-card rounded-2xl"
+                            style={{ padding: "20px 16px", textAlign: "center" }}
                         >
-                            <div className="text-2xl md:text-3xl font-bold gradient-text mb-1" style={{ fontFamily: "Poppins, sans-serif" }}>
+                            <div
+                                className="gradient-text"
+                                style={{
+                                    fontSize: "clamp(1.4rem, 3vw, 1.875rem)",
+                                    fontWeight: 800,
+                                    fontFamily: "Poppins, sans-serif",
+                                    marginBottom: 4,
+                                    display: "block",
+                                }}
+                            >
                                 {stat.value}
                             </div>
-                            <div className="text-xs md:text-sm text-white/50">{stat.label}</div>
+                            <div style={{ fontSize: 13, color: "rgba(248,250,252,0.5)" }}>
+                                {stat.label}
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>
@@ -168,14 +283,34 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.2 }}
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                    style={{
+                        position: "absolute",
+                        bottom: 32,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                    }}
                 >
                     <motion.div
                         animate={{ y: [0, 12, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="w-6 h-10 rounded-full border-2 border-white/20 flex justify-center pt-2"
+                        style={{
+                            width: 24,
+                            height: 40,
+                            borderRadius: 12,
+                            border: "2px solid rgba(255,255,255,0.2)",
+                            display: "flex",
+                            justifyContent: "center",
+                            paddingTop: 8,
+                        }}
                     >
-                        <div className="w-1 h-2 rounded-full bg-white/50" />
+                        <div
+                            style={{
+                                width: 4,
+                                height: 8,
+                                borderRadius: 2,
+                                background: "rgba(255,255,255,0.5)",
+                            }}
+                        />
                     </motion.div>
                 </motion.div>
             </div>
