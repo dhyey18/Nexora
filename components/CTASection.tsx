@@ -47,15 +47,14 @@ export default function CTASection() {
                 <div
                     ref={ref}
                     style={{
-                        display: "flex",
-                        flexWrap: "wrap",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 380px), 1fr))",
                         gap: "4rem",
-                        alignItems: "flex-start",
-                        justifyContent: "space-between",
+                        alignItems: "start",
                     }}
                 >
                     {/* Left — CTA text */}
-                    <div style={{ flex: 1, minWidth: 320, maxWidth: 600 }}>
+                    <div style={{ maxWidth: 600 }}>
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -81,17 +80,18 @@ export default function CTASection() {
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
                             className="text-white/60 text-lg leading-relaxed mb-10"
+                            style={{ maxWidth: 520 }}
                         >
                             Stop losing customers to competitors with better websites. Let&apos;s build you
                             something exceptional. Book a free consultation call — no strings attached.
                         </motion.p>
-
+                        <br />
                         {/* Contact info */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.3 }}
-                            className="space-y-4 mb-8"
+                            className="space-y-8 mb-8"
                         >
                             {[
                                 { icon: Mail, label: "Email us", value: "hello@Nexora.agency" },
@@ -119,13 +119,13 @@ export default function CTASection() {
                                 </div>
                             ))}
                         </motion.div>
-
+                        <br />
                         {/* Testimonial snippet */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.4 }}
-                            className="glass rounded-2xl p-5"
+                            className="glass rounded-2xl p-5 mt-10"
                             style={{ borderColor: "rgba(99,102,241,0.2)" }}
                         >
                             <p className="text-white/65 text-sm italic mb-3 leading-relaxed">
@@ -150,13 +150,14 @@ export default function CTASection() {
                     </div>
 
                     {/* Right — Form */}
-                    <div style={{ flex: 1, minWidth: 320, width: "100%" }}>
+                    <div style={{ width: "100%" }}>
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
+                            style={{ width: "100%" }}
                         >
-                            <div className="glass-card rounded-3xl p-8">
+                            <div className="glass-card" style={{ borderRadius: "1.5rem", padding: "clamp(1.5rem, 5vw, 2.5rem)" }}>
                                 {submitted ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
@@ -245,8 +246,8 @@ export default function CTASection() {
                                                                 setSelectedService(s === selectedService ? null : s)
                                                             }
                                                             style={{
-                                                                fontSize: 12,
-                                                                padding: "6px 12px",
+                                                                fontSize: 13,
+                                                                padding: "8px 14px",
                                                                 borderRadius: 100,
                                                                 border: `1px solid ${selectedService === s
                                                                     ? "rgba(99,102,241,0.6)"
@@ -279,7 +280,7 @@ export default function CTASection() {
                                                 <select
                                                     className="form-input"
                                                     id="contact-budget"
-                                                    style={{ background: "rgba(15,23,42,0.9)" }}
+                                                    style={{ background: "rgba(15,23,42,0.9)", cursor: "pointer" }}
                                                 >
                                                     <option value="">Select your budget</option>
                                                     <option value="starter">$500 – $1,000 (Starter)</option>
