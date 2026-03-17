@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Layers } from "lucide-react";
 
-const categories = ["All", "Restaurant", "Healthcare", "Startup", "Local Business", "Fashion"];
+const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Startup", "Fashion"];
 
 const projects = [
     {
@@ -25,15 +25,6 @@ const projects = [
         metrics: { visits: "28K+/mo", conversion: "12%", rating: "5★" },
         gradient: "linear-gradient(135deg, rgba(59,130,246,0.85), rgba(99,102,241,0.85))",
         link: "https://voge-three.vercel.app/",
-    },
-    {
-        title: "Urban Boutique",
-        category: "Local Business",
-        description: "Chic fashion boutique store with e-commerce capability, lookbooks, and loyalty program.",
-        tech: ["Shopify", "Custom CSS", "SEO"],
-        color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
-        metrics: { visits: "9K+/mo", conversion: "6.2%", rating: "4.8★" },
-        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(139,92,246,0.85))",
     },
     {
         title: "MISO — Artisan Café & Kitchen",
@@ -63,6 +54,16 @@ const projects = [
         metrics: { visits: "5K+/mo", conversion: "15%", rating: "4.9★" },
         gradient: "linear-gradient(135deg, rgba(6,182,212,0.85), rgba(37,99,235,0.85))",
         link: "https://health-first-five.vercel.app/",
+    },
+    {
+        title: "Aura Luxe Salon",
+        category: "Wellness",
+        description: "Premium beauty salon website with appointment booking, service menu, and elegant signature style showcase.",
+        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
+        color: "linear-gradient(135deg, #ec4899, #d946ef)",
+        metrics: { visits: "8K+/mo", conversion: "11%", rating: "5★" },
+        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(217,70,239,0.85))",
+        link: "https://aura-luxe-two.vercel.app/",
     },
 ];
 
