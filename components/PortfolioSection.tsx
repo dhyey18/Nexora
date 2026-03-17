@@ -85,7 +85,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 cursor: "pointer",
                 aspectRatio: "4/3",
             }}
-            className="group"
+            onClick={() => {
+                if (window.innerWidth < 1024) {
+                    setHovered(!hovered);
+                }
+            }}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
         >
@@ -179,6 +183,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
+                onClick={(e) => {
+                    if (project.link && hovered && window.innerWidth < 1024) {
+                        e.stopPropagation();
+                        window.open(project.link, "_blank", "noopener,noreferrer");
+                    }
+                }}
                 style={{
                     position: "absolute",
                     inset: 0,
@@ -189,6 +199,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                     justifyContent: "flex-end",
                     padding: 24,
                     zIndex: 10,
+                    pointerEvents: hovered ? "auto" : "none",
                 }}
             >
                 <h3
