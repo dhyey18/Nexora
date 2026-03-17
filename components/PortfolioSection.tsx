@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Layers } from "lucide-react";
 
-const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Startup", "Fashion"];
+const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Interior Design", "Fashion"];
 
 const projects = [
     {
@@ -36,15 +36,15 @@ const projects = [
         gradient: "linear-gradient(135deg, rgba(16,185,129,0.85), rgba(20,184,166,0.85))",
         link: "https://miso-6r4l.vercel.app/",
     },
-    {
-        title: "TechFounders Co.",
-        category: "Startup",
-        description: "Clean startup landing page with investor-ready design, product demo, and team presentation.",
-        tech: ["Next.js", "TypeScript", "Vercel"],
-        color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
-        metrics: { visits: "15K+/mo", conversion: "14%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(14,165,233,0.85), rgba(37,99,235,0.85))",
-    },
+    // {
+    //     title: "TechFounders Co.",
+    //     category: "Startup",
+    //     description: "Clean startup landing page with investor-ready design, product demo, and team presentation.",
+    //     tech: ["Next.js", "TypeScript", "Vercel"],
+    //     color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
+    //     metrics: { visits: "15K+/mo", conversion: "14%", rating: "5★" },
+    //     gradient: "linear-gradient(135deg, rgba(14,165,233,0.85), rgba(37,99,235,0.85))",
+    // },
     {
         title: "HealthFirst Clinic — Dr. Arjun Mehta",
         category: "Healthcare",
@@ -64,6 +64,16 @@ const projects = [
         metrics: { visits: "8K+/mo", conversion: "11%", rating: "5★" },
         gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(217,70,239,0.85))",
         link: "https://aura-luxe-two.vercel.app/",
+    },
+    {
+        title: "Aria Chen — Interior & Creative Studio",
+        category: "Interior Design",
+        description: "Sophisticated portfolio website for a high-end designer, featuring a minimalist aesthetic, project galleries, and immersive visual storytelling.",
+        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
+        color: "linear-gradient(135deg, #4b5563, #1f2937)",
+        metrics: { visits: "4K+/mo", conversion: "18%", rating: "5★" },
+        gradient: "linear-gradient(135deg, rgba(75,85,99,0.85), rgba(31,41,55,0.85))",
+        link: "https://designer-protfolio.vercel.app/#work",
     },
 ];
 
@@ -85,7 +95,11 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 cursor: "pointer",
                 aspectRatio: "4/3",
             }}
-            className="group"
+            onClick={() => {
+                if (window.innerWidth < 1024) {
+                    setHovered(!hovered);
+                }
+            }}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
         >
@@ -179,6 +193,12 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hovered ? 1 : 0 }}
                 transition={{ duration: 0.3 }}
+                onClick={(e) => {
+                    if (project.link && hovered && window.innerWidth < 1024) {
+                        e.stopPropagation();
+                        window.open(project.link, "_blank", "noopener,noreferrer");
+                    }
+                }}
                 style={{
                     position: "absolute",
                     inset: 0,
@@ -189,6 +209,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                     justifyContent: "flex-end",
                     padding: 24,
                     zIndex: 10,
+                    pointerEvents: hovered ? "auto" : "none",
                 }}
             >
                 <h3
