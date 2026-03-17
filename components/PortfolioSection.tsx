@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Layers } from "lucide-react";
 
-const categories = ["All", "Restaurant", "Startup", "Local Business", "SaaS"];
+const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Startup", "Fashion"];
 
 const projects = [
     {
@@ -17,31 +17,24 @@ const projects = [
         gradient: "linear-gradient(135deg, rgba(249,115,22,0.85), rgba(225,29,72,0.85))",
     },
     {
-        title: "LaunchPad SaaS",
-        category: "SaaS",
-        description: "Full-featured SaaS marketing site with pricing, feature showcase, and seamless trial signup flow.",
-        tech: ["React", "Framer", "Analytics"],
+        title: "VÔGE — Modern Clothing",
+        category: "Fashion",
+        description: "Luxury fashion brand website featuring the SS 2026 collection, lookbooks, new arrivals, and an immersive 'Where Style Meets Soul' shopping experience.",
+        tech: ["Next.js", "Framer Motion", "Vercel"],
         color: "linear-gradient(135deg, #3b82f6, #6366f1)",
         metrics: { visits: "28K+/mo", conversion: "12%", rating: "5★" },
         gradient: "linear-gradient(135deg, rgba(59,130,246,0.85), rgba(99,102,241,0.85))",
+        link: "https://voge-three.vercel.app/",
     },
     {
-        title: "Urban Boutique",
-        category: "Local Business",
-        description: "Chic fashion boutique store with e-commerce capability, lookbooks, and loyalty program.",
-        tech: ["Shopify", "Custom CSS", "SEO"],
-        color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
-        metrics: { visits: "9K+/mo", conversion: "6.2%", rating: "4.8★" },
-        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(139,92,246,0.85))",
-    },
-    {
-        title: "GreenLeaf Café",
+        title: "MISO — Artisan Café & Kitchen",
         category: "Restaurant",
-        description: "Farm-to-table café with online ordering, catering inquiries, and event booking system.",
-        tech: ["Next.js", "Sanity CMS", "Maps API"],
+        description: "Farm-to-table artisan café with seasonal menus, online reservations, gallery, and a crafted dining experience — 'Craft. Culture. Coffee.'",
+        tech: ["Next.js", "Tailwind CSS", "Vercel"],
         color: "linear-gradient(135deg, #10b981, #0d9488)",
         metrics: { visits: "7K+/mo", conversion: "9.1%", rating: "4.9★" },
         gradient: "linear-gradient(135deg, rgba(16,185,129,0.85), rgba(20,184,166,0.85))",
+        link: "https://miso-6r4l.vercel.app/",
     },
     {
         title: "TechFounders Co.",
@@ -53,17 +46,28 @@ const projects = [
         gradient: "linear-gradient(135deg, rgba(14,165,233,0.85), rgba(37,99,235,0.85))",
     },
     {
-        title: "Prime Properties",
-        category: "Local Business",
-        description: "Real estate agency website with property listings, virtual tours, and mortgage calculator.",
-        tech: ["React", "Google Maps", "Mailchimp"],
-        color: "linear-gradient(135deg, #eab308, #d97706)",
-        metrics: { visits: "6K+/mo", conversion: "7.8%", rating: "4.7★" },
-        gradient: "linear-gradient(135deg, rgba(234,179,8,0.85), rgba(245,158,11,0.85))",
+        title: "HealthFirst Clinic — Dr. Arjun Mehta",
+        category: "Healthcare",
+        description: "A comprehensive healthcare clinic website featuring online appointment booking, specialist services showcase, and bilingual patient support.",
+        tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
+        color: "linear-gradient(135deg, #06b6d4, #2563eb)",
+        metrics: { visits: "5K+/mo", conversion: "15%", rating: "4.9★" },
+        gradient: "linear-gradient(135deg, rgba(6,182,212,0.85), rgba(37,99,235,0.85))",
+        link: "https://health-first-five.vercel.app/",
+    },
+    {
+        title: "Aura Luxe Salon",
+        category: "Wellness",
+        description: "Premium beauty salon website with appointment booking, service menu, and elegant signature style showcase.",
+        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
+        color: "linear-gradient(135deg, #ec4899, #d946ef)",
+        metrics: { visits: "8K+/mo", conversion: "11%", rating: "5★" },
+        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(217,70,239,0.85))",
+        link: "https://aura-luxe-two.vercel.app/",
     },
 ];
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectCard({ project, index }: { project: typeof projects[0] & { link?: string }; index: number }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
     const [hovered, setHovered] = useState(false);
@@ -244,25 +248,51 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
                     ))}
                 </div>
 
-                <button
-                    style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        color: "#fff",
-                        fontSize: 13,
-                        fontWeight: 500,
-                        background: "transparent",
-                        border: "none",
-                        cursor: "pointer",
-                        padding: 0,
-                        transition: "color 0.2s",
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
-                >
-                    <ExternalLink size={13} /> View Case Study
-                </button>
+                {project.link ? (
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 6,
+                            color: "#fff",
+                            fontSize: 13,
+                            fontWeight: 500,
+                            background: "transparent",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: 0,
+                            transition: "color 0.2s",
+                            textDecoration: "none",
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
+                    >
+                        <ExternalLink size={13} /> View Live Site
+                    </a>
+                ) : (
+                    <button
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 6,
+                            color: "#fff",
+                            fontSize: 13,
+                            fontWeight: 500,
+                            background: "transparent",
+                            border: "none",
+                            cursor: "pointer",
+                            padding: 0,
+                            transition: "color 0.2s",
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
+                    >
+                        <ExternalLink size={13} /> View Case Study
+                    </button>
+                )}
             </motion.div>
         </motion.div>
     );

@@ -90,7 +90,7 @@ export default function Footer() {
                                     fontFamily: "Poppins, sans-serif",
                                 }}
                             >
-                                Nexa<span className="gradient-text">Web</span>
+                                Nex<span className="gradient-text">ora</span>
                             </span>
                         </div>
                         <p
@@ -98,12 +98,45 @@ export default function Footer() {
                                 color: "rgba(248,250,252,0.5)",
                                 fontSize: 14,
                                 lineHeight: 1.7,
-                                marginBottom: 24,
+                                marginBottom: 12,
                                 maxWidth: 280,
                             }}
                         >
                             We build modern, high-performance websites that help businesses grow their online
                             presence and drive real revenue results.
+                        </p>
+                        <p
+                            style={{
+                                color: "rgba(248,250,252,0.4)",
+                                fontSize: 13,
+                                lineHeight: 1.7,
+                                marginBottom: 8,
+                                maxWidth: 280,
+                            }}
+                        >
+                            📍 Prahlad Nagar, Ahmedabad, Gujarat 380015
+                        </p>
+                        <p
+                            style={{
+                                color: "rgba(248,250,252,0.4)",
+                                fontSize: 13,
+                                lineHeight: 1.7,
+                                marginBottom: 8,
+                                maxWidth: 280,
+                            }}
+                        >
+                            📞 +91 94291 84788 &nbsp;|&nbsp; +91 93238 30436
+                        </p>
+                        <p
+                            style={{
+                                color: "rgba(248,250,252,0.4)",
+                                fontSize: 13,
+                                lineHeight: 1.7,
+                                marginBottom: 24,
+                                maxWidth: 280,
+                            }}
+                        >
+                            Founded by <strong style={{ color: "rgba(248,250,252,0.6)" }}>Dhyey Patel</strong> &amp; <strong style={{ color: "rgba(248,250,252,0.6)" }}>Manasvi Shah</strong>
                         </p>
 
                         {/* Social links */}
@@ -291,7 +324,7 @@ export default function Footer() {
                     }}
                 >
                     <p style={{ color: "rgba(248,250,252,0.3)", fontSize: 13 }}>
-                        © 2026 Nexora. All rights reserved. Built with ❤️ and lots of coffee.
+                        © 2026 Nexora. All rights reserved. Built with ❤️ from Ahmedabad, India.
                     </p>
                     <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                         {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((item) => (

@@ -268,7 +268,7 @@ export default function WhyUsSection() {
                             style={{ display: "flex", gap: 12 }}
                         >
                             {[
-                                { value: "150+", label: "Websites Built" },
+                                { value: "2+", label: "Websites Built" },
                                 { value: "4yr+", label: "Experience" },
                                 { value: "24/7", label: "Support" },
                             ].map((item) => (
