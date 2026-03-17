@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NexaWeb – We Build Modern Websites That Grow Your Business",
-  description: "Premium web development agency specializing in modern, high-performance websites for businesses. From startups to enterprises, we craft digital experiences that convert.",
-  keywords: "web development, website design, SEO, modern websites, business website, agency",
+  title: "Nexora – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
+  description: "Premium web development agency based in Ahmedabad, India. We specialize in modern, high-performance websites for businesses — from startups to enterprises. Founded by Dhyey Patel & Manasvi Shah.",
+  keywords: "web development, website design, SEO, modern websites, business website, agency, Ahmedabad, India, Gujarat",
   openGraph: {
-    title: "NexaWeb – We Build Modern Websites That Grow Your Business",
-    description: "Premium web development agency specializing in modern, high-performance websites.",
+    title: "Nexora – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
+    description: "Premium web development agency based in Ahmedabad, India specializing in modern, high-performance websites.",
     type: "website",
   },
 };

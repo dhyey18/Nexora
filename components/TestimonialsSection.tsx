@@ -6,20 +6,20 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
     {
-        name: "Sarah Mitchell",
-        role: "CEO",
-        company: "LaunchPad SaaS",
-        avatar: "SM",
+        name: "Aarav Mehta",
+        role: "Founder",
+        company: "ScaleUp Studios, Mumbai",
+        avatar: "AM",
         rating: 5,
         text: "Nexora transformed our online presence completely. Our new website loads 4x faster, looks absolutely stunning, and our conversion rate went from 2% to 11% in just 3 months. Best investment we've made.",
         highlight: "conversion rate went from 2% to 11%",
         color: "linear-gradient(135deg, #6366f1, #8b5cf6)",
     },
     {
-        name: "Marco Romano",
+        name: "Rohan Kapoor",
         role: "Owner",
-        company: "Bistro Modern Restaurant",
-        avatar: "MR",
+        company: "Spice Route Kitchen, Delhi",
+        avatar: "RK",
         rating: 5,
         text: "We were losing customers to competitors with better websites. Nexora designed us something beautiful, and now 40% of our reservations come through the website. The ROI is incredible.",
         highlight: "40% of reservations come through the website",
@@ -27,8 +27,8 @@ const testimonials = [
     },
     {
         name: "Priya Nair",
-        role: "Founder",
-        company: "TechFounders Co.",
+        role: "Co-Founder",
+        company: "TechFounders Co., Bangalore",
         avatar: "PN",
         rating: 5,
         text: "The team at Nexora understood our vision immediately. They delivered a world-class startup website that impresses investors and has helped us raise our seed round. Absolutely exceptional work.",
@@ -36,30 +36,30 @@ const testimonials = [
         color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
     },
     {
-        name: "David Chen",
-        role: "Marketing Director",
-        company: "UrbanBoutique Fashion",
-        avatar: "DC",
+        name: "Ananya Sharma",
+        role: "Marketing Head",
+        company: "UrbanBoutique Fashion, Jaipur",
+        avatar: "AS",
         rating: 5,
-        text: "From our first call to launch day was just 3 weeks. The turnaround is unmatched, and so is the quality. Our new e-commerce site drove $50K in revenue in the first month alone.",
-        highlight: "$50K in revenue in the first month",
+        text: "From our first call to launch day was just 3 weeks. The turnaround is unmatched, and so is the quality. Our new e-commerce site drove ₹40L in revenue in the first month alone.",
+        highlight: "₹40L in revenue in the first month",
         color: "linear-gradient(135deg, #ec4899, #8b5cf6)",
     },
     {
-        name: "Jennifer Walsh",
-        role: "Owner",
-        company: "Prime Properties Real Estate",
-        avatar: "JW",
+        name: "Vikram Desai",
+        role: "Director",
+        company: "Prime Properties, Ahmedabad",
+        avatar: "VD",
         rating: 5,
         text: "Our old website was embarrassing. Now prospects tell us our site was the reason they chose us over competitors. Nexora's attention to detail is extraordinary — every pixel is perfect.",
         highlight: "every pixel is perfect",
         color: "linear-gradient(135deg, #10b981, #0d9488)",
     },
     {
-        name: "Alex Thompson",
-        role: "Co-Founder",
-        company: "GreenLeaf Café",
-        avatar: "AT",
+        name: "Sneha Iyer",
+        role: "Owner",
+        company: "MISO Artisan Café, Ahmedabad",
+        avatar: "SI",
         rating: 5,
         text: "Partnering with Nexora was a game-changer. The online ordering system they built increased our average order value by 25%. Customer feedback on the website has been overwhelmingly positive.",
         highlight: "increased our average order value by 25%",
@@ -239,7 +239,7 @@ export default function TestimonialsSection() {
                             </div>
                             <span style={{ color: "#f8fafc", fontWeight: 700, fontSize: 17 }}>5.0</span>
                             <span style={{ color: "rgba(248,250,252,0.5)", fontSize: 13 }}>
-                                from 50+ verified reviews
+                                from 2+ verified reviews
                             </span>
                         </div>
                     </motion.div>

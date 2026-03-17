@@ -94,9 +94,9 @@ export default function CTASection() {
                             className="space-y-8 mb-8"
                         >
                             {[
-                                { icon: Mail, label: "Email us", value: "hello@Nexora.agency" },
-                                { icon: Phone, label: "Call us", value: "+1 (555) 000-0000" },
-                                { icon: MapPin, label: "We work with", value: "Clients worldwide 🌍" },
+                                { icon: Mail, label: "Email us", value: "pateldhyey64@gmail.com" },
+                                { icon: Phone, label: "Call us", value: "+91 94291 84788 / +91 93238 30436" },
+                                { icon: MapPin, label: "Based in", value: "Prahlad Nagar, Ahmedabad, Gujarat 380015" },
                                 { icon: MessageCircle, label: "Response time", value: "Within 2 hours" },
                             ].map((item) => (
                                 <div key={item.label} className="flex items-center gap-4">
@@ -121,7 +121,7 @@ export default function CTASection() {
                         </motion.div>
                         <br />
                         {/* Testimonial snippet */}
-                        <motion.div
+                        {/* <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.4 }}
@@ -146,7 +146,7 @@ export default function CTASection() {
                                 </div>
                                 <span className="text-white/50 text-xs">Sarah M., CEO at LaunchPad SaaS</span>
                             </div>
-                        </motion.div>
+                        </motion.div> */}
                     </div>
 
                     {/* Right — Form */}
@@ -211,7 +211,7 @@ export default function CTASection() {
                                                         required
                                                         value={name}
                                                         onChange={(e) => setName(e.target.value)}
-                                                        placeholder="John Smith"
+                                                        placeholder="Your Name"
                                                         className="form-input"
                                                         id="contact-name"
                                                     />
@@ -225,7 +225,7 @@ export default function CTASection() {
                                                         required
                                                         value={email}
                                                         onChange={(e) => setEmail(e.target.value)}
-                                                        placeholder="john@company.com"
+                                                        placeholder="you@company.com"
                                                         className="form-input"
                                                         id="contact-email"
                                                     />
@@ -283,10 +283,10 @@ export default function CTASection() {
                                                     style={{ background: "rgba(15,23,42,0.9)", cursor: "pointer" }}
                                                 >
                                                     <option value="">Select your budget</option>
-                                                    <option value="starter">$500 – $1,000 (Starter)</option>
-                                                    <option value="business">$1,000 – $3,000 (Business)</option>
-                                                    <option value="premium">$3,000 – $8,000 (Premium)</option>
-                                                    <option value="enterprise">$8,000+ (Enterprise)</option>
+                                                    <option value="starter">₹10,000 – ₹20,000 (Starter)</option>
+                                                    <option value="business">₹20,000 – ₹50,000 (Business)</option>
+                                                    <option value="premium">₹50,000 – ₹1,00,000 (Premium)</option>
+                                                    <option value="enterprise">₹1,00,000+ (Enterprise)</option>
                                                 </select>
                                             </div>
 

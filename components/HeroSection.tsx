@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Play, Star, Users, Globe, Award } from "lucide-react";
 
 const stats = [
-    { value: "150+", label: "Projects Delivered", icon: Globe },
+    { value: "2+", label: "Projects Delivered", icon: Globe },
     { value: "98%", label: "Client Satisfaction", icon: Star },
-    { value: "50+", label: "Happy Clients", icon: Users },
+    { value: "2+", label: "Happy Clients", icon: Users },
     { value: "5★", label: "Average Rating", icon: Award },
 ];
 
@@ -163,7 +163,7 @@ export default function HeroSection() {
                                 animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                             }}
                         />
-                        Trusted by 50+ businesses worldwide
+                        Trusted by 2+ businesses worldwide
                     </div>
                 </motion.div>
 
