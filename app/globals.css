@@ -555,6 +555,15 @@ h6 {
   justify-content: center;
 }
 
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ============================================================
    GRID PATTERN BACKGROUND
    ============================================================ */
@@ -596,6 +605,10 @@ h6 {
   .sm-grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* .sm-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  } */
 }
 
 @media (min-width: 768px) {

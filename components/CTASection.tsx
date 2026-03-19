@@ -190,20 +190,20 @@ export default function CTASection() {
                                 ) : (
                                     <>
                                         <h3
-                                            className="text-white font-bold text-2xl mb-1"
+                                            className="text-white font-bold text-3xl mb-2"
                                             style={{ fontFamily: "Poppins" }}
                                         >
                                             Start Your Project
                                         </h3>
-                                        <p className="text-white/50 text-sm mb-6">
+                                        <p className="text-white/50 text-base mb-8">
                                             Free consultation · No commitment
                                         </p>
 
-                                        <form onSubmit={handleSubmit} className="space-y-4">
+                                        <form onSubmit={handleSubmit} className="space-y-6">
                                             {/* Name + Email */}
-                                            <div className="custom-grid sm-grid-cols-2" style={{ gap: 12 }}>
+                                            <div className="custom-grid sm-grid-cols-2" style={{ gap: 20 }}>
                                                 <div>
-                                                    <label className="block text-white/55 text-xs mb-1.5 font-medium">
+                                                    <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
                                                         Full Name *
                                                     </label>
                                                     <input
@@ -214,10 +214,11 @@ export default function CTASection() {
                                                         placeholder="Your Name"
                                                         className="form-input"
                                                         id="contact-name"
+                                                        style={{ padding: "14px 18px" }}
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-white/55 text-xs mb-1.5 font-medium">
+                                                    <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
                                                         Email Address *
                                                     </label>
                                                     <input
@@ -228,13 +229,14 @@ export default function CTASection() {
                                                         placeholder="you@company.com"
                                                         className="form-input"
                                                         id="contact-email"
+                                                        style={{ padding: "14px 18px" }}
                                                     />
                                                 </div>
                                             </div>
 
                                             {/* Service selector */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-2 font-medium">
+                                                <label className="block text-white/55 text-xs mb-3 font-medium uppercase tracking-wider">
                                                     Service Needed
                                                 </label>
                                                 <div className="flex flex-wrap gap-2">
@@ -274,13 +276,13 @@ export default function CTASection() {
 
                                             {/* Budget */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-1.5 font-medium">
+                                                <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
                                                     Budget Range
                                                 </label>
                                                 <select
                                                     className="form-input"
                                                     id="contact-budget"
-                                                    style={{ background: "rgba(15,23,42,0.9)", cursor: "pointer" }}
+                                                    style={{ background: "rgba(15,23,42,0.9)", cursor: "pointer", padding: "14px 18px" }}
                                                 >
                                                     <option value="">Select your budget</option>
                                                     <option value="starter">₹10,000 – ₹20,000 (Starter)</option>
@@ -292,16 +294,16 @@ export default function CTASection() {
 
                                             {/* Message */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-1.5 font-medium">
+                                                <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
                                                     Tell us about your project
                                                 </label>
                                                 <textarea
-                                                    rows={3}
+                                                    rows={4}
                                                     value={message}
                                                     onChange={(e) => setMessage(e.target.value)}
                                                     placeholder="Describe your business, goals, and what you're looking for..."
                                                     className="form-input"
-                                                    style={{ resize: "none" }}
+                                                    style={{ resize: "none", padding: "14px 18px" }}
                                                     id="contact-message"
                                                 />
                                             </div>
@@ -309,15 +311,15 @@ export default function CTASection() {
                                             {/* Submit */}
                                             <motion.button
                                                 type="submit"
-                                                whileHover={{ scale: 1.02 }}
-                                                whileTap={{ scale: 0.98 }}
+                                                whileHover={{ scale: 1.01 }}
+                                                whileTap={{ scale: 0.99 }}
                                                 className="btn-primary w-full"
-                                                style={{ padding: "15px 32px" }}
+                                                style={{ padding: "18px 32px", fontSize: "16px", marginTop: "8px" }}
                                                 id="contact-submit"
                                             >
-                                                <Send size={16} />
+                                                <Send size={18} />
                                                 Send Message — It&apos;s Free
-                                                <ArrowRight size={16} />
+                                                <ArrowRight size={18} />
                                             </motion.button>
 
                                             <p className="text-center text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>

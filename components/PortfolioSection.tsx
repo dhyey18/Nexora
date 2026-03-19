@@ -7,15 +7,15 @@ import { ExternalLink, Layers } from "lucide-react";
 const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Interior Design", "Fashion"];
 
 const projects = [
-    {
-        title: "Bistro Modern",
-        category: "Restaurant",
-        description: "Elegant restaurant website with online reservations, menu showcase, and food photography.",
-        tech: ["Next.js", "Tailwind", "Stripe"],
-        color: "linear-gradient(135deg, #f97316, #be123c)",
-        metrics: { visits: "12K+/mo", conversion: "8.5%", rating: "4.9★" },
-        gradient: "linear-gradient(135deg, rgba(249,115,22,0.85), rgba(225,29,72,0.85))",
-    },
+    // {
+    //     title: "Bistro Modern",
+    //     category: "Restaurant",
+    //     description: "Elegant restaurant website with online reservations, menu showcase, and food photography.",
+    //     tech: ["Next.js", "Tailwind", "Stripe"],
+    //     color: "linear-gradient(135deg, #f97316, #be123c)",
+    //     metrics: { visits: "12K+/mo", conversion: "8.5%", rating: "4.9★" },
+    //     gradient: "linear-gradient(135deg, rgba(249,115,22,0.85), rgba(225,29,72,0.85))",
+    // },
     {
         title: "VÔGE — Modern Clothing",
         category: "Fashion",
@@ -64,6 +64,16 @@ const projects = [
         metrics: { visits: "8K+/mo", conversion: "11%", rating: "5★" },
         gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(217,70,239,0.85))",
         link: "https://aura-luxe-two.vercel.app/",
+    },
+    {
+        title: "Elara Voss — Interior Design Studio",
+        category: "Interior Design",
+        description: "A premium interior design studio focusing on residential and hospitality interiors that prioritize beauty, comfort, and human-scale luxury.",
+        tech: ["Next.js", "Vercel", "Framer Motion"],
+        color: "linear-gradient(135deg, #d4a373, #9d8189)",
+        metrics: { visits: "14K+/mo", conversion: "15%", rating: "5★" },
+        gradient: "linear-gradient(135deg, rgba(212,163,115,0.85), rgba(169,132,103,0.85))",
+        link: "https://interiordesigner-alpha.vercel.app/",
     },
     {
         title: "Aria Chen — Interior & Creative Studio",
