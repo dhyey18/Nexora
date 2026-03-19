@@ -90,7 +90,7 @@ export default function Footer() {
                                     fontFamily: "Poppins, sans-serif",
                                 }}
                             >
-                                Nex<span className="gradient-text">ora</span>
+                                Cata<span className="gradient-text">lyq</span>
                             </span>
                         </div>
                         <p
@@ -324,7 +324,7 @@ export default function Footer() {
                     }}
                 >
                     <p style={{ color: "rgba(248,250,252,0.3)", fontSize: 13 }}>
-                        © 2026 Nexora. All rights reserved. Built with ❤️ from Ahmedabad, India.
+                        © 2026 Catalyq. All rights reserved. Built with ❤️ from Ahmedabad, India.
                     </p>
                     <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                         {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((item) => (

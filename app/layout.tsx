@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nexora – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
+  title: "Catalyq – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
   description: "Premium web development agency based in Ahmedabad, India. We specialize in modern, high-performance websites for businesses — from startups to enterprises. Founded by Dhyey Patel & Manasvi Shah.",
   keywords: "web development, website design, SEO, modern websites, business website, agency, Ahmedabad, India, Gujarat",
   openGraph: {
-    title: "Nexora – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
+    title: "Catalyq – We Build Modern Websites That Grow Your Business | Ahmedabad, India",
     description: "Premium web development agency based in Ahmedabad, India specializing in modern, high-performance websites.",
     type: "website",
   },

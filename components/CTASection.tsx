@@ -129,7 +129,7 @@ export default function CTASection() {
                             style={{ borderColor: "rgba(99,102,241,0.2)" }}
                         >
                             <p className="text-white/65 text-sm italic mb-3 leading-relaxed">
-                                &ldquo;Nexora delivered our dream website in just 2 weeks. The results
+                                &ldquo;Catalyq delivered our dream website in just 2 weeks. The results
                                 exceeded every expectation.&rdquo;
                             </p>
                             <div className="flex items-center gap-3">
