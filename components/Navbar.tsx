@@ -92,7 +92,7 @@ export default function Navbar() {
                                 <Zap size={16} color="#fff" />
                             </div>
                             <span style={{ fontFamily: "Poppins, sans-serif" }}>
-                                Nex<span className="gradient-text">ora</span>
+                                Cata<span className="gradient-text">lyq</span>
                             </span>
                         </motion.a>
 

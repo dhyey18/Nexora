@@ -216,7 +216,7 @@ export default function WhyUsSection() {
                     style={{ gap: 48, alignItems: "flex-start" }}
                 >
                     {/* Left */}
-                    <div style={{ position: "sticky", top: 128 }}>
+                    <div className="lg:sticky static top-32">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -265,7 +265,8 @@ export default function WhyUsSection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.3 }}
-                            style={{ display: "flex", gap: 12 }}
+                            className="custom-grid sm-grid-cols-3"
+                            style={{ gap: 12 }}
                         >
                             {[
                                 { value: "2+", label: "Websites Built" },
@@ -275,21 +276,21 @@ export default function WhyUsSection() {
                                 <div
                                     key={item.label}
                                     className="glass-card rounded-2xl"
-                                    style={{ flex: 1, padding: "20px 12px", textAlign: "center" }}
+                                    style={{ padding: "clamp(12px, 4vw, 20px) 8px", textAlign: "center" }}
                                 >
                                     <div
                                         className="gradient-text"
                                         style={{
-                                            fontSize: "1.6rem",
+                                            fontSize: "clamp(1.2rem, 5vw, 1.6rem)",
                                             fontWeight: 800,
                                             fontFamily: "Poppins, sans-serif",
                                             display: "block",
-                                            marginBottom: 4,
+                                            marginBottom: 2,
                                         }}
                                     >
                                         {item.value}
                                     </div>
-                                    <div style={{ color: "rgba(248,250,252,0.5)", fontSize: 12 }}>
+                                    <div style={{ color: "rgba(248,250,252,0.5)", fontSize: "clamp(10px, 3vw, 12px)", lineHeight: 1.2 }}>
                                         {item.label}
                                     </div>
                                 </div>
