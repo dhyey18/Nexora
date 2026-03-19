@@ -181,10 +181,9 @@ export default function HeroSection() {
                         color: "#f8fafc",
                     }}
                 >
-                    We Build{" "}
-                    <span className="gradient-text">Modern Websites</span>
+                    Turn Clicks Into Clients
                     <br />
-                    That Grow Your Business
+                    With <span className="gradient-text">Better Websites</span>
                 </motion.h1>
 
                 {/* Subtext */}
