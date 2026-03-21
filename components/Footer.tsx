@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Twitter, Linkedin, Instagram, Github, ArrowUpRight } from "lucide-react";
+import { Zap, Twitter, Linkedin, Instagram, Github, MapPin, Phone, ArrowRight } from "lucide-react";
 
 const footerLinks = {
     Company: [
@@ -34,45 +34,66 @@ const socials = [
 ];
 
 export default function Footer() {
+    const handleNav = (href: string) => {
+        if (href.startsWith("#")) {
+            document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <footer
             style={{
                 position: "relative",
-                borderTop: "1px solid var(--border)",
+                background: "#071210",
                 overflow: "hidden",
-                paddingTop: 80,
+                paddingTop: 72,
                 paddingBottom: 32,
             }}
         >
-            {/* Background */}
+            {/* Top border accent */}
             <div
                 style={{
                     position: "absolute",
-                    inset: 0,
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 1,
+                    background: "linear-gradient(90deg, transparent, rgba(var(--primary-light-rgb),0.4), transparent)",
+                }}
+            />
+
+            {/* Subtle top glow */}
+            <div
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: 600,
+                    height: 200,
                     pointerEvents: "none",
-                    background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.07) 0%, transparent 50%)",
+                    background: "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.1) 0%, transparent 70%)",
                 }}
             />
 
             <div className="container" style={{ position: "relative", zIndex: 10 }}>
-                {/* Main grid */}
+                {/* Main grid: Brand + 3 columns */}
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(min(160px, 100%), 1fr))",
-                        gap: 40,
-                        marginBottom: 64,
+                        gridTemplateColumns: "repeat(auto-fit, minmax(min(180px, 100%), 1fr))",
+                        gap: "40px 32px",
+                        marginBottom: 60,
                     }}
                 >
-                    {/* Brand */}
-                    <div style={{ minWidth: 280, gridColumn: "span min(2, 100%)" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    {/* Brand column */}
+                    <div style={{ minWidth: 260, gridColumn: "span min(2, 100%)" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 14 }}>
                             <div
                                 style={{
-                                    width: 36,
-                                    height: 36,
-                                    borderRadius: 10,
+                                    width: 34,
+                                    height: 34,
+                                    borderRadius: 9,
                                     background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                                     display: "flex",
                                     alignItems: "center",
@@ -80,13 +101,13 @@ export default function Footer() {
                                     flexShrink: 0,
                                 }}
                             >
-                                <Zap size={17} color="#fff" />
+                                <Zap size={16} color="#fff" />
                             </div>
                             <span
                                 style={{
-                                    color: "var(--heading-color)",
+                                    color: "#ffffff",
                                     fontWeight: 700,
-                                    fontSize: 19,
+                                    fontSize: 18,
                                     fontFamily: "Poppins, sans-serif",
                                 }}
                             >
@@ -95,85 +116,68 @@ export default function Footer() {
                         </div>
                         <p
                             style={{
-                                color: "var(--text-secondary)",
+                                color: "rgba(255,255,255,0.52)",
                                 fontSize: 14,
-                                lineHeight: 1.7,
-                                marginBottom: 12,
-                                maxWidth: 280,
+                                lineHeight: 1.72,
+                                marginBottom: 16,
+                                maxWidth: 270,
                             }}
                         >
                             We build modern, high-performance websites that help businesses grow their online
                             presence and drive real revenue results.
                         </p>
-                        <p
-                            style={{
-                                color: "var(--text-tertiary)",
-                                fontSize: 13,
-                                lineHeight: 1.7,
-                                marginBottom: 8,
-                                maxWidth: 280,
-                            }}
-                        >
-                            📍 Prahlad Nagar, Ahmedabad, Gujarat 380015
-                        </p>
-                        <p
-                            style={{
-                                color: "var(--text-tertiary)",
-                                fontSize: 13,
-                                lineHeight: 1.7,
-                                marginBottom: 8,
-                                maxWidth: 280,
-                            }}
-                        >
-                            📞 +91 94291 84788 &nbsp;|&nbsp; +91 93238 30436
-                        </p>
-                        <p
-                            style={{
-                                color: "var(--text-tertiary)",
-                                fontSize: 13,
-                                lineHeight: 1.7,
-                                marginBottom: 24,
-                                maxWidth: 280,
-                            }}
-                        >
-                            Founded by <strong style={{ color: "var(--text-secondary)" }}>Dhyey Patel</strong> &amp; <strong style={{ color: "var(--text-secondary)" }}>Manasvi Shah</strong>
-                        </p>
+
+                        {/* Contact info */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <MapPin size={13} style={{ color: "var(--primary-light)", flexShrink: 0 }} />
+                                <span style={{ color: "rgba(255,255,255,0.42)", fontSize: 13 }}>
+                                    Prahlad Nagar, Ahmedabad, Gujarat 380015
+                                </span>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                <Phone size={13} style={{ color: "var(--primary-light)", flexShrink: 0 }} />
+                                <span style={{ color: "rgba(255,255,255,0.42)", fontSize: 13 }}>
+                                    +91 94291 84788 · +91 93238 30436
+                                </span>
+                            </div>
+                        </div>
 
                         {/* Social links */}
-                        <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+                        <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
                             {socials.map(({ icon: Icon, label, href }) => (
                                 <motion.a
                                     key={label}
                                     href={href}
                                     aria-label={label}
-                                    whileHover={{ y: -3, scale: 1.1 }}
+                                    whileHover={{ y: -3, scale: 1.08 }}
                                     style={{
-                                        width: 36,
-                                        height: 36,
-                                        borderRadius: 10,
-                                        background: "var(--glass)",
-                                        border: "1px solid var(--border)",
+                                        width: 34,
+                                        height: 34,
+                                        borderRadius: 9,
+                                        background: "rgba(255,255,255,0.06)",
+                                        border: "1px solid rgba(255,255,255,0.1)",
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "center",
-                                        color: "var(--text-secondary)",
+                                        color: "rgba(255,255,255,0.5)",
                                         textDecoration: "none",
                                         transition: "color 0.2s, border-color 0.2s, background 0.2s",
                                     }}
                                     onMouseEnter={(e) => {
                                         const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "var(--foreground)";
-                                        el.style.borderColor = "rgba(var(--primary-rgb),0.4)";
-                                        el.style.background = "rgba(var(--primary-rgb),0.1)";
+                                        el.style.color = "var(--primary-light)";
+                                        el.style.borderColor = "rgba(var(--primary-light-rgb),0.35)";
+                                        el.style.background = "rgba(var(--primary-rgb),0.12)";
                                     }}
                                     onMouseLeave={(e) => {
                                         const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "var(--text-secondary)";
-                                        el.style.borderColor = "var(--border)";
-                                        el.style.background = "var(--glass)";
+                                        el.style.color = "rgba(255,255,255,0.5)";
+                                        el.style.borderColor = "rgba(255,255,255,0.1)";
+                                        el.style.background = "rgba(255,255,255,0.06)";
                                     }}
                                 >
-                                    <Icon size={15} />
+                                    <Icon size={14} />
                                 </motion.a>
                             ))}
                         </div>
@@ -183,17 +187,17 @@ export default function Footer() {
                             style={{
                                 display: "inline-flex",
                                 alignItems: "center",
-                                gap: 8,
-                                background: "rgba(var(--primary-light-rgb),0.1)",
+                                gap: 7,
+                                background: "rgba(var(--primary-rgb),0.15)",
                                 border: "1px solid rgba(var(--primary-light-rgb),0.25)",
                                 borderRadius: 100,
-                                padding: "6px 14px",
+                                padding: "5px 13px",
                             }}
                         >
                             <span
                                 style={{
-                                    width: 8,
-                                    height: 8,
+                                    width: 7,
+                                    height: 7,
                                     borderRadius: "50%",
                                     background: "var(--primary-light)",
                                     display: "inline-block",
@@ -206,22 +210,22 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Links */}
+                    {/* Link columns */}
                     {Object.entries(footerLinks).map(([category, links]) => (
                         <div key={category}>
                             <div
                                 style={{
-                                    color: "var(--heading-color)",
+                                    color: "#ffffff",
                                     fontWeight: 600,
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     marginBottom: 16,
                                     textTransform: "uppercase",
-                                    letterSpacing: "0.06em",
+                                    letterSpacing: "0.08em",
                                 }}
                             >
                                 {category}
                             </div>
-                            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 12 }}>
+                            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 11 }}>
                                 {links.map((link) => (
                                     <li key={link.label}>
                                         <a
@@ -229,33 +233,23 @@ export default function Footer() {
                                             onClick={(e) => {
                                                 if (link.href.startsWith("#")) {
                                                     e.preventDefault();
-                                                    document
-                                                        .querySelector(link.href)
-                                                        ?.scrollIntoView({ behavior: "smooth" });
+                                                    handleNav(link.href);
                                                 }
                                             }}
                                             style={{
-                                                color: "var(--text-tertiary)",
+                                                color: "rgba(255,255,255,0.42)",
                                                 fontSize: 14,
                                                 textDecoration: "none",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: 4,
                                                 transition: "color 0.2s",
                                             }}
                                             onMouseEnter={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--foreground)";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.82)";
                                             }}
                                             onMouseLeave={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.42)";
                                             }}
                                         >
                                             {link.label}
-                                            <ArrowUpRight
-                                                size={10}
-                                                style={{ opacity: 0, transition: "opacity 0.2s" }}
-                                                className="group-hover:opacity-100"
-                                            />
                                         </a>
                                     </li>
                                 ))}
@@ -267,31 +261,31 @@ export default function Footer() {
                 {/* CTA bar */}
                 <div
                     style={{
-                        borderRadius: 20,
+                        borderRadius: 16,
                         padding: "28px 32px",
-                        marginBottom: 40,
+                        marginBottom: 36,
                         display: "flex",
                         flexWrap: "wrap",
                         alignItems: "center",
                         justifyContent: "space-between",
                         gap: 20,
-                        background: "linear-gradient(135deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-light-rgb),0.1))",
-                        border: "1px solid rgba(var(--primary-rgb),0.3)",
+                        background: "linear-gradient(135deg, rgba(var(--primary-rgb),0.2), rgba(var(--primary-light-rgb),0.12))",
+                        border: "1px solid rgba(var(--primary-light-rgb),0.2)",
                     }}
                 >
                     <div>
                         <div
                             style={{
-                                color: "var(--heading-color)",
+                                color: "#ffffff",
                                 fontWeight: 700,
-                                fontSize: 18,
+                                fontSize: 17,
                                 marginBottom: 4,
                                 fontFamily: "Poppins, sans-serif",
                             }}
                         >
                             Ready to upgrade your website?
                         </div>
-                        <div style={{ color: "var(--text-secondary)", fontSize: 14 }}>
+                        <div style={{ color: "rgba(255,255,255,0.52)", fontSize: 14 }}>
                             Free consultation call · No commitment required
                         </div>
                     </div>
@@ -301,12 +295,12 @@ export default function Footer() {
                             e.preventDefault();
                             document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                         }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
                         className="btn-primary"
                         style={{ whiteSpace: "nowrap" }}
                     >
-                        Get Started Free →
+                        Get Started Free <ArrowRight size={16} />
                     </motion.a>
                 </div>
 
@@ -317,30 +311,30 @@ export default function Footer() {
                         flexWrap: "wrap",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        gap: 12,
-                        paddingTop: 24,
-                        borderTop: "1px solid var(--border)",
+                        gap: 10,
+                        paddingTop: 20,
+                        borderTop: "1px solid rgba(255,255,255,0.08)",
                     }}
                 >
-                    <p style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
+                    <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 13 }}>
                         © 2026 Catalyq. All rights reserved. Built with ❤️ from Ahmedabad, India.
                     </p>
-                    <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
                         {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((item) => (
                             <a
                                 key={item}
                                 href="#"
                                 style={{
-                                    color: "var(--text-tertiary)",
+                                    color: "rgba(255,255,255,0.3)",
                                     fontSize: 13,
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.6)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.3)";
                                 }}
                             >
                                 {item}

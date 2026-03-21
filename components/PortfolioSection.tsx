@@ -319,13 +319,13 @@ export default function PortfolioSection() {
     const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
     return (
-        <section id="portfolio" className="section">
+        <section id="portfolio" className="section-alt">
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
                     pointerEvents: "none",
-                    background: "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.05) 0%, transparent 60%)",
+                    background: "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.07) 0%, transparent 60%)",
                 }}
             />
 

@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Zap, Palette, Search, Smartphone, Shield, TrendingUp } from "lucide-react";
+import { Zap, Palette, Search, Smartphone, Shield, TrendingUp, CheckCircle2 } from "lucide-react";
 
 const features = [
     {
@@ -12,9 +12,7 @@ const features = [
             "We optimize every line of code to achieve sub-2-second load times. Fast sites rank higher and convert more.",
         stat: "< 2s",
         statLabel: "Avg Load Time",
-        color: "#f59e0b",
-        bg: "rgba(245,158,11,0.1)",
-        border: "rgba(245,158,11,0.25)",
+        color: "#D97706",
     },
     {
         icon: Palette,
@@ -23,9 +21,7 @@ const features = [
             "Beautiful, intuitive interfaces crafted with the latest design trends. First impressions matter — we make them count.",
         stat: "98%",
         statLabel: "Satisfaction",
-        color: "var(--primary)",
-        bg: "rgba(var(--primary-rgb),0.1)",
-        border: "rgba(var(--primary-rgb),0.25)",
+        color: "#2D6A4F",
     },
     {
         icon: Search,
@@ -34,9 +30,7 @@ const features = [
             "Every website we build is optimized for search engines from day one — semantic HTML, meta tags, schema markup.",
         stat: "3x",
         statLabel: "More Traffic",
-        color: "#10b981",
-        bg: "rgba(16,185,129,0.1)",
-        border: "rgba(16,185,129,0.25)",
+        color: "#059669",
     },
     {
         icon: Smartphone,
@@ -45,9 +39,7 @@ const features = [
             "Over 60% of web traffic is mobile. We design and build mobile-first websites that look perfect on every screen.",
         stat: "60%",
         statLabel: "Mobile Traffic",
-        color: "#0ea5e9",
-        bg: "rgba(14,165,233,0.1)",
-        border: "rgba(14,165,233,0.25)",
+        color: "#0284C7",
     },
     {
         icon: Shield,
@@ -56,9 +48,7 @@ const features = [
             "Enterprise-grade security, SSL certificates, and scalable architecture that grows with your business needs.",
         stat: "99.9%",
         statLabel: "Uptime SLA",
-        color: "#8b5cf6",
-        bg: "rgba(139,92,246,0.1)",
-        border: "rgba(139,92,246,0.25)",
+        color: "#7C3AED",
     },
     {
         icon: TrendingUp,
@@ -67,114 +57,80 @@ const features = [
             "Every element is strategically placed to guide visitors toward taking action — calls-to-action that actually convert.",
         stat: "40%",
         statLabel: "Better CVR",
-        color: "#ec4899",
-        bg: "rgba(236,72,153,0.1)",
-        border: "rgba(236,72,153,0.25)",
+        color: "#E11D48",
     },
 ];
 
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+function FeatureRow({ feature, index }: { feature: typeof features[0]; index: number }) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.3 });
+    const isInView = useInView(ref, { once: true, amount: 0.25 });
     const Icon = feature.icon;
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            whileHover={{ y: -4 }}
-            className="group"
+            initial={{ opacity: 0, x: 20 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.45, delay: index * 0.07 }}
             style={{
-                position: "relative",
-                borderRadius: 16,
-                padding: "20px 24px",
-                background: feature.bg,
-                border: `1px solid ${feature.border}`,
-                transition: "border-color 0.3s ease",
-                overflow: "hidden",
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 16,
+                padding: "18px 20px",
+                borderRadius: 14,
+                border: "1px solid var(--border)",
+                background: "var(--card-bg)",
+                transition: "border-color 0.25s, transform 0.25s, box-shadow 0.25s",
                 cursor: "pointer",
             }}
+            whileHover={{
+                y: -2,
+            }}
         >
-            {/* Subtle glow on hover */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0,
-                    transition: "opacity 0.5s ease",
-                    background: `radial-gradient(circle at 50% 0%, ${feature.bg} 0%, transparent 100%)`,
-                    pointerEvents: "none",
-                }}
-                className="group-hover:opacity-100"
+            {/* Check icon */}
+            <CheckCircle2
+                size={18}
+                style={{ color: feature.color, flexShrink: 0, marginTop: 1 }}
             />
 
-            <div
-                style={{
-                    position: "relative",
-                    zIndex: 1,
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 16,
-                }}
-            >
-                {/* Icon */}
-                <div
+            <div style={{ flex: 1, minWidth: 0 }}>
+                <h3
                     style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 12,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexShrink: 0,
-                        background: feature.bg,
-                        border: `1px solid ${feature.border}`,
+                        color: "var(--heading-color)",
+                        fontWeight: 600,
+                        fontSize: 15,
+                        marginBottom: 4,
+                        lineHeight: 1.3,
                     }}
                 >
-                    <Icon size={20} style={{ color: feature.color }} />
-                </div>
+                    {feature.title}
+                </h3>
+                <p
+                    style={{
+                        color: "var(--text-secondary)",
+                        fontSize: 13,
+                        lineHeight: 1.6,
+                    }}
+                >
+                    {feature.description}
+                </p>
+            </div>
 
-                <div style={{ flex: 1, minWidth: 0 }}>
-                    <h3
-                        style={{
-                            color: "var(--heading-color)",
-                            fontWeight: 600,
-                            fontSize: 15,
-                            marginBottom: 6,
-                            lineHeight: 1.3,
-                        }}
-                    >
-                        {feature.title}
-                    </h3>
-                    <p
-                        style={{
-                            color: "var(--text-secondary)",
-                            fontSize: 13,
-                            lineHeight: 1.6,
-                        }}
-                    >
-                        {feature.description}
-                    </p>
+            {/* Stat */}
+            <div style={{ flexShrink: 0, textAlign: "right" }}>
+                <div
+                    style={{
+                        fontSize: 18,
+                        fontWeight: 700,
+                        color: feature.color,
+                        fontFamily: "Poppins, sans-serif",
+                        lineHeight: 1.2,
+                    }}
+                >
+                    {feature.stat}
                 </div>
-
-                {/* Stat badge */}
-                <div style={{ flexShrink: 0, textAlign: "right" }}>
-                    <div
-                        style={{
-                            fontSize: 20,
-                            fontWeight: 700,
-                            color: feature.color,
-                            fontFamily: "Poppins, sans-serif",
-                            lineHeight: 1.2,
-                        }}
-                    >
-                        {feature.stat}
-                    </div>
-                    <div style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 2 }}>
-                        {feature.statLabel}
-                    </div>
+                <div style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 1 }}>
+                    {feature.statLabel}
                 </div>
             </div>
         </motion.div>
@@ -187,25 +143,23 @@ export default function WhyUsSection() {
 
     return (
         <section id="why-us" className="section" style={{ position: "relative", overflow: "hidden" }}>
-            {/* Top/bottom accent lines */}
+            {/* Top border */}
+            <div className="divider-gradient" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
+            {/* Bottom border */}
+            <div className="divider-gradient" style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
+
+            {/* Subtle glow */}
             <div
                 style={{
                     position: "absolute",
-                    top: 0,
-                    left: 0,
+                    top: "50%",
                     right: 0,
-                    height: 1,
-                    background: "linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.5), transparent)",
-                }}
-            />
-            <div
-                style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: 1,
-                    background: "linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.3), transparent)",
+                    width: 360,
+                    height: 360,
+                    borderRadius: "50%",
+                    transform: "translateY(-50%)",
+                    background: "radial-gradient(circle, rgba(var(--primary-rgb),0.07) 0%, transparent 70%)",
+                    pointerEvents: "none",
                 }}
             />
 
@@ -213,47 +167,47 @@ export default function WhyUsSection() {
                 <div
                     ref={ref}
                     className="custom-grid lg-grid-cols-2"
-                    style={{ gap: 48, alignItems: "flex-start" }}
+                    style={{ gap: "48px 64px", alignItems: "flex-start" }}
                 >
-                    {/* Left */}
-                    <div className="lg:sticky static top-32">
+                    {/* Left — sticky heading */}
+                    <div>
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -24 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            style={{ display: "flex", marginBottom: 20 }}
+                            style={{ marginBottom: 18 }}
                         >
                             <div className="section-tag">✦ Why Choose Us</div>
                         </motion.div>
 
                         <motion.h2
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -24 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.1 }}
                             style={{
                                 fontFamily: "Poppins, sans-serif",
-                                fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                                fontSize: "clamp(1.875rem, 4vw, 2.875rem)",
                                 fontWeight: 800,
-                                marginBottom: 20,
+                                marginBottom: 18,
                                 color: "var(--heading-color)",
                                 lineHeight: 1.15,
+                                letterSpacing: "-0.015em",
                             }}
                         >
-                            We Don&apos;t Just Build
+                            We Don&apos;t Just Build Websites
                             <br />
-                            Websites — We Build
-                            <br />
+                            — We Build{" "}
                             <span className="gradient-text">Growth Engines</span>
                         </motion.h2>
 
                         <motion.p
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -24 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
                             style={{
                                 color: "var(--text-secondary)",
-                                fontSize: 17,
-                                lineHeight: 1.7,
-                                marginBottom: 32,
+                                fontSize: 16,
+                                lineHeight: 1.72,
+                                marginBottom: 36,
                             }}
                         >
                             We combine cutting-edge technology with proven design strategies to create websites
@@ -261,8 +215,9 @@ export default function WhyUsSection() {
                             and scale.
                         </motion.p>
 
+                        {/* Mini stat cards */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -24 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.3 }}
                             className="custom-grid sm-grid-cols-3"
@@ -275,22 +230,22 @@ export default function WhyUsSection() {
                             ].map((item) => (
                                 <div
                                     key={item.label}
-                                    className="glass-card rounded-2xl"
-                                    style={{ padding: "clamp(12px, 4vw, 20px) 8px", textAlign: "center" }}
+                                    className="card-clean"
+                                    style={{ padding: "16px 10px", textAlign: "center", borderRadius: 12 }}
                                 >
                                     <div
                                         className="gradient-text"
                                         style={{
-                                            fontSize: "clamp(1.2rem, 5vw, 1.6rem)",
+                                            fontSize: "clamp(1.2rem, 4vw, 1.55rem)",
                                             fontWeight: 800,
                                             fontFamily: "Poppins, sans-serif",
                                             display: "block",
-                                            marginBottom: 2,
+                                            marginBottom: 3,
                                         }}
                                     >
                                         {item.value}
                                     </div>
-                                    <div style={{ color: "var(--text-secondary)", fontSize: "clamp(10px, 3vw, 12px)", lineHeight: 1.2 }}>
+                                    <div style={{ color: "var(--text-secondary)", fontSize: 12, lineHeight: 1.3 }}>
                                         {item.label}
                                     </div>
                                 </div>
@@ -298,10 +253,10 @@ export default function WhyUsSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                    {/* Right — feature rows */}
+                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                         {features.map((feature, index) => (
-                            <FeatureCard key={feature.title} feature={feature} index={index} />
+                            <FeatureRow key={feature.title} feature={feature} index={index} />
                         ))}
                     </div>
                 </div>

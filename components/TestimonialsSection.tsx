@@ -158,7 +158,7 @@ export default function TestimonialsSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="testimonials" className="section">
+        <section id="testimonials" className="section-alt">
             {/* BG */}
             <div
                 style={{
@@ -166,15 +166,15 @@ export default function TestimonialsSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.08) 0%, transparent 50%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.09) 0%, transparent 55%)",
                 }}
             />
 
             <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 52 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         style={{ display: "flex", justifyContent: "center" }}
                     >

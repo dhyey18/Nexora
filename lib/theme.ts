@@ -1,91 +1,74 @@
-/**
- * ============================================================
- * THEME CONFIGURATION — Single Source of Truth
- * ============================================================
- *
- * Change any color here to update the entire website instantly.
- * All components and CSS use these values via CSS custom properties.
- *
- * Color palette based on:
- *   Primary:       #2F6B3F  (deep forest green)
- *   Primary Light: #7FB77E  (soft sage green)
- *   Accent:        #FFF6C0  (warm cream / pale yellow)
- */
-
-export type ThemeMode = "dark" | "light";
+export type ThemeMode = "light" | "dark";
 
 export interface ThemeColors {
   "--background": string;
   "--foreground": string;
   "--primary": string;
+  "--primary-rgb": string;
   "--primary-light": string;
+  "--primary-light-rgb": string;
   "--secondary": string;
   "--accent": string;
   "--muted": string;
   "--border": string;
-  "--card-bg": string;
   "--glass": string;
-  "--primary-rgb": string;       // for rgba() usage
-  "--primary-light-rgb": string; // for rgba() usage
-  "--accent-rgb": string;        // for rgba() usage
-  "--foreground-rgb": string;    // for rgba() usage
-  "--gradient-start": string;
-  "--gradient-end": string;
+  "--glass-border": string;
   "--nav-bg": string;
-  "--heading-color": string;
+  "--card-bg": string;
   "--text-primary": string;
   "--text-secondary": string;
   "--text-tertiary": string;
-  "--scrollbar-track": string;
+  "--heading-color": string;
+  "--gradient-start": string;
+  "--gradient-end": string;
+  "--selection-bg": string;
 }
 
 export const themes: Record<ThemeMode, ThemeColors> = {
   dark: {
-    "--background": "#0a1a0f",
-    "--foreground": "#f0f7f1",
-    "--primary": "#2F6B3F",
-    "--primary-light": "#7FB77E",
-    "--secondary": "#FFF6C0",
-    "--accent": "#FFF6C0",
-    "--muted": "#132a1a",
-    "--border": "rgba(127, 183, 126, 0.12)",
-    "--card-bg": "rgba(13, 30, 18, 0.8)",
-    "--glass": "rgba(127, 183, 126, 0.05)",
-    "--primary-rgb": "47, 107, 63",
-    "--primary-light-rgb": "127, 183, 126",
-    "--accent-rgb": "255, 246, 192",
-    "--foreground-rgb": "240, 247, 241",
-    "--gradient-start": "#2F6B3F",
-    "--gradient-end": "#7FB77E",
-    "--nav-bg": "rgba(10, 26, 15, 0.88)",
-    "--heading-color": "#f0f7f1",
-    "--text-primary": "rgba(240, 247, 241, 0.9)",
-    "--text-secondary": "rgba(240, 247, 241, 0.6)",
-    "--text-tertiary": "rgba(240, 247, 241, 0.4)",
-    "--scrollbar-track": "#0a1a0f",
+    "--background": "#0b1e14",
+    "--foreground": "#f0f7f2",
+    "--primary": "#2D6A4F",
+    "--primary-rgb": "45, 106, 79",
+    "--primary-light": "#52B788",
+    "--primary-light-rgb": "82, 183, 136",
+    "--secondary": "#D8F3DC",
+    "--accent": "#52B788",
+    "--muted": "#122b1c",
+    "--border": "rgba(82, 183, 136, 0.15)",
+    "--glass": "rgba(11, 30, 20, 0.75)",
+    "--glass-border": "rgba(82, 183, 136, 0.2)",
+    "--nav-bg": "rgba(11, 30, 20, 0.92)",
+    "--card-bg": "rgba(18, 43, 28, 0.6)",
+    "--text-primary": "#f0f7f2",
+    "--text-secondary": "rgba(240, 247, 242, 0.72)",
+    "--text-tertiary": "rgba(240, 247, 242, 0.45)",
+    "--heading-color": "#ffffff",
+    "--gradient-start": "#2D6A4F",
+    "--gradient-end": "#52B788",
+    "--selection-bg": "rgba(45, 106, 79, 0.3)",
   },
   light: {
-    "--background": "#fefdf4",
-    "--foreground": "#1a2e1f",
-    "--primary": "#2F6B3F",
-    "--primary-light": "#7FB77E",
-    "--secondary": "#FFF6C0",
-    "--accent": "#e8d97a",
-    "--muted": "#f0eed8",
-    "--border": "rgba(47, 107, 63, 0.15)",
-    "--card-bg": "rgba(255, 253, 244, 0.9)",
-    "--glass": "rgba(47, 107, 63, 0.06)",
-    "--primary-rgb": "47, 107, 63",
-    "--primary-light-rgb": "127, 183, 126",
-    "--accent-rgb": "232, 217, 122",
-    "--foreground-rgb": "26, 46, 31",
-    "--gradient-start": "#2F6B3F",
-    "--gradient-end": "#7FB77E",
-    "--nav-bg": "rgba(254, 253, 244, 0.88)",
-    "--heading-color": "#1a2e1f",
-    "--text-primary": "rgba(26, 46, 31, 0.9)",
-    "--text-secondary": "rgba(26, 46, 31, 0.6)",
-    "--text-tertiary": "rgba(26, 46, 31, 0.4)",
-    "--scrollbar-track": "#fefdf4",
+    "--background": "#F7F9F5",
+    "--foreground": "#0f2118",
+    "--primary": "#2D6A4F",
+    "--primary-rgb": "45, 106, 79",
+    "--primary-light": "#52B788",
+    "--primary-light-rgb": "82, 183, 136",
+    "--secondary": "#D8F3DC",
+    "--accent": "#2D6A4F",
+    "--muted": "#EAF3EC",
+    "--border": "rgba(45, 106, 79, 0.14)",
+    "--glass": "rgba(247, 249, 245, 0.88)",
+    "--glass-border": "rgba(45, 106, 79, 0.18)",
+    "--nav-bg": "rgba(247, 249, 245, 0.95)",
+    "--card-bg": "rgba(255, 255, 255, 0.95)",
+    "--text-primary": "#0f2118",
+    "--text-secondary": "#3d5a45",
+    "--text-tertiary": "#6b8a74",
+    "--heading-color": "#0f2118",
+    "--gradient-start": "#2D6A4F",
+    "--gradient-end": "#52B788",
+    "--selection-bg": "rgba(45, 106, 79, 0.15)",
   },
 };

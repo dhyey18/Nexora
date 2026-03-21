@@ -350,7 +350,7 @@ export default function PricingSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="pricing" className="section">
+        <section id="pricing" className="section-alt">
             {/* BG */}
             <div
                 style={{
@@ -358,7 +358,7 @@ export default function PricingSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 100%, rgba(var(--primary-rgb),0.08) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 50% 100%, rgba(var(--primary-rgb),0.09) 0%, transparent 55%)",
                 }}
             />
 

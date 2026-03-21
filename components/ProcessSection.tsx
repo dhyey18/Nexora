@@ -249,7 +249,7 @@ export default function ProcessSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 0% 50%, rgba(var(--primary-rgb),0.06) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(var(--primary-light-rgb),0.06) 0%, transparent 50%)",
+                        "radial-gradient(ellipse at 0% 60%, rgba(var(--primary-rgb),0.07) 0%, transparent 50%), radial-gradient(ellipse at 100% 40%, rgba(var(--primary-light-rgb),0.06) 0%, transparent 50%)",
                 }}
             />
 
@@ -258,9 +258,9 @@ export default function ProcessSection() {
                 style={{ position: "relative", zIndex: 10, maxWidth: "56rem" }}
             >
                 {/* Header */}
-                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 56 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         style={{ display: "flex", justifyContent: "center" }}
                     >

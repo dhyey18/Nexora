@@ -19,8 +19,9 @@ const services = [
         title: "Website Development",
         description:
             "Custom-built, pixel-perfect websites tailored to your brand and business goals. Fast, secure, and built on modern tech.",
-        gradient: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-        glow: "rgba(var(--primary-rgb),0.25)",
+        color: "#2D6A4F",
+        colorLight: "rgba(45, 106, 79, 0.12)",
+        colorBorder: "rgba(45, 106, 79, 0.3)",
         tags: ["React", "Next.js", "TypeScript"],
     },
     {
@@ -28,8 +29,9 @@ const services = [
         title: "Business Website Redesign",
         description:
             "Transform your outdated website into a modern, conversion-optimized digital experience that impresses visitors.",
-        gradient: "linear-gradient(135deg, #a855f7, #db2777)",
-        glow: "rgba(168,85,247,0.25)",
+        color: "#7C3AED",
+        colorLight: "rgba(124, 58, 237, 0.12)",
+        colorBorder: "rgba(124, 58, 237, 0.28)",
         tags: ["UI/UX", "Figma", "Branding"],
     },
     {
@@ -37,8 +39,9 @@ const services = [
         title: "SEO Optimization",
         description:
             "Rank higher on Google with our data-driven SEO strategies. Get found by customers actively searching for your services.",
-        gradient: "linear-gradient(135deg, #22c55e, #059669)",
-        glow: "rgba(16,185,129,0.25)",
+        color: "#059669",
+        colorLight: "rgba(5, 150, 105, 0.12)",
+        colorBorder: "rgba(5, 150, 105, 0.28)",
         tags: ["On-Page SEO", "Schema", "Core Web Vitals"],
     },
     {
@@ -46,8 +49,9 @@ const services = [
         title: "Performance Optimization",
         description:
             "Lightning-fast page speeds that boost user retention and conversion rates. Optimize every millisecond that counts.",
-        gradient: "linear-gradient(135deg, #eab308, #f97316)",
-        glow: "rgba(245,158,11,0.25)",
+        color: "#D97706",
+        colorLight: "rgba(217, 119, 6, 0.12)",
+        colorBorder: "rgba(217, 119, 6, 0.28)",
         tags: ["Web Vitals", "CDN", "Caching"],
     },
     {
@@ -55,8 +59,9 @@ const services = [
         title: "E-commerce Websites",
         description:
             "Powerful online stores with seamless checkout experiences, inventory management, and payment gateway integrations.",
-        gradient: "linear-gradient(135deg, #0ea5e9, #0891b2)",
-        glow: "rgba(14,165,233,0.25)",
+        color: "#0284C7",
+        colorLight: "rgba(2, 132, 199, 0.12)",
+        colorBorder: "rgba(2, 132, 199, 0.28)",
         tags: ["Shopify", "WooCommerce", "Stripe"],
     },
     {
@@ -64,26 +69,27 @@ const services = [
         title: "Landing Pages",
         description:
             "High-converting landing pages engineered to turn visitors into leads and leads into loyal customers.",
-        gradient: "linear-gradient(135deg, #f43f5e, #dc2626)",
-        glow: "rgba(244,63,94,0.25)",
+        color: "#E11D48",
+        colorLight: "rgba(225, 29, 72, 0.12)",
+        colorBorder: "rgba(225, 29, 72, 0.28)",
         tags: ["A/B Testing", "CRO", "Analytics"],
     },
 ];
 
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.2 });
+    const isInView = useInView(ref, { once: true, amount: 0.15 });
     const Icon = service.icon;
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 36 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card rounded-2xl group"
+            transition={{ duration: 0.5, delay: index * 0.09 }}
+            className="card-clean group"
             style={{
-                padding: "28px",
+                padding: "26px",
                 position: "relative",
                 overflow: "hidden",
                 cursor: "pointer",
@@ -92,37 +98,24 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                 height: "100%",
             }}
         >
-            {/* Hover glow */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0,
-                    transition: "opacity 0.5s ease",
-                    background: `radial-gradient(circle at center, ${service.glow} 0%, transparent 70%)`,
-                    borderRadius: "inherit",
-                    pointerEvents: "none",
-                }}
-                className="group-hover:opacity-100"
-            />
-
             {/* Icon */}
             <div
                 style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: service.gradient,
+                    width: 46,
+                    height: 46,
+                    borderRadius: 11,
+                    background: service.colorLight,
+                    border: `1px solid ${service.colorBorder}`,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     marginBottom: 16,
                     flexShrink: 0,
-                    transition: "transform 0.3s ease",
+                    transition: "transform 0.25s ease",
                 }}
                 className="group-hover:scale-110"
             >
-                <Icon size={22} color="#ffffff" />
+                <Icon size={21} style={{ color: service.color }} />
             </div>
 
             {/* Content */}
@@ -130,37 +123,35 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                 style={{
                     color: "var(--heading-color)",
                     fontWeight: 600,
-                    fontSize: 17,
+                    fontSize: 16,
                     marginBottom: 10,
-                    lineHeight: 1.3,
+                    lineHeight: 1.35,
                 }}
             >
                 {service.title}
             </h3>
-            <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
+            <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.68, marginBottom: 18, flex: 1 }}>
                 {service.description}
             </p>
 
             {/* Tags */}
-            <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-                    {service.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            style={{
-                                fontSize: 11,
-                                padding: "4px 10px",
-                                borderRadius: 100,
-                                background: "var(--glass)",
-                                border: "1px solid var(--border)",
-                                color: "var(--text-secondary)",
-                                fontWeight: 500,
-                            }}
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 18 }}>
+                {service.tags.map((tag) => (
+                    <span
+                        key={tag}
+                        style={{
+                            fontSize: 11,
+                            padding: "3px 9px",
+                            borderRadius: 100,
+                            background: service.colorLight,
+                            border: `1px solid ${service.colorBorder}`,
+                            color: service.color,
+                            fontWeight: 500,
+                        }}
+                    >
+                        {tag}
+                    </span>
+                ))}
             </div>
 
             {/* CTA */}
@@ -168,36 +159,14 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                 style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: 6,
+                    gap: 5,
                     color: "var(--primary-light)",
                     fontSize: 13,
                     fontWeight: 500,
-                    transition: "gap 0.2s ease",
                 }}
-                className="group-hover:gap-2"
             >
-                Learn more{" "}
-                <ArrowRight
-                    size={14}
-                    style={{ transition: "transform 0.2s ease" }}
-                    className="group-hover:translate-x-1"
-                />
+                Learn more <ArrowRight size={13} />
             </div>
-
-            {/* Corner decoration */}
-            <div
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    width: 96,
-                    height: 96,
-                    borderBottomLeftRadius: "100%",
-                    opacity: 0.1,
-                    background: service.gradient,
-                    pointerEvents: "none",
-                }}
-            />
         </motion.div>
     );
 }
@@ -207,23 +176,23 @@ export default function ServicesSection() {
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="services" className="section">
-            {/* Background */}
+        <section id="services" className="section-alt">
+            {/* Subtle bg accent */}
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.07) 0%, transparent 70%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.09) 0%, transparent 60%)",
                 }}
             />
 
             <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 56 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         style={{ display: "flex", justifyContent: "center" }}
                     >
@@ -236,11 +205,12 @@ export default function ServicesSection() {
                         transition={{ delay: 0.1 }}
                         style={{
                             fontFamily: "Poppins, sans-serif",
-                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
+                            fontSize: "clamp(1.875rem, 4vw, 2.875rem)",
                             fontWeight: 800,
-                            marginBottom: 16,
+                            marginBottom: 14,
                             color: "var(--heading-color)",
                             lineHeight: 1.15,
+                            letterSpacing: "-0.015em",
                         }}
                     >
                         Everything You Need to
@@ -254,8 +224,8 @@ export default function ServicesSection() {
                         transition={{ delay: 0.2 }}
                         style={{
                             color: "var(--text-secondary)",
-                            fontSize: 17,
-                            maxWidth: 560,
+                            fontSize: 16,
+                            maxWidth: 520,
                             margin: "0 auto",
                             lineHeight: 1.7,
                         }}
@@ -269,8 +239,8 @@ export default function ServicesSection() {
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                        gap: 24,
+                        gridTemplateColumns: "repeat(auto-fill, minmax(290px, 1fr))",
+                        gap: 20,
                     }}
                 >
                     {services.map((service, index) => (

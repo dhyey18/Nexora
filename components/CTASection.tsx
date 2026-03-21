@@ -30,18 +30,15 @@ export default function CTASection() {
 
     return (
         <section id="contact" className="section relative">
-            {/* Animated background */}
-            <div className="animated-bg absolute inset-0 opacity-50 pointer-events-none" />
+            {/* Subtle grid bg */}
+            <div className="grid-pattern absolute inset-0 pointer-events-none" style={{ opacity: 0.6 }} />
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                     background:
-                        "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.15) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 30% 50%, rgba(var(--primary-rgb),0.1) 0%, transparent 55%), radial-gradient(ellipse at 75% 50%, rgba(var(--primary-light-rgb),0.06) 0%, transparent 55%)",
                 }}
             />
-
-            {/* Grid */}
-            <div className="grid-pattern absolute inset-0 pointer-events-none" />
 
             <div className="container relative z-10">
                 <div

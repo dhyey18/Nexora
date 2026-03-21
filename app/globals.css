@@ -3,36 +3,40 @@
 /* ============================================================
    CSS CUSTOM PROPERTIES — Dark theme (default)
    Values are injected at runtime by ThemeProvider.
-   These serve as fallbacks for initial render.
    ============================================================ */
 :root {
-  --background: #0a1a0f;
-  --foreground: #f0f7f1;
-  --primary: #2F6B3F;
-  --primary-light: #7FB77E;
-  --secondary: #FFF6C0;
-  --accent: #FFF6C0;
-  --muted: #132a1a;
-  --border: rgba(127, 183, 126, 0.12);
-  --card-bg: rgba(13, 30, 18, 0.8);
-  --glass: rgba(127, 183, 126, 0.05);
-  --primary-rgb: 47, 107, 63;
-  --primary-light-rgb: 127, 183, 126;
-  --accent-rgb: 255, 246, 192;
-  --foreground-rgb: 240, 247, 241;
-  --gradient-start: #2F6B3F;
-  --gradient-end: #7FB77E;
-  --nav-bg: rgba(10, 26, 15, 0.88);
-  --heading-color: #f0f7f1;
-  --text-primary: rgba(240, 247, 241, 0.9);
-  --text-secondary: rgba(240, 247, 241, 0.6);
-  --text-tertiary: rgba(240, 247, 241, 0.4);
-  --scrollbar-track: #0a1a0f;
+  --background: #0b1e14;
+  --foreground: #f0f7f2;
+  --primary: #2D6A4F;
+  --primary-light: #52B788;
+  --secondary: #D8F3DC;
+  --accent: #52B788;
+  --muted: #122b1c;
+  --border: rgba(82, 183, 136, 0.15);
+  --card-bg: rgba(18, 43, 28, 0.6);
+  --glass: rgba(11, 30, 20, 0.75);
+  --primary-rgb: 45, 106, 79;
+  --primary-light-rgb: 82, 183, 136;
+  --accent-rgb: 82, 183, 136;
+  --foreground-rgb: 240, 247, 242;
+  --gradient-start: #2D6A4F;
+  --gradient-end: #52B788;
+  --nav-bg: rgba(11, 30, 20, 0.92);
+  --heading-color: #ffffff;
+  --text-primary: rgba(240, 247, 242, 0.95);
+  --text-secondary: rgba(240, 247, 242, 0.70);
+  --text-tertiary: rgba(240, 247, 242, 0.42);
+  --scrollbar-track: #0b1e14;
+
+  /* Section alternation */
+  --section-alt-bg: #0f2118;
+  --card-clean-bg: #152a1e;
+  --card-clean-border: rgba(82, 183, 136, 0.18);
 
   /* Spacing */
   --section-py: 6rem;
   --container-px: 1rem;
-  --max-width: 72rem;
+  --max-width: 74rem;
 }
 
 /* ============================================================
@@ -109,7 +113,7 @@ h6 {
    SELECTION
    ============================================================ */
 ::selection {
-  background: rgba(var(--primary-rgb), 0.3);
+  background: rgba(var(--primary-rgb), 0.28);
   color: var(--foreground);
 }
 
@@ -133,7 +137,7 @@ h6 {
 
 @media (min-width: 1024px) {
   .container {
-    --container-px: 2rem;
+    --container-px: 2.5rem;
   }
 }
 
@@ -145,43 +149,68 @@ h6 {
   overflow: hidden;
 }
 
+/* Alternate section — slightly different dark shade for rhythm */
+.section-alt {
+  position: relative;
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+  overflow: hidden;
+  background: var(--section-alt-bg);
+}
+
 /* ============================================================
-   GLASSMORPHISM
+   GLASSMORPHISM (kept for backwards compat, softer now)
    ============================================================ */
 .glass {
   background: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
 }
 
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(var(--primary-rgb), 0.12);
+  background: rgba(var(--primary-rgb), 0.1);
   border-color: rgba(var(--primary-light-rgb), 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(var(--primary-rgb), 0.12);
+  box-shadow: 0 16px 48px rgba(var(--primary-rgb), 0.1);
+}
+
+/* ============================================================
+   CLEAN CARD — flat, bordered, no blur
+   ============================================================ */
+.card-clean {
+  background: var(--card-clean-bg);
+  border: 1px solid var(--card-clean-border);
+  border-radius: 16px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-clean:hover {
+  border-color: rgba(var(--primary-light-rgb), 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(var(--primary-rgb), 0.12);
 }
 
 /* ============================================================
    GRADIENT TEXT
    ============================================================ */
 .gradient-text {
-  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 50%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 50%, var(--gradient-start) 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 60%, var(--gradient-start) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -191,48 +220,31 @@ h6 {
    GLOW EFFECTS
    ============================================================ */
 .glow-primary {
-  box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.25);
 }
 
 .glow-accent {
-  box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.3);
+  box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.25);
 }
 
 /* ============================================================
-   ANIMATED BACKGROUND
+   SUBTLE BG PATTERN
    ============================================================ */
-.animated-bg {
-  background: linear-gradient(-45deg, var(--background), var(--muted), rgba(var(--primary-rgb), 0.2), rgba(var(--primary-light-rgb), 0.1), var(--background));
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(var(--primary-light-rgb), 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 /* ============================================================
    FLOATING ANIMATION
    ============================================================ */
 @keyframes float {
-
   0%,
   100% {
     transform: translateY(0px);
   }
-
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-16px);
   }
 }
 
@@ -244,21 +256,19 @@ h6 {
    PULSE GLOW
    ============================================================ */
 @keyframes pulseGlow {
-
   0%,
   100% {
-    opacity: 0.4;
+    opacity: 0.35;
     transform: scale(1);
   }
-
   50% {
-    opacity: 0.8;
+    opacity: 0.7;
     transform: scale(1.05);
   }
 }
 
 .pulse-glow {
-  animation: pulseGlow 4s ease-in-out infinite;
+  animation: pulseGlow 5s ease-in-out infinite;
 }
 
 /* ============================================================
@@ -268,7 +278,6 @@ h6 {
   0% {
     background-position: -1000px 0;
   }
-
   100% {
     background-position: 1000px 0;
   }
@@ -281,35 +290,22 @@ h6 {
 }
 
 /* ============================================================
-   STARS BACKGROUND
-   ============================================================ */
-.stars-bg {
-  background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(var(--foreground-rgb), 0.3) 0%, transparent 50%),
-    radial-gradient(2px 2px at 70% 20%, rgba(var(--foreground-rgb), 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 40% 70%, rgba(var(--foreground-rgb), 0.25) 0%, transparent 50%),
-    radial-gradient(1px 1px at 80% 60%, rgba(var(--foreground-rgb), 0.15) 0%, transparent 50%),
-    radial-gradient(2px 2px at 10% 80%, rgba(var(--foreground-rgb), 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 60% 90%, rgba(var(--foreground-rgb), 0.1) 0%, transparent 50%);
-}
-
-/* ============================================================
    SECTION TAG / BADGE
    ============================================================ */
 .section-tag {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   background: rgba(var(--primary-rgb), 0.12);
-  border: 1px solid rgba(var(--primary-rgb), 0.28);
+  border: 1px solid rgba(var(--primary-rgb), 0.25);
   color: var(--primary-light);
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 100px;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* ============================================================
@@ -318,7 +314,7 @@ h6 {
 .gradient-border {
   position: relative;
   background: linear-gradient(var(--muted), var(--muted)) padding-box,
-    linear-gradient(135deg, var(--gradient-start), var(--gradient-end), var(--secondary)) border-box;
+    linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) border-box;
   border: 1px solid transparent;
   border-radius: 16px;
 }
@@ -333,18 +329,19 @@ h6 {
   gap: 8px;
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   color: #ffffff;
-  padding: 14px 32px;
-  border-radius: 12px;
+  padding: 13px 30px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1;
   border: none;
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
   position: relative;
   overflow: hidden;
   text-decoration: none;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .btn-primary::before {
@@ -354,8 +351,8 @@ h6 {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transition: left 0.45s ease;
 }
 
 .btn-primary:hover::before {
@@ -364,7 +361,7 @@ h6 {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(var(--primary-rgb), 0.5);
+  box-shadow: 0 10px 32px rgba(var(--primary-rgb), 0.45);
 }
 
 .btn-primary:active {
@@ -378,21 +375,22 @@ h6 {
   gap: 8px;
   background: transparent;
   color: var(--text-primary);
-  padding: 13px 32px;
-  border-radius: 12px;
+  padding: 12px 30px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1;
   border: 1px solid var(--border);
   cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
 .btn-secondary:hover {
-  background: rgba(var(--primary-rgb), 0.07);
-  border-color: rgba(var(--primary-rgb), 0.5);
+  background: rgba(var(--primary-rgb), 0.08);
+  border-color: rgba(var(--primary-light-rgb), 0.45);
   transform: translateY(-2px);
 }
 
@@ -409,50 +407,33 @@ h6 {
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.3s ease;
-  padding: 4px 0;
+  transition: color 0.2s ease;
+  padding: 4px 2px;
   background: transparent;
   border: none;
   cursor: pointer;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-  transition: width 0.3s ease;
-  border-radius: 1px;
+  letter-spacing: 0.01em;
 }
 
 .nav-link:hover {
   color: var(--foreground);
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
 /* ============================================================
    TESTIMONIAL CARD
    ============================================================ */
 .testimonial-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
+  background: var(--card-clean-bg);
+  border: 1px solid var(--card-clean-border);
+  border-radius: 16px;
+  padding: 28px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   position: relative;
 }
 
 .testimonial-card:hover {
-  border-color: rgba(var(--primary-rgb), 0.3);
-  box-shadow: 0 20px 60px rgba(var(--primary-rgb), 0.1);
+  border-color: rgba(var(--primary-rgb), 0.35);
+  box-shadow: 0 16px 48px rgba(var(--primary-rgb), 0.08);
   transform: translateY(-4px);
 }
 
@@ -460,18 +441,16 @@ h6 {
    PRICING CARD
    ============================================================ */
 .pricing-card {
-  border-radius: 24px;
-  padding: 36px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 32px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
 .pricing-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
 }
 
 /* ============================================================
@@ -481,7 +460,7 @@ h6 {
   width: 100%;
   background: rgba(var(--foreground-rgb), 0.05);
   border: 1px solid rgba(var(--foreground-rgb), 0.1);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 12px 16px;
   color: var(--foreground);
   font-size: 14px;
@@ -494,7 +473,7 @@ h6 {
 }
 
 .form-input:focus {
-  border-color: rgba(var(--primary-rgb), 0.6);
+  border-color: rgba(var(--primary-rgb), 0.55);
   background: rgba(var(--foreground-rgb), 0.07);
 }
 
@@ -510,7 +489,7 @@ h6 {
   font-size: 80px;
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.25) 0%, rgba(var(--primary-light-rgb), 0.08) 100%);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.22) 0%, rgba(var(--primary-light-rgb), 0.07) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -522,7 +501,7 @@ h6 {
    ============================================================ */
 .divider-gradient {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.45), transparent);
 }
 
 /* ============================================================
@@ -544,13 +523,10 @@ h6 {
 /* ============================================================
    UTILITY CLASSES
    ============================================================ */
-
-/* Pointer events */
 .pointer-none {
   pointer-events: none;
 }
 
-/* Text colors with specific opacities */
 .text-muted {
   color: var(--text-secondary);
 }
@@ -563,7 +539,6 @@ h6 {
   color: rgba(var(--foreground-rgb), 0.3);
 }
 
-/* Flex utilities */
 .flex-center {
   display: flex;
   align-items: center;
@@ -584,9 +559,30 @@ h6 {
    ============================================================ */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(var(--primary-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* ============================================================
+   ANIMATED BACKGROUND
+   ============================================================ */
+.animated-bg {
+  background: linear-gradient(-45deg, var(--background), var(--muted), rgba(var(--primary-rgb), 0.18), rgba(var(--primary-light-rgb), 0.08), var(--background));
+  background-size: 400% 400%;
+  animation: gradientShift 16s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ============================================================
@@ -594,16 +590,16 @@ h6 {
    ============================================================ */
 @media (max-width: 640px) {
   .pricing-card {
-    padding: 28px 24px;
+    padding: 24px 20px;
   }
 
   .testimonial-card {
-    padding: 24px;
+    padding: 22px;
   }
 
   .btn-primary,
   .btn-secondary {
-    padding: 12px 24px;
+    padding: 12px 22px;
     font-size: 14px;
   }
 }
@@ -631,6 +627,10 @@ h6 {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .md-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .md-grid-cols-4 {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -651,6 +651,14 @@ h6 {
 @media (min-width: 1024px) {
   .lg-grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lg-grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lg-grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .lg-grid-cols-5 {

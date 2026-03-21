@@ -18,7 +18,7 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
+        const handleScroll = () => setScrolled(window.scrollY > 24);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -32,29 +32,29 @@ export default function Navbar() {
     return (
         <>
             <motion.nav
-                initial={{ y: -100, opacity: 0 }}
+                initial={{ y: -80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.55, ease: "easeOut" }}
                 style={{
                     position: "fixed",
                     top: 0,
                     left: 0,
                     right: 0,
                     zIndex: 50,
-                    padding: "14px 16px",
+                    padding: "12px 16px",
                 }}
             >
                 <div
                     style={{
-                        maxWidth: "72rem",
+                        maxWidth: "74rem",
                         margin: "0 auto",
-                        borderRadius: 20,
-                        transition: "all 0.5s ease",
+                        borderRadius: 14,
+                        transition: "all 0.4s ease",
                         background: scrolled ? "var(--nav-bg)" : "transparent",
-                        backdropFilter: scrolled ? "blur(20px)" : "none",
-                        WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+                        backdropFilter: scrolled ? "blur(16px)" : "none",
+                        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
                         border: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-                        boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.4)" : "none",
+                        boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.25)" : "none",
                     }}
                 >
                     <div
@@ -62,7 +62,7 @@ export default function Navbar() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "space-between",
-                            padding: "10px 24px",
+                            padding: "10px 20px",
                         }}
                     >
                         {/* Logo */}
@@ -71,26 +71,27 @@ export default function Navbar() {
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 10,
+                                gap: 9,
                                 color: "var(--heading-color)",
                                 fontWeight: 700,
-                                fontSize: 19,
+                                fontSize: 18,
                                 textDecoration: "none",
                             }}
                             whileHover={{ scale: 1.02 }}
                         >
                             <div
                                 style={{
-                                    width: 32,
-                                    height: 32,
+                                    width: 30,
+                                    height: 30,
                                     borderRadius: 8,
                                     background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
+                                    flexShrink: 0,
                                 }}
                             >
-                                <Zap size={16} color="#fff" />
+                                <Zap size={15} color="#fff" />
                             </div>
                             <span style={{ fontFamily: "Poppins, sans-serif" }}>
                                 Cata<span className="gradient-text">lyq</span>
@@ -98,7 +99,7 @@ export default function Navbar() {
                         </motion.a>
 
                         {/* Desktop Nav */}
-                        <div style={{ display: "none", alignItems: "center", gap: 32 }} className="md-flex">
+                        <div style={{ display: "none", alignItems: "center", gap: 28 }} className="md-flex">
                             {navLinks.map((link) => (
                                 <button
                                     key={link.label}
@@ -111,14 +112,14 @@ export default function Navbar() {
                         </div>
 
                         {/* CTA + Theme Toggle */}
-                        <div style={{ display: "none", alignItems: "center", gap: 12 }} className="md-flex">
+                        <div style={{ display: "none", alignItems: "center", gap: 10 }} className="md-flex">
                             <ThemeToggle />
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.04 }}
+                                whileTap={{ scale: 0.96 }}
                                 onClick={() => handleNavClick("#contact")}
                                 className="btn-primary"
-                                style={{ padding: "10px 22px", fontSize: 14 }}
+                                style={{ padding: "9px 20px", fontSize: 13, borderRadius: 8 }}
                             >
                                 Get Started
                             </motion.button>
@@ -132,8 +133,8 @@ export default function Navbar() {
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    padding: 8,
-                                    borderRadius: 10,
+                                    padding: 7,
+                                    borderRadius: 9,
                                     background: "var(--glass)",
                                     border: "1px solid var(--border)",
                                     color: "var(--foreground)",
@@ -143,7 +144,7 @@ export default function Navbar() {
                                 id="mobile-menu-toggle"
                                 aria-label="Toggle mobile menu"
                             >
-                                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                                {mobileOpen ? <X size={19} /> : <Menu size={19} />}
                             </button>
                         </div>
                     </div>
@@ -154,26 +155,26 @@ export default function Navbar() {
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: -16 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
+                        exit={{ opacity: 0, y: -16 }}
                         transition={{ duration: 0.2 }}
                         style={{
                             position: "fixed",
-                            top: 90,
-                            left: 16,
-                            right: 16,
+                            top: 86,
+                            left: 14,
+                            right: 14,
                             zIndex: 40,
-                            borderRadius: 20,
+                            borderRadius: 16,
                             background: "var(--nav-bg)",
-                            backdropFilter: "blur(20px)",
-                            WebkitBackdropFilter: "blur(20px)",
+                            backdropFilter: "blur(16px)",
+                            WebkitBackdropFilter: "blur(16px)",
                             border: "1px solid var(--border)",
-                            boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
-                            padding: 24,
+                            boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+                            padding: 20,
                         }}
                     >
-                        <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
                             {navLinks.map((link) => (
                                 <button
                                     key={link.label}
@@ -182,9 +183,9 @@ export default function Navbar() {
                                         textAlign: "left",
                                         color: "var(--text-primary)",
                                         fontWeight: 500,
-                                        fontSize: 16,
+                                        fontSize: 15,
                                         padding: "10px 14px",
-                                        borderRadius: 12,
+                                        borderRadius: 10,
                                         border: "none",
                                         background: "transparent",
                                         cursor: "pointer",
@@ -215,9 +216,9 @@ export default function Navbar() {
                                 <button
                                     onClick={() => handleNavClick("#contact")}
                                     className="btn-primary"
-                                    style={{ width: "100%", padding: "13px 24px", justifyContent: "center" }}
+                                    style={{ width: "100%", padding: "12px 24px", justifyContent: "center" }}
                                 >
-                                    Get Started →
+                                    Get Started
                                 </button>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Star, Users, Globe, Award } from "lucide-react";
+import { ArrowRight, Star, Users, Globe, Award } from "lucide-react";
 
 const stats = [
     { value: "2+", label: "Projects Delivered", icon: Globe },
@@ -18,7 +18,6 @@ export default function HeroSection() {
     return (
         <section
             id="hero"
-            className="animated-bg stars-bg"
             style={{
                 position: "relative",
                 minHeight: "100vh",
@@ -26,9 +25,10 @@ export default function HeroSection() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
+                background: "var(--background)",
             }}
         >
-            {/* Background glow orbs */}
+            {/* Subtle background effects */}
             <div
                 style={{
                     position: "absolute",
@@ -37,103 +37,75 @@ export default function HeroSection() {
                     pointerEvents: "none",
                 }}
             >
+                {/* Soft glow top-center */}
                 <div
                     className="pulse-glow"
                     style={{
                         position: "absolute",
-                        top: "25%",
-                        left: "25%",
-                        width: 600,
-                        height: 600,
-                        borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(var(--primary-rgb),0.15) 0%, transparent 70%)",
-                    }}
-                />
-                <div
-                    className="pulse-glow"
-                    style={{
-                        position: "absolute",
-                        bottom: "25%",
-                        right: "25%",
-                        width: 500,
+                        top: "-10%",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        width: 700,
                         height: 500,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(var(--primary-light-rgb),0.12) 0%, transparent 70%)",
-                        animationDelay: "2s",
+                        background: "radial-gradient(circle, rgba(var(--primary-rgb),0.13) 0%, transparent 68%)",
                     }}
                 />
+                {/* Bottom-right accent */}
                 <div
                     style={{
                         position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        width: 800,
-                        height: 800,
+                        bottom: "10%",
+                        right: "5%",
+                        width: 400,
+                        height: 400,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(var(--accent-rgb),0.06) 0%, transparent 60%)",
+                        background: "radial-gradient(circle, rgba(var(--primary-light-rgb),0.08) 0%, transparent 70%)",
                     }}
                 />
+                {/* Grid pattern */}
+                <div className="grid-pattern absolute inset-0" />
 
-                {/* Floating geometric shapes */}
+                {/* Floating decorative dots */}
                 <motion.div
-                    animate={{ y: [-20, 20, -20], rotate: [0, 180, 360] }}
-                    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                    animate={{ y: [-12, 12, -12] }}
+                    transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
                     style={{
                         position: "absolute",
-                        top: 80,
-                        right: 80,
-                        width: 64,
-                        height: 64,
-                        borderRadius: 12,
-                        border: "1px solid rgba(var(--primary-rgb),0.2)",
-                        background: "rgba(var(--primary-rgb),0.05)",
-                    }}
-                />
-                <motion.div
-                    animate={{ y: [20, -20, 20], rotate: [360, 180, 0] }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                    style={{
-                        position: "absolute",
-                        bottom: 128,
-                        left: 64,
-                        width: 40,
-                        height: 40,
+                        top: "20%",
+                        right: "12%",
+                        width: 10,
+                        height: 10,
                         borderRadius: "50%",
-                        border: "1px solid rgba(var(--primary-light-rgb),0.3)",
-                        background: "rgba(var(--primary-light-rgb),0.05)",
+                        background: "rgba(var(--primary-light-rgb),0.5)",
                     }}
                 />
                 <motion.div
-                    animate={{ y: [-15, 15, -15], x: [-10, 10, -10] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                        position: "absolute",
-                        top: "33%",
-                        right: 48,
-                        width: 24,
-                        height: 24,
-                        borderRadius: "50%",
-                        background: "rgba(var(--accent-rgb),0.3)",
-                    }}
-                />
-                <motion.div
-                    animate={{ y: [10, -10, 10], x: [10, -10, 10] }}
+                    animate={{ y: [10, -10, 10] }}
                     transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                     style={{
                         position: "absolute",
-                        bottom: "33%",
-                        left: "25%",
-                        width: 16,
-                        height: 16,
-                        borderRadius: 2,
-                        border: "1px solid rgba(var(--primary-rgb),0.4)",
-                        transform: "rotate(45deg)",
+                        bottom: "28%",
+                        left: "10%",
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background: "rgba(var(--primary-rgb),0.6)",
                     }}
                 />
-
-                {/* Grid lines */}
-                <div className="grid-pattern absolute inset-0" />
+                <motion.div
+                    animate={{ y: [-8, 8, -8], x: [-5, 5, -5] }}
+                    transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+                    style={{
+                        position: "absolute",
+                        top: "55%",
+                        right: "18%",
+                        width: 14,
+                        height: 14,
+                        borderRadius: 3,
+                        border: "2px solid rgba(var(--primary-light-rgb),0.3)",
+                    }}
+                />
             </div>
 
             <div
@@ -141,44 +113,45 @@ export default function HeroSection() {
                 style={{
                     zIndex: 10,
                     textAlign: "center",
-                    paddingTop: "6rem",
+                    paddingTop: "7rem",
                     paddingBottom: "4rem",
                 }}
             >
                 {/* Badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}
+                    transition={{ duration: 0.55 }}
+                    style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}
                 >
                     <div className="section-tag">
                         <span
                             style={{
-                                width: 8,
-                                height: 8,
+                                width: 7,
+                                height: 7,
                                 borderRadius: "50%",
                                 background: "var(--primary-light)",
                                 display: "inline-block",
                                 animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                             }}
                         />
-                        Trusted by 2+ businesses worldwide
+                        Trusted by businesses worldwide
                     </div>
                 </motion.div>
 
                 {/* Headline */}
                 <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.1 }}
+                    transition={{ duration: 0.65, delay: 0.1 }}
                     style={{
                         fontFamily: "Poppins, sans-serif",
-                        fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                        fontSize: "clamp(2.6rem, 6vw, 4.75rem)",
                         fontWeight: 800,
                         lineHeight: 1.1,
-                        marginBottom: 24,
+                        marginBottom: 22,
                         color: "var(--heading-color)",
+                        letterSpacing: "-0.02em",
                     }}
                 >
                     Turn Clicks Into Clients
@@ -188,16 +161,16 @@ export default function HeroSection() {
 
                 {/* Subtext */}
                 <motion.p
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2 }}
+                    transition={{ duration: 0.65, delay: 0.2 }}
                     style={{
-                        fontSize: "clamp(1rem, 2vw, 1.2rem)",
+                        fontSize: "clamp(1rem, 2vw, 1.15rem)",
                         color: "var(--text-secondary)",
-                        maxWidth: "38rem",
+                        maxWidth: "36rem",
                         margin: "0 auto",
-                        marginBottom: 40,
-                        lineHeight: 1.7,
+                        marginBottom: 36,
+                        lineHeight: 1.72,
                     }}
                 >
                     Your online presence is your most powerful business asset. We craft stunning,
@@ -206,62 +179,65 @@ export default function HeroSection() {
 
                 {/* CTA Buttons */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 28 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.3 }}
+                    transition={{ duration: 0.65, delay: 0.3 }}
                     style={{
                         display: "flex",
                         flexWrap: "wrap",
-                        gap: 16,
+                        gap: 14,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginBottom: 64,
+                        marginBottom: 60,
                     }}
                 >
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
                         onClick={() => handleScroll("contact")}
                         className="btn-primary"
-                        style={{ padding: "15px 36px", fontSize: 16 }}
+                        style={{ padding: "14px 34px", fontSize: 15 }}
                         id="hero-get-started-btn"
                     >
-                        Get Started Free <ArrowRight size={18} />
+                        Get Started Free <ArrowRight size={17} />
                     </motion.button>
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.04 }}
+                        whileTap={{ scale: 0.96 }}
                         onClick={() => handleScroll("portfolio")}
                         className="btn-secondary"
-                        style={{ padding: "14px 36px", fontSize: 16 }}
+                        style={{ padding: "13px 34px", fontSize: 15 }}
                         id="hero-portfolio-btn"
                     >
-                        <Play size={16} style={{ fill: "currentColor" }} />
                         View Portfolio
                     </motion.button>
                 </motion.div>
 
                 {/* Stats row */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 36 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
+                    transition={{ duration: 0.75, delay: 0.5 }}
                     className="custom-grid sm-grid-cols-2 md-grid-cols-4"
-                    style={{ gap: 16, maxWidth: 768, margin: "0 auto" }}
+                    style={{ gap: 14, maxWidth: 720, margin: "0 auto" }}
                 >
                     {stats.map((stat, i) => (
                         <motion.div
                             key={stat.label}
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                            className="glass-card rounded-2xl"
-                            style={{ padding: "20px 16px", textAlign: "center" }}
+                            transition={{ duration: 0.45, delay: 0.6 + i * 0.08 }}
+                            className="card-clean"
+                            style={{
+                                padding: "18px 14px",
+                                textAlign: "center",
+                                borderRadius: 12,
+                            }}
                         >
                             <div
                                 className="gradient-text"
                                 style={{
-                                    fontSize: "clamp(1.4rem, 3vw, 1.875rem)",
+                                    fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
                                     fontWeight: 800,
                                     fontFamily: "Poppins, sans-serif",
                                     marginBottom: 4,
@@ -270,7 +246,7 @@ export default function HeroSection() {
                             >
                                 {stat.value}
                             </div>
-                            <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
+                            <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.3 }}>
                                 {stat.label}
                             </div>
                         </motion.div>
@@ -284,30 +260,30 @@ export default function HeroSection() {
                     transition={{ delay: 1.2 }}
                     style={{
                         position: "absolute",
-                        bottom: 32,
+                        bottom: 28,
                         left: "50%",
                         transform: "translateX(-50%)",
                     }}
                 >
                     <motion.div
-                        animate={{ y: [0, 12, 0] }}
+                        animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
                         style={{
-                            width: 24,
-                            height: 40,
-                            borderRadius: 12,
+                            width: 22,
+                            height: 38,
+                            borderRadius: 11,
                             border: "2px solid rgba(var(--foreground-rgb),0.2)",
                             display: "flex",
                             justifyContent: "center",
-                            paddingTop: 8,
+                            paddingTop: 7,
                         }}
                     >
                         <div
                             style={{
-                                width: 4,
-                                height: 8,
+                                width: 3,
+                                height: 7,
                                 borderRadius: 2,
-                                background: "rgba(var(--foreground-rgb),0.5)",
+                                background: "rgba(var(--foreground-rgb),0.45)",
                             }}
                         />
                     </motion.div>
