@@ -36,7 +36,7 @@ export default function CTASection() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                     background:
-                        "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.15) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.15) 0%, transparent 60%)",
                 }}
             />
 
@@ -67,8 +67,8 @@ export default function CTASection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.1 }}
-                            className="font-bold mb-6 leading-tight text-white"
-                            style={{ fontFamily: "Poppins, sans-serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                            className="font-bold mb-6 leading-tight"
+                            style={{ fontFamily: "Poppins, sans-serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "var(--heading-color)" }}
                         >
                             Ready to Transform
                             <br />
@@ -79,8 +79,8 @@ export default function CTASection() {
                             initial={{ opacity: 0, x: -30 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
-                            className="text-white/60 text-lg leading-relaxed mb-10"
-                            style={{ maxWidth: 520 }}
+                            className="text-lg leading-relaxed mb-10"
+                            style={{ maxWidth: 520, color: "var(--text-secondary)" }}
                         >
                             Stop losing customers to competitors with better websites. Let&apos;s build you
                             something exceptional. Book a free consultation call — no strings attached.
@@ -106,47 +106,20 @@ export default function CTASection() {
                                             width: 40,
                                             height: 40,
                                             borderRadius: 12,
-                                            background: "rgba(99,102,241,0.1)",
-                                            border: "1px solid rgba(99,102,241,0.2)",
+                                            background: "rgba(var(--primary-rgb),0.1)",
+                                            border: "1px solid rgba(var(--primary-rgb),0.2)",
                                         }}
                                     >
-                                        <item.icon size={17} style={{ color: "#818cf8" }} />
+                                        <item.icon size={17} style={{ color: "var(--primary-light)" }} />
                                     </div>
                                     <div>
-                                        <div className="text-white/40 text-xs mb-0.5">{item.label}</div>
-                                        <div className="text-white text-sm font-medium">{item.value}</div>
+                                        <div className="text-xs mb-0.5" style={{ color: "var(--text-tertiary)" }}>{item.label}</div>
+                                        <div className="text-sm font-medium" style={{ color: "var(--heading-color)" }}>{item.value}</div>
                                     </div>
                                 </div>
                             ))}
                         </motion.div>
                         <br />
-                        {/* Testimonial snippet */}
-                        {/* <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: 0.4 }}
-                            className="glass rounded-2xl p-5 mt-10"
-                            style={{ borderColor: "rgba(99,102,241,0.2)" }}
-                        >
-                            <p className="text-white/65 text-sm italic mb-3 leading-relaxed">
-                                &ldquo;Catalyq delivered our dream website in just 2 weeks. The results
-                                exceeded every expectation.&rdquo;
-                            </p>
-                            <div className="flex items-center gap-3">
-                                <div
-                                    className="flex-center text-white text-xs font-bold flex-shrink-0"
-                                    style={{
-                                        width: 32,
-                                        height: 32,
-                                        borderRadius: "50%",
-                                        background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                                    }}
-                                >
-                                    SM
-                                </div>
-                                <span className="text-white/50 text-xs">Sarah M., CEO at LaunchPad SaaS</span>
-                            </div>
-                        </motion.div> */}
                     </div>
 
                     {/* Right — Form */}
@@ -177,25 +150,25 @@ export default function CTASection() {
                                             <CheckCircle size={38} style={{ color: "#34d399" }} />
                                         </div>
                                         <h3
-                                            className="text-white font-bold text-2xl mb-3"
-                                            style={{ fontFamily: "Poppins" }}
+                                            className="font-bold text-2xl mb-3"
+                                            style={{ fontFamily: "Poppins", color: "var(--heading-color)" }}
                                         >
                                             Message Sent! 🎉
                                         </h3>
-                                        <p className="text-white/60 text-sm max-w-xs leading-relaxed">
+                                        <p className="text-sm max-w-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                                             Thank you for reaching out, {name}! We&apos;ll get back to you at{" "}
-                                            <strong className="text-white">{email}</strong> within 2 hours.
+                                            <strong style={{ color: "var(--heading-color)" }}>{email}</strong> within 2 hours.
                                         </p>
                                     </motion.div>
                                 ) : (
                                     <>
                                         <h3
-                                            className="text-white font-bold text-3xl mb-2"
-                                            style={{ fontFamily: "Poppins" }}
+                                            className="font-bold text-3xl mb-2"
+                                            style={{ fontFamily: "Poppins", color: "var(--heading-color)" }}
                                         >
                                             Start Your Project
                                         </h3>
-                                        <p className="text-white/50 text-base mb-8">
+                                        <p className="text-base mb-8" style={{ color: "var(--text-secondary)" }}>
                                             Free consultation · No commitment
                                         </p>
 
@@ -203,7 +176,7 @@ export default function CTASection() {
                                             {/* Name + Email */}
                                             <div className="custom-grid sm-grid-cols-2" style={{ gap: 20 }}>
                                                 <div>
-                                                    <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
+                                                    <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
                                                         Full Name *
                                                     </label>
                                                     <input
@@ -218,7 +191,7 @@ export default function CTASection() {
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
+                                                    <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
                                                         Email Address *
                                                     </label>
                                                     <input
@@ -236,7 +209,7 @@ export default function CTASection() {
 
                                             {/* Service selector */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-3 font-medium uppercase tracking-wider">
+                                                <label className="block text-xs mb-3 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
                                                     Service Needed
                                                 </label>
                                                 <div className="flex flex-wrap gap-2">
@@ -252,17 +225,17 @@ export default function CTASection() {
                                                                 padding: "8px 14px",
                                                                 borderRadius: 100,
                                                                 border: `1px solid ${selectedService === s
-                                                                    ? "rgba(99,102,241,0.6)"
-                                                                    : "rgba(255,255,255,0.14)"
+                                                                    ? "rgba(var(--primary-rgb),0.6)"
+                                                                    : "var(--border)"
                                                                     }`,
                                                                 background:
                                                                     selectedService === s
-                                                                        ? "rgba(99,102,241,0.18)"
+                                                                        ? "rgba(var(--primary-rgb),0.18)"
                                                                         : "transparent",
                                                                 color:
                                                                     selectedService === s
-                                                                        ? "#a5b4fc"
-                                                                        : "rgba(255,255,255,0.5)",
+                                                                        ? "var(--primary-light)"
+                                                                        : "var(--text-secondary)",
                                                                 cursor: "pointer",
                                                                 transition: "all 0.2s ease",
                                                                 fontWeight: 500,
@@ -276,13 +249,13 @@ export default function CTASection() {
 
                                             {/* Budget */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
+                                                <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
                                                     Budget Range
                                                 </label>
                                                 <select
                                                     className="form-input"
                                                     id="contact-budget"
-                                                    style={{ background: "rgba(15,23,42,0.9)", cursor: "pointer", padding: "14px 18px" }}
+                                                    style={{ background: "var(--muted)", cursor: "pointer", padding: "14px 18px" }}
                                                 >
                                                     <option value="">Select your budget</option>
                                                     <option value="starter">₹10,000 – ₹20,000 (Starter)</option>
@@ -294,7 +267,7 @@ export default function CTASection() {
 
                                             {/* Message */}
                                             <div>
-                                                <label className="block text-white/55 text-xs mb-2.5 font-medium uppercase tracking-wider">
+                                                <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
                                                     Tell us about your project
                                                 </label>
                                                 <textarea
@@ -322,7 +295,7 @@ export default function CTASection() {
                                                 <ArrowRight size={18} />
                                             </motion.button>
 
-                                            <p className="text-center text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+                                            <p className="text-center text-xs" style={{ color: "var(--text-tertiary)" }}>
                                                 🔒 We respect your privacy. No spam, ever.
                                             </p>
                                         </form>

@@ -23,9 +23,9 @@ const features = [
             "Beautiful, intuitive interfaces crafted with the latest design trends. First impressions matter — we make them count.",
         stat: "98%",
         statLabel: "Satisfaction",
-        color: "#6366f1",
-        bg: "rgba(99,102,241,0.1)",
-        border: "rgba(99,102,241,0.25)",
+        color: "var(--primary)",
+        bg: "rgba(var(--primary-rgb),0.1)",
+        border: "rgba(var(--primary-rgb),0.25)",
     },
     {
         icon: Search,
@@ -139,7 +139,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
                 <div style={{ flex: 1, minWidth: 0 }}>
                     <h3
                         style={{
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             fontWeight: 600,
                             fontSize: 15,
                             marginBottom: 6,
@@ -150,7 +150,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
                     </h3>
                     <p
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 13,
                             lineHeight: 1.6,
                         }}
@@ -172,7 +172,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
                     >
                         {feature.stat}
                     </div>
-                    <div style={{ fontSize: 11, color: "rgba(248,250,252,0.4)", marginTop: 2 }}>
+                    <div style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 2 }}>
                         {feature.statLabel}
                     </div>
                 </div>
@@ -195,7 +195,7 @@ export default function WhyUsSection() {
                     left: 0,
                     right: 0,
                     height: 1,
-                    background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
+                    background: "linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.5), transparent)",
                 }}
             />
             <div
@@ -205,7 +205,7 @@ export default function WhyUsSection() {
                     left: 0,
                     right: 0,
                     height: 1,
-                    background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.3), transparent)",
+                    background: "linear-gradient(90deg, transparent, rgba(var(--primary-rgb),0.3), transparent)",
                 }}
             />
 
@@ -234,7 +234,7 @@ export default function WhyUsSection() {
                                 fontSize: "clamp(1.875rem, 4vw, 3rem)",
                                 fontWeight: 800,
                                 marginBottom: 20,
-                                color: "#f8fafc",
+                                color: "var(--heading-color)",
                                 lineHeight: 1.15,
                             }}
                         >
@@ -250,7 +250,7 @@ export default function WhyUsSection() {
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
                             style={{
-                                color: "rgba(248,250,252,0.55)",
+                                color: "var(--text-secondary)",
                                 fontSize: 17,
                                 lineHeight: 1.7,
                                 marginBottom: 32,
@@ -290,7 +290,7 @@ export default function WhyUsSection() {
                                     >
                                         {item.value}
                                     </div>
-                                    <div style={{ color: "rgba(248,250,252,0.5)", fontSize: "clamp(10px, 3vw, 12px)", lineHeight: 1.2 }}>
+                                    <div style={{ color: "var(--text-secondary)", fontSize: "clamp(10px, 3vw, 12px)", lineHeight: 1.2 }}>
                                         {item.label}
                                     </div>
                                 </div>

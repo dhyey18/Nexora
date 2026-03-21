@@ -35,10 +35,10 @@ const plans = [
         period: "one-time",
         icon: Star,
         description: "Our most popular package for growing Indian businesses ready to dominate their market online and stand out from the competition.",
-        color: "#6366f1",
-        gradient: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-        bg: "rgba(99,102,241,0.1)",
-        border: "rgba(99,102,241,0.4)",
+        color: "var(--primary)",
+        gradient: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
+        bg: "rgba(var(--primary-rgb),0.1)",
+        border: "rgba(var(--primary-rgb),0.4)",
         featured: true,
         cta: "Most Popular",
         features: [
@@ -97,7 +97,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
             className="pricing-card"
             style={{
                 background: plan.featured
-                    ? "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))"
+                    ? "linear-gradient(135deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-light-rgb),0.15))"
                     : plan.bg,
                 border: `1px solid ${plan.border}`,
             }}
@@ -117,7 +117,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                         style={{
                             padding: "6px 20px",
                             borderRadius: 100,
-                            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                            background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                             color: "#fff",
                             fontSize: 11,
                             fontWeight: 700,
@@ -174,7 +174,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                     </div>
                     <div
                         style={{
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             fontWeight: 700,
                             fontSize: 18,
                             fontFamily: "Poppins, sans-serif",
@@ -187,7 +187,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                 <div style={{ textAlign: "right" }}>
                     <div
                         style={{
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             fontWeight: 700,
                             fontSize: 28,
                             fontFamily: "Poppins, sans-serif",
@@ -196,14 +196,14 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                     >
                         {plan.price}
                     </div>
-                    <div style={{ color: "rgba(248,250,252,0.4)", fontSize: 13 }}>{plan.period}</div>
+                    <div style={{ color: "var(--text-tertiary)", fontSize: 13 }}>{plan.period}</div>
                 </div>
             </div>
 
             {/* Description */}
             <p
                 style={{
-                    color: "rgba(248,250,252,0.55)",
+                    color: "var(--text-secondary)",
                     fontSize: 14,
                     lineHeight: 1.65,
                     marginBottom: 24,
@@ -239,7 +239,7 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                 {plan.features.map((feature) => (
                     <div key={feature} style={{ display: "flex", alignItems: "center", gap: 10 }}>
                         <Check size={15} style={{ color: plan.color, flexShrink: 0 }} />
-                        <span style={{ color: "rgba(248,250,252,0.75)", fontSize: 13 }}>{feature}</span>
+                        <span style={{ color: "var(--text-primary)", fontSize: 13, opacity: 0.75 }}>{feature}</span>
                     </div>
                 ))}
                 {plan.notIncluded &&
@@ -262,14 +262,14 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                                     alignItems: "center",
                                     justifyContent: "center",
                                     fontSize: 11,
-                                    color: "rgba(248,250,252,0.5)",
+                                    color: "var(--text-secondary)",
                                 }}
                             >
                                 ✕
                             </div>
                             <span
                                 style={{
-                                    color: "rgba(248,250,252,0.5)",
+                                    color: "var(--text-secondary)",
                                     fontSize: 13,
                                     textDecoration: "line-through",
                                 }}
@@ -287,48 +287,48 @@ function PricingCard({ plan, index }: { plan: typeof plans[0]; index: number }) 
                 style={
                     plan.featured
                         ? {
-                            width: "100%",
-                            padding: "14px 24px",
-                            borderRadius: 12,
-                            fontWeight: 600,
-                            fontSize: 14,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 8,
-                            cursor: "pointer",
-                            border: "none",
-                            background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                            color: "#fff",
-                            position: "relative",
-                            zIndex: 10,
-                            transition: "box-shadow 0.25s ease",
-                        }
+                              width: "100%",
+                              padding: "14px 24px",
+                              borderRadius: 12,
+                              fontWeight: 600,
+                              fontSize: 14,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: 8,
+                              cursor: "pointer",
+                              border: "none",
+                              background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
+                              color: "#fff",
+                              position: "relative",
+                              zIndex: 10,
+                              transition: "box-shadow 0.25s ease",
+                          }
                         : {
-                            width: "100%",
-                            padding: "13px 24px",
-                            borderRadius: 12,
-                            fontWeight: 600,
-                            fontSize: 14,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            gap: 8,
-                            cursor: "pointer",
-                            background: "transparent",
-                            border: `1px solid ${plan.color}50`,
-                            color: plan.color,
-                            position: "relative",
-                            zIndex: 10,
-                            transition: "background 0.25s ease",
-                        }
+                              width: "100%",
+                              padding: "13px 24px",
+                              borderRadius: 12,
+                              fontWeight: 600,
+                              fontSize: 14,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              gap: 8,
+                              cursor: "pointer",
+                              background: "transparent",
+                              border: `1px solid ${plan.color}50`,
+                              color: plan.color,
+                              position: "relative",
+                              zIndex: 10,
+                              transition: "background 0.25s ease",
+                          }
                 }
                 onMouseEnter={(e) => {
                     if (!plan.featured) {
                         (e.currentTarget as HTMLButtonElement).style.background = `${plan.color}15`;
                     } else {
                         (e.currentTarget as HTMLButtonElement).style.boxShadow =
-                            "0 8px 30px rgba(99,102,241,0.5)";
+                            "0 8px 30px rgba(var(--primary-rgb),0.5)";
                     }
                 }}
                 onMouseLeave={(e) => {
@@ -358,7 +358,7 @@ export default function PricingSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 100%, rgba(99,102,241,0.08) 0%, transparent 60%)",
+                        "radial-gradient(ellipse at 50% 100%, rgba(var(--primary-rgb),0.08) 0%, transparent 60%)",
                 }}
             />
 
@@ -382,7 +382,7 @@ export default function PricingSection() {
                             fontSize: "clamp(1.875rem, 4vw, 3rem)",
                             fontWeight: 800,
                             marginBottom: 16,
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             lineHeight: 1.15,
                         }}
                     >
@@ -396,7 +396,7 @@ export default function PricingSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 520,
                             margin: "0 auto",
@@ -435,7 +435,7 @@ export default function PricingSection() {
                         alignItems: "center",
                         justifyContent: "center",
                         gap: "12px 24px",
-                        color: "rgba(248,250,252,0.5)",
+                        color: "var(--text-secondary)",
                         fontSize: 13,
                     }}
                 >
@@ -444,9 +444,9 @@ export default function PricingSection() {
                         "No Hidden Fees",
                         "Free Consultation Call",
                         "Ongoing Support Included",
-                    ].map((item, i) => (
+                    ].map((item) => (
                         <span key={item} style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                            <span style={{ color: "#4ade80" }}>✓</span> {item}
+                            <span style={{ color: "var(--primary-light)" }}>✓</span> {item}
                         </span>
                     ))}
                 </motion.div>

@@ -13,9 +13,9 @@ const steps = [
             "We start with a deep-dive consultation to understand your business, target audience, competitors, and goals. A solid strategy is the foundation of every successful website.",
         duration: "1-2 days",
         deliverables: ["Business Analysis", "Competitor Research", "Project Roadmap", "Timeline & Quote"],
-        color: "#6366f1",
-        bg: "rgba(99,102,241,0.1)",
-        border: "rgba(99,102,241,0.3)",
+        color: "var(--primary)",
+        bg: "rgba(var(--primary-rgb),0.1)",
+        border: "rgba(var(--primary-rgb),0.3)",
     },
     {
         number: "02",
@@ -25,9 +25,9 @@ const steps = [
             "Our designers craft stunning wireframes and high-fidelity mockups in Figma. We collaborate with you to refine the design until it perfectly captures your brand vision.",
         duration: "3-5 days",
         deliverables: ["Brand Style Guide", "Wireframes", "High-Fi Mockups", "Design Approval"],
-        color: "#8b5cf6",
-        bg: "rgba(139,92,246,0.1)",
-        border: "rgba(139,92,246,0.3)",
+        color: "var(--primary-light)",
+        bg: "rgba(var(--primary-light-rgb),0.1)",
+        border: "rgba(var(--primary-light-rgb),0.3)",
     },
     {
         number: "03",
@@ -149,7 +149,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
                         >
                             <h3
                                 style={{
-                                    color: "#f8fafc",
+                                    color: "var(--heading-color)",
                                     fontWeight: 700,
                                     fontSize: 18,
                                     fontFamily: "Poppins, sans-serif",
@@ -176,7 +176,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
 
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.6)",
+                                color: "var(--text-secondary)",
                                 fontSize: 14,
                                 lineHeight: 1.65,
                                 marginBottom: 20,
@@ -203,7 +203,7 @@ function StepCard({ step, index }: { step: typeof steps[0]; index: number }) {
                                         style={{ color: step.color, flexShrink: 0 }}
                                     />
                                     <span
-                                        style={{ color: "rgba(248,250,252,0.65)", fontSize: 12 }}
+                                        style={{ color: "var(--text-secondary)", fontSize: 12 }}
                                     >
                                         {item}
                                     </span>
@@ -249,7 +249,7 @@ export default function ProcessSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 0% 50%, rgba(99,102,241,0.06) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(14,165,233,0.06) 0%, transparent 50%)",
+                        "radial-gradient(ellipse at 0% 50%, rgba(var(--primary-rgb),0.06) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(var(--primary-light-rgb),0.06) 0%, transparent 50%)",
                 }}
             />
 
@@ -276,7 +276,7 @@ export default function ProcessSection() {
                             fontSize: "clamp(1.875rem, 4vw, 3rem)",
                             fontWeight: 800,
                             marginBottom: 16,
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             lineHeight: 1.15,
                         }}
                     >
@@ -290,7 +290,7 @@ export default function ProcessSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 520,
                             margin: "0 auto",

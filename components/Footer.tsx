@@ -38,7 +38,7 @@ export default function Footer() {
         <footer
             style={{
                 position: "relative",
-                borderTop: "1px solid rgba(255,255,255,0.07)",
+                borderTop: "1px solid var(--border)",
                 overflow: "hidden",
                 paddingTop: 80,
                 paddingBottom: 32,
@@ -51,7 +51,7 @@ export default function Footer() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.07) 0%, transparent 50%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.07) 0%, transparent 50%)",
                 }}
             />
 
@@ -73,7 +73,7 @@ export default function Footer() {
                                     width: 36,
                                     height: 36,
                                     borderRadius: 10,
-                                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                                    background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
@@ -84,7 +84,7 @@ export default function Footer() {
                             </div>
                             <span
                                 style={{
-                                    color: "#f8fafc",
+                                    color: "var(--heading-color)",
                                     fontWeight: 700,
                                     fontSize: 19,
                                     fontFamily: "Poppins, sans-serif",
@@ -95,7 +95,7 @@ export default function Footer() {
                         </div>
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.5)",
+                                color: "var(--text-secondary)",
                                 fontSize: 14,
                                 lineHeight: 1.7,
                                 marginBottom: 12,
@@ -107,7 +107,7 @@ export default function Footer() {
                         </p>
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.4)",
+                                color: "var(--text-tertiary)",
                                 fontSize: 13,
                                 lineHeight: 1.7,
                                 marginBottom: 8,
@@ -118,7 +118,7 @@ export default function Footer() {
                         </p>
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.4)",
+                                color: "var(--text-tertiary)",
                                 fontSize: 13,
                                 lineHeight: 1.7,
                                 marginBottom: 8,
@@ -129,14 +129,14 @@ export default function Footer() {
                         </p>
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.4)",
+                                color: "var(--text-tertiary)",
                                 fontSize: 13,
                                 lineHeight: 1.7,
                                 marginBottom: 24,
                                 maxWidth: 280,
                             }}
                         >
-                            Founded by <strong style={{ color: "rgba(248,250,252,0.6)" }}>Dhyey Patel</strong> &amp; <strong style={{ color: "rgba(248,250,252,0.6)" }}>Manasvi Shah</strong>
+                            Founded by <strong style={{ color: "var(--text-secondary)" }}>Dhyey Patel</strong> &amp; <strong style={{ color: "var(--text-secondary)" }}>Manasvi Shah</strong>
                         </p>
 
                         {/* Social links */}
@@ -151,26 +151,26 @@ export default function Footer() {
                                         width: 36,
                                         height: 36,
                                         borderRadius: 10,
-                                        background: "rgba(255,255,255,0.05)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
+                                        background: "var(--glass)",
+                                        border: "1px solid var(--border)",
                                         display: "flex",
                                         alignItems: "center",
                                         justifyContent: "center",
-                                        color: "rgba(248,250,252,0.5)",
+                                        color: "var(--text-secondary)",
                                         textDecoration: "none",
                                         transition: "color 0.2s, border-color 0.2s, background 0.2s",
                                     }}
                                     onMouseEnter={(e) => {
                                         const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "#f8fafc";
-                                        el.style.borderColor = "rgba(99,102,241,0.4)";
-                                        el.style.background = "rgba(99,102,241,0.1)";
+                                        el.style.color = "var(--foreground)";
+                                        el.style.borderColor = "rgba(var(--primary-rgb),0.4)";
+                                        el.style.background = "rgba(var(--primary-rgb),0.1)";
                                     }}
                                     onMouseLeave={(e) => {
                                         const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "rgba(248,250,252,0.5)";
-                                        el.style.borderColor = "rgba(255,255,255,0.1)";
-                                        el.style.background = "rgba(255,255,255,0.05)";
+                                        el.style.color = "var(--text-secondary)";
+                                        el.style.borderColor = "var(--border)";
+                                        el.style.background = "var(--glass)";
                                     }}
                                 >
                                     <Icon size={15} />
@@ -184,8 +184,8 @@ export default function Footer() {
                                 display: "inline-flex",
                                 alignItems: "center",
                                 gap: 8,
-                                background: "rgba(16,185,129,0.1)",
-                                border: "1px solid rgba(16,185,129,0.25)",
+                                background: "rgba(var(--primary-light-rgb),0.1)",
+                                border: "1px solid rgba(var(--primary-light-rgb),0.25)",
                                 borderRadius: 100,
                                 padding: "6px 14px",
                             }}
@@ -195,12 +195,12 @@ export default function Footer() {
                                     width: 8,
                                     height: 8,
                                     borderRadius: "50%",
-                                    background: "#4ade80",
+                                    background: "var(--primary-light)",
                                     display: "inline-block",
                                     animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                                 }}
                             />
-                            <span style={{ color: "#4ade80", fontSize: 12, fontWeight: 500 }}>
+                            <span style={{ color: "var(--primary-light)", fontSize: 12, fontWeight: 500 }}>
                                 Accepting new projects
                             </span>
                         </div>
@@ -211,7 +211,7 @@ export default function Footer() {
                         <div key={category}>
                             <div
                                 style={{
-                                    color: "#f8fafc",
+                                    color: "var(--heading-color)",
                                     fontWeight: 600,
                                     fontSize: 13,
                                     marginBottom: 16,
@@ -235,7 +235,7 @@ export default function Footer() {
                                                 }
                                             }}
                                             style={{
-                                                color: "rgba(248,250,252,0.45)",
+                                                color: "var(--text-tertiary)",
                                                 fontSize: 14,
                                                 textDecoration: "none",
                                                 display: "flex",
@@ -244,11 +244,10 @@ export default function Footer() {
                                                 transition: "color 0.2s",
                                             }}
                                             onMouseEnter={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "#f8fafc";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--foreground)";
                                             }}
                                             onMouseLeave={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color =
-                                                    "rgba(248,250,252,0.45)";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                             }}
                                         >
                                             {link.label}
@@ -276,14 +275,14 @@ export default function Footer() {
                         alignItems: "center",
                         justifyContent: "space-between",
                         gap: 20,
-                        background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))",
-                        border: "1px solid rgba(99,102,241,0.3)",
+                        background: "linear-gradient(135deg, rgba(var(--primary-rgb),0.15), rgba(var(--primary-light-rgb),0.1))",
+                        border: "1px solid rgba(var(--primary-rgb),0.3)",
                     }}
                 >
                     <div>
                         <div
                             style={{
-                                color: "#f8fafc",
+                                color: "var(--heading-color)",
                                 fontWeight: 700,
                                 fontSize: 18,
                                 marginBottom: 4,
@@ -292,7 +291,7 @@ export default function Footer() {
                         >
                             Ready to upgrade your website?
                         </div>
-                        <div style={{ color: "rgba(248,250,252,0.55)", fontSize: 14 }}>
+                        <div style={{ color: "var(--text-secondary)", fontSize: 14 }}>
                             Free consultation call · No commitment required
                         </div>
                     </div>
@@ -320,10 +319,10 @@ export default function Footer() {
                         justifyContent: "space-between",
                         gap: 12,
                         paddingTop: 24,
-                        borderTop: "1px solid rgba(255,255,255,0.07)",
+                        borderTop: "1px solid var(--border)",
                     }}
                 >
-                    <p style={{ color: "rgba(248,250,252,0.3)", fontSize: 13 }}>
+                    <p style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
                         © 2026 Catalyq. All rights reserved. Built with ❤️ from Ahmedabad, India.
                     </p>
                     <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
@@ -332,18 +331,16 @@ export default function Footer() {
                                 key={item}
                                 href="#"
                                 style={{
-                                    color: "rgba(248,250,252,0.3)",
+                                    color: "var(--text-tertiary)",
                                     fontSize: 13,
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color =
-                                        "rgba(248,250,252,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color =
-                                        "rgba(248,250,252,0.3)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                 }}
                             >
                                 {item}

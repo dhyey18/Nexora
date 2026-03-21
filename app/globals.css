@@ -1,19 +1,33 @@
 @import "tailwindcss";
 
 /* ============================================================
-   CSS CUSTOM PROPERTIES
+   CSS CUSTOM PROPERTIES — Dark theme (default)
+   Values are injected at runtime by ThemeProvider.
+   These serve as fallbacks for initial render.
    ============================================================ */
 :root {
-  --background: #020817;
-  --foreground: #f8fafc;
-  --primary: #6366f1;
-  --primary-light: #818cf8;
-  --secondary: #0ea5e9;
-  --accent: #8b5cf6;
-  --muted: #1e293b;
-  --border: rgba(255, 255, 255, 0.08);
-  --card-bg: rgba(15, 23, 42, 0.8);
-  --glass: rgba(255, 255, 255, 0.05);
+  --background: #0a1a0f;
+  --foreground: #f0f7f1;
+  --primary: #2F6B3F;
+  --primary-light: #7FB77E;
+  --secondary: #FFF6C0;
+  --accent: #FFF6C0;
+  --muted: #132a1a;
+  --border: rgba(127, 183, 126, 0.12);
+  --card-bg: rgba(13, 30, 18, 0.8);
+  --glass: rgba(127, 183, 126, 0.05);
+  --primary-rgb: 47, 107, 63;
+  --primary-light-rgb: 127, 183, 126;
+  --accent-rgb: 255, 246, 192;
+  --foreground-rgb: 240, 247, 241;
+  --gradient-start: #2F6B3F;
+  --gradient-end: #7FB77E;
+  --nav-bg: rgba(10, 26, 15, 0.88);
+  --heading-color: #f0f7f1;
+  --text-primary: rgba(240, 247, 241, 0.9);
+  --text-secondary: rgba(240, 247, 241, 0.6);
+  --text-tertiary: rgba(240, 247, 241, 0.4);
+  --scrollbar-track: #0a1a0f;
 
   /* Spacing */
   --section-py: 6rem;
@@ -45,6 +59,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 img,
@@ -82,11 +97,11 @@ h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #020817;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
   border-radius: 3px;
 }
 
@@ -94,8 +109,8 @@ h6 {
    SELECTION
    ============================================================ */
 ::selection {
-  background: rgba(99, 102, 241, 0.3);
-  color: #f8fafc;
+  background: rgba(var(--primary-rgb), 0.3);
+  color: var(--foreground);
 }
 
 /* ============================================================
@@ -134,39 +149,39 @@ h6 {
    GLASSMORPHISM
    ============================================================ */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
 }
 
 .glass-card {
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
   transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(30, 41, 59, 0.8);
-  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(var(--primary-rgb), 0.12);
+  border-color: rgba(var(--primary-light-rgb), 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12);
+  box-shadow: 0 20px 60px rgba(var(--primary-rgb), 0.12);
 }
 
 /* ============================================================
    GRADIENT TEXT
    ============================================================ */
 .gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #0ea5e9 100%);
+  background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 50%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-warm {
-  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--primary-light) 50%, var(--gradient-start) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -175,19 +190,19 @@ h6 {
 /* ============================================================
    GLOW EFFECTS
    ============================================================ */
-.glow-purple {
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+.glow-primary {
+  box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.3);
 }
 
-.glow-blue {
-  box-shadow: 0 0 40px rgba(14, 165, 233, 0.3);
+.glow-accent {
+  box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.3);
 }
 
 /* ============================================================
    ANIMATED BACKGROUND
    ============================================================ */
 .animated-bg {
-  background: linear-gradient(-45deg, #020817, #0f172a, #1e1b4b, #0c0a3e, #020817);
+  background: linear-gradient(-45deg, var(--background), var(--muted), rgba(var(--primary-rgb), 0.2), rgba(var(--primary-light-rgb), 0.1), var(--background));
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
@@ -260,7 +275,7 @@ h6 {
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.04) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(var(--foreground-rgb), 0.04) 50%, transparent 100%);
   background-size: 1000px 100%;
   animation: shimmer 3s infinite linear;
 }
@@ -270,12 +285,12 @@ h6 {
    ============================================================ */
 .stars-bg {
   background-image:
-    radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-    radial-gradient(2px 2px at 70% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 40% 70%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
-    radial-gradient(1px 1px at 80% 60%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(2px 2px at 10% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-    radial-gradient(1px 1px at 60% 90%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(2px 2px at 20% 30%, rgba(var(--foreground-rgb), 0.3) 0%, transparent 50%),
+    radial-gradient(2px 2px at 70% 20%, rgba(var(--foreground-rgb), 0.2) 0%, transparent 50%),
+    radial-gradient(1px 1px at 40% 70%, rgba(var(--foreground-rgb), 0.25) 0%, transparent 50%),
+    radial-gradient(1px 1px at 80% 60%, rgba(var(--foreground-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(2px 2px at 10% 80%, rgba(var(--foreground-rgb), 0.2) 0%, transparent 50%),
+    radial-gradient(1px 1px at 60% 90%, rgba(var(--foreground-rgb), 0.1) 0%, transparent 50%);
 }
 
 /* ============================================================
@@ -285,9 +300,9 @@ h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.28);
-  color: #a5b4fc;
+  background: rgba(var(--primary-rgb), 0.12);
+  border: 1px solid rgba(var(--primary-rgb), 0.28);
+  color: var(--primary-light);
   padding: 6px 16px;
   border-radius: 100px;
   font-size: 12px;
@@ -302,8 +317,8 @@ h6 {
    ============================================================ */
 .gradient-border {
   position: relative;
-  background: linear-gradient(#0f172a, #0f172a) padding-box,
-    linear-gradient(135deg, #6366f1, #8b5cf6, #0ea5e9) border-box;
+  background: linear-gradient(var(--muted), var(--muted)) padding-box,
+    linear-gradient(135deg, var(--gradient-start), var(--gradient-end), var(--secondary)) border-box;
   border: 1px solid transparent;
   border-radius: 16px;
 }
@@ -316,7 +331,7 @@ h6 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
   color: #ffffff;
   padding: 14px 32px;
   border-radius: 12px;
@@ -349,7 +364,7 @@ h6 {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 12px 40px rgba(var(--primary-rgb), 0.5);
 }
 
 .btn-primary:active {
@@ -362,13 +377,13 @@ h6 {
   justify-content: center;
   gap: 8px;
   background: transparent;
-  color: rgba(248, 250, 252, 0.9);
+  color: var(--text-primary);
   padding: 13px 32px;
   border-radius: 12px;
   font-weight: 600;
   font-size: 15px;
   line-height: 1;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--border);
   cursor: pointer;
   transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
   text-decoration: none;
@@ -376,8 +391,8 @@ h6 {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(99, 102, 241, 0.5);
+  background: rgba(var(--primary-rgb), 0.07);
+  border-color: rgba(var(--primary-rgb), 0.5);
   transform: translateY(-2px);
 }
 
@@ -390,7 +405,7 @@ h6 {
    ============================================================ */
 .nav-link {
   position: relative;
-  color: rgba(248, 250, 252, 0.65);
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -408,13 +423,13 @@ h6 {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
   transition: width 0.3s ease;
   border-radius: 1px;
 }
 
 .nav-link:hover {
-  color: rgba(248, 250, 252, 1);
+  color: var(--foreground);
 }
 
 .nav-link:hover::after {
@@ -425,8 +440,8 @@ h6 {
    TESTIMONIAL CARD
    ============================================================ */
 .testimonial-card {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 32px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
@@ -436,8 +451,8 @@ h6 {
 }
 
 .testimonial-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.1);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 20px 60px rgba(var(--primary-rgb), 0.1);
   transform: translateY(-4px);
 }
 
@@ -464,28 +479,28 @@ h6 {
    ============================================================ */
 .form-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(var(--foreground-rgb), 0.05);
+  border: 1px solid rgba(var(--foreground-rgb), 0.1);
   border-radius: 12px;
   padding: 12px 16px;
-  color: #f8fafc;
+  color: var(--foreground);
   font-size: 14px;
   transition: border-color 0.25s ease, background 0.25s ease;
   outline: none;
 }
 
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(var(--foreground-rgb), 0.28);
 }
 
 .form-input:focus {
-  border-color: rgba(99, 102, 241, 0.6);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(var(--primary-rgb), 0.6);
+  background: rgba(var(--foreground-rgb), 0.07);
 }
 
 .form-input option {
-  background: #0f172a;
-  color: #f8fafc;
+  background: var(--muted);
+  color: var(--foreground);
 }
 
 /* ============================================================
@@ -495,7 +510,7 @@ h6 {
   font-size: 80px;
   font-weight: 900;
   line-height: 1;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.25) 0%, rgba(var(--primary-light-rgb), 0.08) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -507,7 +522,7 @@ h6 {
    ============================================================ */
 .divider-gradient {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--primary-rgb), 0.5), transparent);
 }
 
 /* ============================================================
@@ -537,15 +552,15 @@ h6 {
 
 /* Text colors with specific opacities */
 .text-muted {
-  color: rgba(248, 250, 252, 0.55);
+  color: var(--text-secondary);
 }
 
 .text-dimmed {
-  color: rgba(248, 250, 252, 0.4);
+  color: var(--text-tertiary);
 }
 
 .text-faint {
-  color: rgba(248, 250, 252, 0.3);
+  color: rgba(var(--foreground-rgb), 0.3);
 }
 
 /* Flex utilities */
@@ -569,8 +584,8 @@ h6 {
    ============================================================ */
 .grid-pattern {
   background-image:
-    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -606,9 +621,9 @@ h6 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* .sm-grid-cols-3 {
+  .sm-grid-cols-3 {
     grid-template-columns: repeat(3, 1fr);
-  } */
+  }
 }
 
 @media (min-width: 768px) {

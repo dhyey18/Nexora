@@ -19,9 +19,8 @@ const services = [
         title: "Website Development",
         description:
             "Custom-built, pixel-perfect websites tailored to your brand and business goals. Fast, secure, and built on modern tech.",
-        color: "from-indigo-500 to-blue-600",
-        gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
-        glow: "rgba(99,102,241,0.25)",
+        gradient: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
+        glow: "rgba(var(--primary-rgb),0.25)",
         tags: ["React", "Next.js", "TypeScript"],
     },
     {
@@ -29,7 +28,6 @@ const services = [
         title: "Business Website Redesign",
         description:
             "Transform your outdated website into a modern, conversion-optimized digital experience that impresses visitors.",
-        color: "from-purple-500 to-pink-600",
         gradient: "linear-gradient(135deg, #a855f7, #db2777)",
         glow: "rgba(168,85,247,0.25)",
         tags: ["UI/UX", "Figma", "Branding"],
@@ -39,7 +37,6 @@ const services = [
         title: "SEO Optimization",
         description:
             "Rank higher on Google with our data-driven SEO strategies. Get found by customers actively searching for your services.",
-        color: "from-green-500 to-emerald-600",
         gradient: "linear-gradient(135deg, #22c55e, #059669)",
         glow: "rgba(16,185,129,0.25)",
         tags: ["On-Page SEO", "Schema", "Core Web Vitals"],
@@ -49,7 +46,6 @@ const services = [
         title: "Performance Optimization",
         description:
             "Lightning-fast page speeds that boost user retention and conversion rates. Optimize every millisecond that counts.",
-        color: "from-yellow-500 to-orange-500",
         gradient: "linear-gradient(135deg, #eab308, #f97316)",
         glow: "rgba(245,158,11,0.25)",
         tags: ["Web Vitals", "CDN", "Caching"],
@@ -59,7 +55,6 @@ const services = [
         title: "E-commerce Websites",
         description:
             "Powerful online stores with seamless checkout experiences, inventory management, and payment gateway integrations.",
-        color: "from-sky-500 to-cyan-600",
         gradient: "linear-gradient(135deg, #0ea5e9, #0891b2)",
         glow: "rgba(14,165,233,0.25)",
         tags: ["Shopify", "WooCommerce", "Stripe"],
@@ -69,7 +64,6 @@ const services = [
         title: "Landing Pages",
         description:
             "High-converting landing pages engineered to turn visitors into leads and leads into loyal customers.",
-        color: "from-rose-500 to-red-600",
         gradient: "linear-gradient(135deg, #f43f5e, #dc2626)",
         glow: "rgba(244,63,94,0.25)",
         tags: ["A/B Testing", "CRO", "Analytics"],
@@ -134,7 +128,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             {/* Content */}
             <h3
                 style={{
-                    color: "#f8fafc",
+                    color: "var(--heading-color)",
                     fontWeight: 600,
                     fontSize: 17,
                     marginBottom: 10,
@@ -143,11 +137,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             >
                 {service.title}
             </h3>
-            <p style={{ color: "rgba(248,250,252,0.55)", fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
+            <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
                 {service.description}
             </p>
 
-            {/* Tags (Wrapped in a container that allows the parent to breathe) */}
+            {/* Tags */}
             <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
                     {service.tags.map((tag) => (
@@ -157,9 +151,9 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                                 fontSize: 11,
                                 padding: "4px 10px",
                                 borderRadius: 100,
-                                background: "rgba(255,255,255,0.05)",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                color: "rgba(248,250,252,0.6)",
+                                background: "var(--glass)",
+                                border: "1px solid var(--border)",
+                                color: "var(--text-secondary)",
                                 fontWeight: 500,
                             }}
                         >
@@ -175,7 +169,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                     display: "flex",
                     alignItems: "center",
                     gap: 6,
-                    color: "#818cf8",
+                    color: "var(--primary-light)",
                     fontSize: 13,
                     fontWeight: 500,
                     transition: "gap 0.2s ease",
@@ -221,7 +215,7 @@ export default function ServicesSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.07) 0%, transparent 70%)",
+                        "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.07) 0%, transparent 70%)",
                 }}
             />
 
@@ -245,7 +239,7 @@ export default function ServicesSection() {
                             fontSize: "clamp(1.875rem, 4vw, 3rem)",
                             fontWeight: 800,
                             marginBottom: 16,
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             lineHeight: 1.15,
                         }}
                     >
@@ -259,7 +253,7 @@ export default function ServicesSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 560,
                             margin: "0 auto",

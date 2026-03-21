@@ -13,7 +13,7 @@ const testimonials = [
         rating: 5,
         text: "Catalyq transformed our online presence completely. Our new website loads 4x faster, looks absolutely stunning, and our conversion rate went from 2% to 11% in just 3 months. Best investment we've made.",
         highlight: "conversion rate went from 2% to 11%",
-        color: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+        color: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
     },
     {
         name: "Rohan Kapoor",
@@ -77,7 +77,7 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
         return (
             <>
                 {parts[0]}
-                <strong style={{ color: "#f8fafc", fontWeight: 600 }}>{highlight}</strong>
+                <strong style={{ color: "var(--heading-color)", fontWeight: 600 }}>{highlight}</strong>
                 {parts[1]}
             </>
         );
@@ -93,7 +93,7 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
         >
             {/* Quote icon */}
             <div style={{ position: "absolute", top: 24, right: 24 }}>
-                <Quote size={26} style={{ color: "rgba(99,102,241,0.2)" }} />
+                <Quote size={26} style={{ color: "rgba(var(--primary-rgb),0.2)" }} />
             </div>
 
             {/* Stars */}
@@ -104,7 +104,7 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
             </div>
 
             {/* Text */}
-            <p style={{ color: "rgba(248,250,252,0.7)", fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>
+            <p style={{ color: "var(--text-primary)", fontSize: 14, lineHeight: 1.7, marginBottom: 24, opacity: 0.7 }}>
                 &ldquo;{boldify(review.text, review.highlight)}&rdquo;
             </p>
 
@@ -128,8 +128,8 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
                     {review.avatar}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ color: "#f8fafc", fontWeight: 600, fontSize: 14 }}>{review.name}</div>
-                    <div style={{ color: "rgba(248,250,252,0.45)", fontSize: 12 }}>
+                    <div style={{ color: "var(--heading-color)", fontWeight: 600, fontSize: 14 }}>{review.name}</div>
+                    <div style={{ color: "var(--text-tertiary)", fontSize: 12 }}>
                         {review.role}, {review.company}
                     </div>
                 </div>
@@ -138,15 +138,15 @@ function TestimonialCard({ review, index }: { review: typeof testimonials[0]; in
                         width: 30,
                         height: 30,
                         borderRadius: 8,
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        background: "var(--glass)",
+                        border: "1px solid var(--border)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         flexShrink: 0,
                     }}
                 >
-                    <span style={{ color: "#4ade80", fontSize: 12, fontWeight: 600 }}>✓</span>
+                    <span style={{ color: "var(--primary-light)", fontSize: 12, fontWeight: 600 }}>✓</span>
                 </div>
             </div>
         </motion.div>
@@ -166,7 +166,7 @@ export default function TestimonialsSection() {
                     inset: 0,
                     pointerEvents: "none",
                     background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 50%)",
+                        "radial-gradient(ellipse at 50% 0%, rgba(var(--primary-rgb),0.08) 0%, transparent 50%)",
                 }}
             />
 
@@ -190,7 +190,7 @@ export default function TestimonialsSection() {
                             fontSize: "clamp(1.875rem, 4vw, 3rem)",
                             fontWeight: 800,
                             marginBottom: 16,
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             lineHeight: 1.15,
                         }}
                     >
@@ -204,7 +204,7 @@ export default function TestimonialsSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 520,
                             margin: "0 auto",
@@ -237,8 +237,8 @@ export default function TestimonialsSection() {
                                     <Star key={i} size={17} style={{ color: "#facc15", fill: "#facc15" }} />
                                 ))}
                             </div>
-                            <span style={{ color: "#f8fafc", fontWeight: 700, fontSize: 17 }}>5.0</span>
-                            <span style={{ color: "rgba(248,250,252,0.5)", fontSize: 13 }}>
+                            <span style={{ color: "var(--heading-color)", fontWeight: 700, fontSize: 17 }}>5.0</span>
+                            <span style={{ color: "var(--text-secondary)", fontSize: 13 }}>
                                 from 2+ verified reviews
                             </span>
                         </div>

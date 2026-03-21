@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
     { label: "Services", href: "#services" },
@@ -49,10 +50,10 @@ export default function Navbar() {
                         margin: "0 auto",
                         borderRadius: 20,
                         transition: "all 0.5s ease",
-                        background: scrolled ? "rgba(2,8,23,0.88)" : "transparent",
+                        background: scrolled ? "var(--nav-bg)" : "transparent",
                         backdropFilter: scrolled ? "blur(20px)" : "none",
                         WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
-                        border: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+                        border: scrolled ? "1px solid var(--border)" : "1px solid transparent",
                         boxShadow: scrolled ? "0 8px 32px rgba(0,0,0,0.4)" : "none",
                     }}
                 >
@@ -71,7 +72,7 @@ export default function Navbar() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 10,
-                                color: "#f8fafc",
+                                color: "var(--heading-color)",
                                 fontWeight: 700,
                                 fontSize: 19,
                                 textDecoration: "none",
@@ -83,7 +84,7 @@ export default function Navbar() {
                                     width: 32,
                                     height: 32,
                                     borderRadius: 8,
-                                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                                    background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
@@ -109,8 +110,9 @@ export default function Navbar() {
                             ))}
                         </div>
 
-                        {/* CTA */}
+                        {/* CTA + Theme Toggle */}
                         <div style={{ display: "none", alignItems: "center", gap: 12 }} className="md-flex">
+                            <ThemeToggle />
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -122,26 +124,28 @@ export default function Navbar() {
                             </motion.button>
                         </div>
 
-                        {/* Mobile hamburger */}
-                        <button
-                            style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                padding: 8,
-                                borderRadius: 10,
-                                background: "rgba(255,255,255,0.06)",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                color: "#f8fafc",
-                                cursor: "pointer",
-                            }}
-                            className="md-hidden"
-                            onClick={() => setMobileOpen(!mobileOpen)}
-                            id="mobile-menu-toggle"
-                            aria-label="Toggle mobile menu"
-                        >
-                            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-                        </button>
+                        {/* Mobile: Theme toggle + hamburger */}
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }} className="md-hidden">
+                            <ThemeToggle />
+                            <button
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    padding: 8,
+                                    borderRadius: 10,
+                                    background: "var(--glass)",
+                                    border: "1px solid var(--border)",
+                                    color: "var(--foreground)",
+                                    cursor: "pointer",
+                                }}
+                                onClick={() => setMobileOpen(!mobileOpen)}
+                                id="mobile-menu-toggle"
+                                aria-label="Toggle mobile menu"
+                            >
+                                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </motion.nav>
@@ -161,10 +165,10 @@ export default function Navbar() {
                             right: 16,
                             zIndex: 40,
                             borderRadius: 20,
-                            background: "rgba(2,8,23,0.96)",
+                            background: "var(--nav-bg)",
                             backdropFilter: "blur(20px)",
                             WebkitBackdropFilter: "blur(20px)",
-                            border: "1px solid rgba(255,255,255,0.1)",
+                            border: "1px solid var(--border)",
                             boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
                             padding: 24,
                         }}
@@ -176,7 +180,7 @@ export default function Navbar() {
                                     onClick={() => handleNavClick(link.href)}
                                     style={{
                                         textAlign: "left",
-                                        color: "rgba(248,250,252,0.8)",
+                                        color: "var(--text-primary)",
                                         fontWeight: 500,
                                         fontSize: 16,
                                         padding: "10px 14px",
@@ -189,13 +193,13 @@ export default function Navbar() {
                                     }}
                                     onMouseEnter={(e) => {
                                         const el = e.currentTarget as HTMLButtonElement;
-                                        el.style.background = "rgba(99,102,241,0.1)";
-                                        el.style.color = "#f8fafc";
+                                        el.style.background = `rgba(var(--primary-rgb), 0.1)`;
+                                        el.style.color = "var(--foreground)";
                                     }}
                                     onMouseLeave={(e) => {
                                         const el = e.currentTarget as HTMLButtonElement;
                                         el.style.background = "transparent";
-                                        el.style.color = "rgba(248,250,252,0.8)";
+                                        el.style.color = "var(--text-primary)";
                                     }}
                                 >
                                     {link.label}
@@ -205,7 +209,7 @@ export default function Navbar() {
                                 style={{
                                     paddingTop: 12,
                                     marginTop: 8,
-                                    borderTop: "1px solid rgba(255,255,255,0.08)",
+                                    borderTop: "1px solid var(--border)",
                                 }}
                             >
                                 <button

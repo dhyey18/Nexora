@@ -7,15 +7,6 @@ import { ExternalLink, Layers } from "lucide-react";
 const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Interior Design", "Fashion"];
 
 const projects = [
-    // {
-    //     title: "Bistro Modern",
-    //     category: "Restaurant",
-    //     description: "Elegant restaurant website with online reservations, menu showcase, and food photography.",
-    //     tech: ["Next.js", "Tailwind", "Stripe"],
-    //     color: "linear-gradient(135deg, #f97316, #be123c)",
-    //     metrics: { visits: "12K+/mo", conversion: "8.5%", rating: "4.9★" },
-    //     gradient: "linear-gradient(135deg, rgba(249,115,22,0.85), rgba(225,29,72,0.85))",
-    // },
     {
         title: "VÔGE — Modern Clothing",
         category: "Fashion",
@@ -36,15 +27,6 @@ const projects = [
         gradient: "linear-gradient(135deg, rgba(16,185,129,0.85), rgba(20,184,166,0.85))",
         link: "https://miso-6r4l.vercel.app/",
     },
-    // {
-    //     title: "TechFounders Co.",
-    //     category: "Startup",
-    //     description: "Clean startup landing page with investor-ready design, product demo, and team presentation.",
-    //     tech: ["Next.js", "TypeScript", "Vercel"],
-    //     color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
-    //     metrics: { visits: "15K+/mo", conversion: "14%", rating: "5★" },
-    //     gradient: "linear-gradient(135deg, rgba(14,165,233,0.85), rgba(37,99,235,0.85))",
-    // },
     {
         title: "HealthFirst Clinic — Dr. Arjun Mehta",
         category: "Healthcare",
@@ -298,7 +280,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                             transition: "color 0.2s",
                             textDecoration: "none",
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--secondary)")}
                         onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
                     >
                         <ExternalLink size={13} /> View Live Site
@@ -318,7 +300,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                             padding: 0,
                             transition: "color 0.2s",
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--secondary)")}
                         onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
                     >
                         <ExternalLink size={13} /> View Case Study
@@ -343,7 +325,7 @@ export default function PortfolioSection() {
                     position: "absolute",
                     inset: 0,
                     pointerEvents: "none",
-                    background: "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.05) 0%, transparent 60%)",
+                    background: "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.05) 0%, transparent 60%)",
                 }}
             />
 
@@ -367,7 +349,7 @@ export default function PortfolioSection() {
                             fontSize: "clamp(1.875rem, 4vw, 3rem)",
                             fontWeight: 800,
                             marginBottom: 16,
-                            color: "#f8fafc",
+                            color: "var(--heading-color)",
                             lineHeight: 1.15,
                         }}
                     >
@@ -381,7 +363,7 @@ export default function PortfolioSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 560,
                             margin: "0 auto",
@@ -409,9 +391,9 @@ export default function PortfolioSection() {
                                     fontSize: 13,
                                     fontWeight: 500,
                                     cursor: "pointer",
-                                    border: `1px solid ${active === cat ? "#6366f1" : "rgba(255,255,255,0.15)"}`,
-                                    background: active === cat ? "#6366f1" : "transparent",
-                                    color: active === cat ? "#fff" : "rgba(255,255,255,0.6)",
+                                    border: `1px solid ${active === cat ? "var(--primary)" : "var(--border)"}`,
+                                    background: active === cat ? "var(--primary)" : "transparent",
+                                    color: active === cat ? "#fff" : "var(--text-secondary)",
                                     transition: "all 0.2s ease",
                                     display: "flex",
                                     alignItems: "center",

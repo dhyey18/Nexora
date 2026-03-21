@@ -46,7 +46,7 @@ export default function HeroSection() {
                         width: 600,
                         height: 600,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)",
+                        background: "radial-gradient(circle, rgba(var(--primary-rgb),0.15) 0%, transparent 70%)",
                     }}
                 />
                 <div
@@ -58,7 +58,7 @@ export default function HeroSection() {
                         width: 500,
                         height: 500,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%)",
+                        background: "radial-gradient(circle, rgba(var(--primary-light-rgb),0.12) 0%, transparent 70%)",
                         animationDelay: "2s",
                     }}
                 />
@@ -71,7 +71,7 @@ export default function HeroSection() {
                         width: 800,
                         height: 800,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 60%)",
+                        background: "radial-gradient(circle, rgba(var(--accent-rgb),0.06) 0%, transparent 60%)",
                     }}
                 />
 
@@ -86,8 +86,8 @@ export default function HeroSection() {
                         width: 64,
                         height: 64,
                         borderRadius: 12,
-                        border: "1px solid rgba(99,102,241,0.2)",
-                        background: "rgba(99,102,241,0.05)",
+                        border: "1px solid rgba(var(--primary-rgb),0.2)",
+                        background: "rgba(var(--primary-rgb),0.05)",
                     }}
                 />
                 <motion.div
@@ -100,8 +100,8 @@ export default function HeroSection() {
                         width: 40,
                         height: 40,
                         borderRadius: "50%",
-                        border: "1px solid rgba(139,92,246,0.3)",
-                        background: "rgba(139,92,246,0.05)",
+                        border: "1px solid rgba(var(--primary-light-rgb),0.3)",
+                        background: "rgba(var(--primary-light-rgb),0.05)",
                     }}
                 />
                 <motion.div
@@ -114,7 +114,7 @@ export default function HeroSection() {
                         width: 24,
                         height: 24,
                         borderRadius: "50%",
-                        background: "rgba(56,189,248,0.3)",
+                        background: "rgba(var(--accent-rgb),0.3)",
                     }}
                 />
                 <motion.div
@@ -127,7 +127,7 @@ export default function HeroSection() {
                         width: 16,
                         height: 16,
                         borderRadius: 2,
-                        border: "1px solid rgba(99,102,241,0.4)",
+                        border: "1px solid rgba(var(--primary-rgb),0.4)",
                         transform: "rotate(45deg)",
                     }}
                 />
@@ -158,7 +158,7 @@ export default function HeroSection() {
                                 width: 8,
                                 height: 8,
                                 borderRadius: "50%",
-                                background: "#4ade80",
+                                background: "var(--primary-light)",
                                 display: "inline-block",
                                 animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
                             }}
@@ -178,7 +178,7 @@ export default function HeroSection() {
                         fontWeight: 800,
                         lineHeight: 1.1,
                         marginBottom: 24,
-                        color: "#f8fafc",
+                        color: "var(--heading-color)",
                     }}
                 >
                     Turn Clicks Into Clients
@@ -193,7 +193,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     style={{
                         fontSize: "clamp(1rem, 2vw, 1.2rem)",
-                        color: "rgba(248,250,252,0.6)",
+                        color: "var(--text-secondary)",
                         maxWidth: "38rem",
                         margin: "0 auto",
                         marginBottom: 40,
@@ -270,7 +270,7 @@ export default function HeroSection() {
                             >
                                 {stat.value}
                             </div>
-                            <div style={{ fontSize: 13, color: "rgba(248,250,252,0.5)" }}>
+                            <div style={{ fontSize: 13, color: "var(--text-secondary)" }}>
                                 {stat.label}
                             </div>
                         </motion.div>
@@ -296,7 +296,7 @@ export default function HeroSection() {
                             width: 24,
                             height: 40,
                             borderRadius: 12,
-                            border: "2px solid rgba(255,255,255,0.2)",
+                            border: "2px solid rgba(var(--foreground-rgb),0.2)",
                             display: "flex",
                             justifyContent: "center",
                             paddingTop: 8,
@@ -307,7 +307,7 @@ export default function HeroSection() {
                                 width: 4,
                                 height: 8,
                                 borderRadius: 2,
-                                background: "rgba(255,255,255,0.5)",
+                                background: "rgba(var(--foreground-rgb),0.5)",
                             }}
                         />
                     </motion.div>
