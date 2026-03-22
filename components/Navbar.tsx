@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
@@ -18,7 +18,7 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 24);
+        const handleScroll = () => setScrolled(window.scrollY > 10);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -32,149 +32,140 @@ export default function Navbar() {
     return (
         <>
             <motion.nav
-                initial={{ y: -80, opacity: 0 }}
+                initial={{ y: -60, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.55, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className={scrolled ? "glass" : ""}
                 style={{
                     position: "fixed",
                     top: 0,
                     left: 0,
                     right: 0,
                     zIndex: 50,
-                    padding: "12px 16px",
+                    background: scrolled ? undefined : "transparent",
+                    borderBottom: scrolled ? undefined : "none",
+                    transition: "background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease",
                 }}
             >
                 <div
                     style={{
-                        maxWidth: "74rem",
+                        maxWidth: "68rem",
                         margin: "0 auto",
-                        borderRadius: 14,
-                        transition: "all 0.4s ease",
-                        background: scrolled ? "var(--nav-bg)" : "transparent",
-                        backdropFilter: scrolled ? "blur(16px)" : "none",
-                        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-                        border: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-                        boxShadow: scrolled ? "0 4px 24px rgba(0,0,0,0.25)" : "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "0 20px",
+                        height: 52,
                     }}
                 >
-                    <div
+                    {/* Logo */}
+                    <a
+                        href="#"
                         style={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "space-between",
-                            padding: "10px 20px",
+                            gap: 8,
+                            textDecoration: "none",
+                            letterSpacing: "-0.02em",
                         }}
                     >
-                        {/* Logo */}
-                        <motion.a
-                            href="#"
+                        <div
+                            style={{
+                                width: 28,
+                                height: 28,
+                                borderRadius: 8,
+                                background: "linear-gradient(135deg, #2997FF, #BF5AF2)",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                color: "#fff",
+                                fontWeight: 800,
+                                fontSize: 13,
+                            }}
+                        >
+                            C
+                        </div>
+                        <span style={{
+                            color: "var(--foreground)",
+                            fontWeight: 600,
+                            fontSize: 17,
+                            fontFamily: "Inter, SF Pro Display, sans-serif",
+                        }}>
+                            Catalyq
+                        </span>
+                    </a>
+
+                    {/* Desktop Nav */}
+                    <div style={{ display: "none", alignItems: "center", gap: 28 }} className="md-flex">
+                        {navLinks.map((link) => (
+                            <button
+                                key={link.label}
+                                onClick={() => handleNavClick(link.href)}
+                                className="nav-link"
+                            >
+                                {link.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Right side */}
+                    <div style={{ display: "none", alignItems: "center", gap: 14 }} className="md-flex">
+                        <ThemeToggle />
+                        <button
+                            onClick={() => handleNavClick("#contact")}
+                            className="btn-pill"
+                            style={{ padding: "8px 20px", fontSize: 13 }}
+                        >
+                            Get Started
+                        </button>
+                    </div>
+
+                    {/* Mobile */}
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }} className="md-hidden">
+                        <ThemeToggle />
+                        <button
                             style={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 9,
-                                color: "var(--heading-color)",
-                                fontWeight: 700,
-                                fontSize: 18,
-                                textDecoration: "none",
+                                justifyContent: "center",
+                                padding: 6,
+                                borderRadius: 8,
+                                background: "transparent",
+                                border: "none",
+                                color: "var(--foreground)",
+                                cursor: "pointer",
                             }}
-                            whileHover={{ scale: 1.02 }}
+                            onClick={() => setMobileOpen(!mobileOpen)}
+                            aria-label="Toggle mobile menu"
                         >
-                            <div
-                                style={{
-                                    width: 30,
-                                    height: 30,
-                                    borderRadius: 8,
-                                    background: "linear-gradient(135deg, var(--gradient-start), var(--gradient-end))",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    flexShrink: 0,
-                                }}
-                            >
-                                <Zap size={15} color="#fff" />
-                            </div>
-                            <span style={{ fontFamily: "Poppins, sans-serif" }}>
-                                Cata<span className="gradient-text">lyq</span>
-                            </span>
-                        </motion.a>
-
-                        {/* Desktop Nav */}
-                        <div style={{ display: "none", alignItems: "center", gap: 28 }} className="md-flex">
-                            {navLinks.map((link) => (
-                                <button
-                                    key={link.label}
-                                    onClick={() => handleNavClick(link.href)}
-                                    className="nav-link"
-                                >
-                                    {link.label}
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* CTA + Theme Toggle */}
-                        <div style={{ display: "none", alignItems: "center", gap: 10 }} className="md-flex">
-                            <ThemeToggle />
-                            <motion.button
-                                whileHover={{ scale: 1.04 }}
-                                whileTap={{ scale: 0.96 }}
-                                onClick={() => handleNavClick("#contact")}
-                                className="btn-primary"
-                                style={{ padding: "9px 20px", fontSize: 13, borderRadius: 8 }}
-                            >
-                                Get Started
-                            </motion.button>
-                        </div>
-
-                        {/* Mobile: Theme toggle + hamburger */}
-                        <div style={{ display: "flex", alignItems: "center", gap: 8 }} className="md-hidden">
-                            <ThemeToggle />
-                            <button
-                                style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    padding: 7,
-                                    borderRadius: 9,
-                                    background: "var(--glass)",
-                                    border: "1px solid var(--border)",
-                                    color: "var(--foreground)",
-                                    cursor: "pointer",
-                                }}
-                                onClick={() => setMobileOpen(!mobileOpen)}
-                                id="mobile-menu-toggle"
-                                aria-label="Toggle mobile menu"
-                            >
-                                {mobileOpen ? <X size={19} /> : <Menu size={19} />}
-                            </button>
-                        </div>
+                            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                        </button>
                     </div>
                 </div>
             </motion.nav>
 
-            {/* Mobile Menu */}
+            {/* Mobile menu */}
             <AnimatePresence>
                 {mobileOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -16 }}
+                        initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -16 }}
+                        exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
                         style={{
                             position: "fixed",
-                            top: 86,
-                            left: 14,
-                            right: 14,
+                            top: 52,
+                            left: 0,
+                            right: 0,
                             zIndex: 40,
-                            borderRadius: 16,
                             background: "var(--nav-bg)",
-                            backdropFilter: "blur(16px)",
-                            WebkitBackdropFilter: "blur(16px)",
-                            border: "1px solid var(--border)",
-                            boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
-                            padding: 20,
+                            backdropFilter: "saturate(180%) blur(20px)",
+                            WebkitBackdropFilter: "saturate(180%) blur(20px)",
+                            borderBottom: "0.5px solid var(--border)",
+                            padding: "12px 20px 20px",
                         }}
                     >
-                        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                             {navLinks.map((link) => (
                                 <button
                                     key={link.label}
@@ -182,41 +173,24 @@ export default function Navbar() {
                                     style={{
                                         textAlign: "left",
                                         color: "var(--text-primary)",
-                                        fontWeight: 500,
+                                        fontWeight: 400,
                                         fontSize: 15,
-                                        padding: "10px 14px",
-                                        borderRadius: 10,
+                                        padding: "14px 0",
                                         border: "none",
+                                        borderBottom: "0.5px solid var(--border)",
                                         background: "transparent",
                                         cursor: "pointer",
-                                        transition: "background 0.2s, color 0.2s",
                                         width: "100%",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        const el = e.currentTarget as HTMLButtonElement;
-                                        el.style.background = `rgba(var(--primary-rgb), 0.1)`;
-                                        el.style.color = "var(--foreground)";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const el = e.currentTarget as HTMLButtonElement;
-                                        el.style.background = "transparent";
-                                        el.style.color = "var(--text-primary)";
                                     }}
                                 >
                                     {link.label}
                                 </button>
                             ))}
-                            <div
-                                style={{
-                                    paddingTop: 12,
-                                    marginTop: 8,
-                                    borderTop: "1px solid var(--border)",
-                                }}
-                            >
+                            <div style={{ paddingTop: 16 }}>
                                 <button
                                     onClick={() => handleNavClick("#contact")}
-                                    className="btn-primary"
-                                    style={{ width: "100%", padding: "12px 24px", justifyContent: "center" }}
+                                    className="btn-pill"
+                                    style={{ width: "100%", justifyContent: "center" }}
                                 >
                                     Get Started
                                 </button>

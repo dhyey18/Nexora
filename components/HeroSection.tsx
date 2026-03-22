@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Users, Globe, Award } from "lucide-react";
-
-const stats = [
-    { value: "2+", label: "Projects Delivered", icon: Globe },
-    { value: "98%", label: "Client Satisfaction", icon: Star },
-    { value: "2+", label: "Happy Clients", icon: Users },
-    { value: "5★", label: "Average Rating", icon: Award },
-];
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function HeroSection() {
     const handleScroll = (id: string) => {
@@ -25,270 +18,241 @@ export default function HeroSection() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                background: "var(--background)",
+                background: "#000000",
             }}
         >
-            {/* Subtle background effects */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    overflow: "hidden",
-                    pointerEvents: "none",
-                }}
-            >
-                {/* Soft glow top-center */}
+            {/* Background glows */}
+            <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+                {/* Main blue glow */}
                 <div
                     className="pulse-glow"
                     style={{
                         position: "absolute",
-                        top: "-10%",
+                        top: "5%",
                         left: "50%",
                         transform: "translateX(-50%)",
-                        width: 700,
-                        height: 500,
+                        width: 900,
+                        height: 700,
                         borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(var(--primary-rgb),0.13) 0%, transparent 68%)",
+                        background: "radial-gradient(circle, rgba(41,151,255,0.15) 0%, rgba(191,90,242,0.08) 35%, transparent 65%)",
                     }}
                 />
-                {/* Bottom-right accent */}
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: "10%",
-                        right: "5%",
-                        width: 400,
-                        height: 400,
-                        borderRadius: "50%",
-                        background: "radial-gradient(circle, rgba(var(--primary-light-rgb),0.08) 0%, transparent 70%)",
-                    }}
-                />
-                {/* Grid pattern */}
-                <div className="grid-pattern absolute inset-0" />
-
-                {/* Floating decorative dots */}
-                <motion.div
-                    animate={{ y: [-12, 12, -12] }}
-                    transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                        position: "absolute",
-                        top: "20%",
-                        right: "12%",
-                        width: 10,
-                        height: 10,
-                        borderRadius: "50%",
-                        background: "rgba(var(--primary-light-rgb),0.5)",
-                    }}
-                />
-                <motion.div
-                    animate={{ y: [10, -10, 10] }}
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                        position: "absolute",
-                        bottom: "28%",
-                        left: "10%",
-                        width: 6,
-                        height: 6,
-                        borderRadius: "50%",
-                        background: "rgba(var(--primary-rgb),0.6)",
-                    }}
-                />
-                <motion.div
-                    animate={{ y: [-8, 8, -8], x: [-5, 5, -5] }}
-                    transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                        position: "absolute",
-                        top: "55%",
-                        right: "18%",
-                        width: 14,
-                        height: 14,
-                        borderRadius: 3,
-                        border: "2px solid rgba(var(--primary-light-rgb),0.3)",
-                    }}
-                />
+                {/* Side accents */}
+                <div style={{
+                    position: "absolute",
+                    top: "30%",
+                    left: "-5%",
+                    width: 400,
+                    height: 400,
+                    borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(41,151,255,0.06) 0%, transparent 70%)",
+                }} />
+                <div style={{
+                    position: "absolute",
+                    top: "20%",
+                    right: "-5%",
+                    width: 400,
+                    height: 400,
+                    borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(191,90,242,0.06) 0%, transparent 70%)",
+                }} />
+                {/* Subtle grid overlay */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    opacity: 0.03,
+                    backgroundImage: `
+                        linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "80px 80px",
+                }} />
             </div>
 
             <div
-                className="container relative"
+                className="container"
                 style={{
+                    position: "relative",
                     zIndex: 10,
                     textAlign: "center",
-                    paddingTop: "7rem",
+                    paddingTop: "8rem",
                     paddingBottom: "4rem",
                 }}
             >
                 {/* Badge */}
                 <motion.div
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.55 }}
-                    style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}
+                    transition={{ duration: 0.6 }}
+                    style={{ marginBottom: 28 }}
                 >
-                    <div className="section-tag">
-                        <span
-                            style={{
-                                width: 7,
-                                height: 7,
-                                borderRadius: "50%",
-                                background: "var(--primary-light)",
-                                display: "inline-block",
-                                animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                            }}
-                        />
-                        Trusted by businesses worldwide
-                    </div>
+                    <span
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: 8,
+                            background: "rgba(41, 151, 255, 0.1)",
+                            border: "1px solid rgba(41, 151, 255, 0.25)",
+                            borderRadius: 980,
+                            padding: "8px 18px",
+                            fontSize: 13,
+                            fontWeight: 500,
+                            color: "#64D2FF",
+                        }}
+                    >
+                        <Sparkles size={14} style={{ color: "#64D2FF" }} />
+                        Web agency for modern businesses
+                    </span>
                 </motion.div>
 
-                {/* Headline */}
+                {/* Massive headline */}
                 <motion.h1
-                    initial={{ opacity: 0, y: 28 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: 0.1 }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
                     style={{
-                        fontFamily: "Poppins, sans-serif",
-                        fontSize: "clamp(2.6rem, 6vw, 4.75rem)",
-                        fontWeight: 800,
-                        lineHeight: 1.1,
-                        marginBottom: 22,
-                        color: "var(--heading-color)",
-                        letterSpacing: "-0.02em",
+                        fontSize: "clamp(2.75rem, 7vw, 5.5rem)",
+                        fontWeight: 700,
+                        lineHeight: 1.05,
+                        marginBottom: 24,
+                        color: "#FFFFFF",
+                        letterSpacing: "-0.035em",
+                        fontFamily: "Inter, SF Pro Display, sans-serif",
                     }}
                 >
-                    Turn Clicks Into Clients
+                    Build websites
                     <br />
-                    With <span className="gradient-text">Better Websites</span>
+                    that <span className="gradient-text">actually grow</span>
+                    <br />
+                    your business.
                 </motion.h1>
 
                 {/* Subtext */}
                 <motion.p
-                    initial={{ opacity: 0, y: 28 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: 0.2 }}
+                    transition={{ duration: 0.7, delay: 0.2 }}
                     style={{
-                        fontSize: "clamp(1rem, 2vw, 1.15rem)",
-                        color: "var(--text-secondary)",
+                        fontSize: "clamp(1.05rem, 1.8vw, 1.3rem)",
+                        color: "#A1A1A6",
                         maxWidth: "36rem",
                         margin: "0 auto",
-                        marginBottom: 36,
-                        lineHeight: 1.72,
+                        marginBottom: 44,
+                        lineHeight: 1.55,
+                        letterSpacing: "-0.01em",
                     }}
                 >
-                    Your online presence is your most powerful business asset. We craft stunning,
-                    high-performance websites that attract customers, build trust, and drive real revenue growth.
+                    Stunning design. Blazing performance. Real results.
+                    <br />
+                    From concept to launch in weeks, not months.
                 </motion.p>
 
                 {/* CTA Buttons */}
                 <motion.div
-                    initial={{ opacity: 0, y: 28 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: 0.3 }}
+                    transition={{ duration: 0.7, delay: 0.3 }}
                     style={{
                         display: "flex",
-                        flexWrap: "wrap",
-                        gap: 14,
+                        gap: 16,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginBottom: 60,
+                        flexWrap: "wrap",
+                        marginBottom: 80,
                     }}
                 >
-                    <motion.button
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
+                    <button
                         onClick={() => handleScroll("contact")}
-                        className="btn-primary"
-                        style={{ padding: "14px 34px", fontSize: 15 }}
-                        id="hero-get-started-btn"
+                        className="btn-pill"
+                        style={{ padding: "15px 36px", fontSize: 17 }}
                     >
-                        Get Started Free <ArrowRight size={17} />
-                    </motion.button>
-                    <motion.button
-                        whileHover={{ scale: 1.04 }}
-                        whileTap={{ scale: 0.96 }}
+                        Get started
+                        <ArrowRight size={18} />
+                    </button>
+                    <button
                         onClick={() => handleScroll("portfolio")}
                         className="btn-secondary"
-                        style={{ padding: "13px 34px", fontSize: 15 }}
-                        id="hero-portfolio-btn"
+                        style={{ padding: "14px 30px", fontSize: 17 }}
                     >
-                        View Portfolio
-                    </motion.button>
+                        View our work
+                    </button>
                 </motion.div>
 
-                {/* Stats row */}
+                {/* Stats ribbon */}
                 <motion.div
-                    initial={{ opacity: 0, y: 36 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.75, delay: 0.5 }}
-                    className="custom-grid sm-grid-cols-2 md-grid-cols-4"
-                    style={{ gap: 14, maxWidth: 720, margin: "0 auto" }}
+                    transition={{ duration: 0.7, delay: 0.5 }}
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        gap: "clamp(24px, 5vw, 56px)",
+                        flexWrap: "wrap",
+                    }}
                 >
-                    {stats.map((stat, i) => (
-                        <motion.div
-                            key={stat.label}
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.45, delay: 0.6 + i * 0.08 }}
-                            className="card-clean"
-                            style={{
-                                padding: "18px 14px",
-                                textAlign: "center",
-                                borderRadius: 12,
-                            }}
-                        >
+                    {[
+                        { value: "50+", label: "Projects Delivered" },
+                        { value: "98%", label: "Client Satisfaction" },
+                        { value: "< 2s", label: "Avg. Load Time" },
+                        { value: "3×", label: "Traffic Growth" },
+                    ].map((stat) => (
+                        <div key={stat.label} style={{ textAlign: "center" }}>
                             <div
                                 className="gradient-text"
                                 style={{
-                                    fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
+                                    fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
                                     fontWeight: 800,
-                                    fontFamily: "Poppins, sans-serif",
+                                    letterSpacing: "-0.04em",
+                                    lineHeight: 1.1,
                                     marginBottom: 4,
-                                    display: "block",
                                 }}
                             >
                                 {stat.value}
                             </div>
-                            <div style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.3 }}>
+                            <div style={{ color: "#6E6E73", fontSize: 13, fontWeight: 500 }}>
                                 {stat.label}
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </motion.div>
+            </div>
 
-                {/* Scroll indicator */}
+            {/* Scroll indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5 }}
+                style={{
+                    position: "absolute",
+                    bottom: 28,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    zIndex: 10,
+                }}
+            >
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 1.8, repeat: Infinity }}
                     style={{
-                        position: "absolute",
-                        bottom: 28,
-                        left: "50%",
-                        transform: "translateX(-50%)",
+                        width: 22,
+                        height: 34,
+                        borderRadius: 11,
+                        border: "1.5px solid rgba(245,245,247,0.2)",
+                        display: "flex",
+                        justifyContent: "center",
+                        paddingTop: 8,
                     }}
                 >
-                    <motion.div
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
+                    <div
                         style={{
-                            width: 22,
-                            height: 38,
-                            borderRadius: 11,
-                            border: "2px solid rgba(var(--foreground-rgb),0.2)",
-                            display: "flex",
-                            justifyContent: "center",
-                            paddingTop: 7,
+                            width: 3,
+                            height: 7,
+                            borderRadius: 2,
+                            background: "rgba(245,245,247,0.35)",
                         }}
-                    >
-                        <div
-                            style={{
-                                width: 3,
-                                height: 7,
-                                borderRadius: 2,
-                                background: "rgba(var(--foreground-rgb),0.45)",
-                            }}
-                        />
-                    </motion.div>
+                    />
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 }

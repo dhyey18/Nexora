@@ -29,18 +29,8 @@ export default function CTASection() {
     };
 
     return (
-        <section id="contact" className="section relative">
-            {/* Subtle grid bg */}
-            <div className="grid-pattern absolute inset-0 pointer-events-none" style={{ opacity: 0.6 }} />
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background:
-                        "radial-gradient(ellipse at 30% 50%, rgba(var(--primary-rgb),0.1) 0%, transparent 55%), radial-gradient(ellipse at 75% 50%, rgba(var(--primary-light-rgb),0.06) 0%, transparent 55%)",
-                }}
-            />
-
-            <div className="container relative z-10">
+        <section id="contact" className="section-dark">
+            <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 <div
                     ref={ref}
                     style={{
@@ -50,130 +40,153 @@ export default function CTASection() {
                         alignItems: "start",
                     }}
                 >
-                    {/* Left — CTA text */}
-                    <div style={{ maxWidth: 600 }}>
+                    {/* Left */}
+                    <div style={{ maxWidth: 540 }}>
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            className="flex mb-5"
                         >
-                            <div className="section-tag">✦ Get In Touch</div>
+                            <div className="section-tag">Get In Touch</div>
                         </motion.div>
 
                         <motion.h2
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.1 }}
-                            className="font-bold mb-6 leading-tight"
-                            style={{ fontFamily: "Poppins, sans-serif", fontSize: "clamp(2.5rem, 5vw, 3.5rem)", color: "var(--heading-color)" }}
+                            style={{
+                                fontSize: "clamp(2rem, 4.5vw, 3rem)",
+                                fontWeight: 700,
+                                marginBottom: 16,
+                                color: "#F5F5F7",
+                                lineHeight: 1.08,
+                                letterSpacing: "-0.03em",
+                            }}
                         >
-                            Ready to Transform
+                            Ready to transform your
                             <br />
-                            Your <span className="gradient-text">Online Presence?</span>
+                            <span className="gradient-text">online presence?</span>
                         </motion.h2>
 
                         <motion.p
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
-                            className="text-lg leading-relaxed mb-10"
-                            style={{ maxWidth: 520, color: "var(--text-secondary)" }}
+                            style={{
+                                color: "#A1A1A6",
+                                fontSize: 17,
+                                maxWidth: 460,
+                                lineHeight: 1.55,
+                                marginBottom: 40,
+                            }}
                         >
-                            Stop losing customers to competitors with better websites. Let&apos;s build you
-                            something exceptional. Book a free consultation call — no strings attached.
+                            Book a free consultation — no strings attached.
                         </motion.p>
-                        <br />
+
                         {/* Contact info */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.3 }}
-                            className="space-y-8 mb-8"
+                            style={{ display: "flex", flexDirection: "column", gap: 20 }}
                         >
                             {[
-                                { icon: Mail, label: "Email us", value: "pateldhyey64@gmail.com" },
-                                { icon: Phone, label: "Call us", value: "+91 94291 84788 / +91 93238 30436" },
-                                { icon: MapPin, label: "Based in", value: "Prahlad Nagar, Ahmedabad, Gujarat 380015" },
-                                { icon: MessageCircle, label: "Response time", value: "Within 2 hours" },
+                                { icon: Mail, label: "Email us", value: "pateldhyey64@gmail.com", color: "#2997FF" },
+                                { icon: Phone, label: "Call us", value: "+91 94291 84788 / +91 93238 30436", color: "#30D158" },
+                                { icon: MapPin, label: "Based in", value: "Prahlad Nagar, Ahmedabad, Gujarat 380015", color: "#FF9F0A" },
+                                { icon: MessageCircle, label: "Response time", value: "Within 2 hours", color: "#BF5AF2" },
                             ].map((item) => (
-                                <div key={item.label} className="flex items-center gap-4">
+                                <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 14 }}>
                                     <div
-                                        className="flex-shrink-0 flex items-center justify-center"
                                         style={{
                                             width: 40,
                                             height: 40,
                                             borderRadius: 12,
-                                            background: "rgba(var(--primary-rgb),0.1)",
-                                            border: "1px solid rgba(var(--primary-rgb),0.2)",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            background: `${item.color}12`,
+                                            border: `1px solid ${item.color}20`,
+                                            flexShrink: 0,
                                         }}
                                     >
-                                        <item.icon size={17} style={{ color: "var(--primary-light)" }} />
+                                        <item.icon size={17} style={{ color: item.color }} />
                                     </div>
                                     <div>
-                                        <div className="text-xs mb-0.5" style={{ color: "var(--text-tertiary)" }}>{item.label}</div>
-                                        <div className="text-sm font-medium" style={{ color: "var(--heading-color)" }}>{item.value}</div>
+                                        <div style={{ color: "#6E6E73", fontSize: 12, marginBottom: 2 }}>{item.label}</div>
+                                        <div style={{ color: "#F5F5F7", fontSize: 14, fontWeight: 500 }}>{item.value}</div>
                                     </div>
                                 </div>
                             ))}
                         </motion.div>
-                        <br />
                     </div>
 
                     {/* Right — Form */}
                     <div style={{ width: "100%" }}>
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 20 }}
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
-                            style={{ width: "100%" }}
                         >
-                            <div className="glass-card" style={{ borderRadius: "1.5rem", padding: "clamp(1.5rem, 5vw, 2.5rem)" }}>
+                            <div
+                                className="bento-card"
+                                style={{ cursor: "default" }}
+                            >
                                 {submitted ? (
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="flex flex-col items-center justify-center py-12 text-center"
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            padding: "48px 0",
+                                            textAlign: "center",
+                                        }}
                                     >
                                         <div
-                                            className="flex-center mb-6"
                                             style={{
-                                                width: 80,
-                                                height: 80,
+                                                width: 72,
+                                                height: 72,
                                                 borderRadius: "50%",
-                                                background: "rgba(16,185,129,0.15)",
-                                                border: "1px solid rgba(16,185,129,0.3)",
+                                                background: "rgba(48,209,88,0.1)",
+                                                border: "1px solid rgba(48,209,88,0.2)",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                marginBottom: 20,
                                             }}
                                         >
-                                            <CheckCircle size={38} style={{ color: "#34d399" }} />
+                                            <CheckCircle size={32} style={{ color: "#30D158" }} />
                                         </div>
-                                        <h3
-                                            className="font-bold text-2xl mb-3"
-                                            style={{ fontFamily: "Poppins", color: "var(--heading-color)" }}
-                                        >
+                                        <h3 style={{ color: "#F5F5F7", fontWeight: 700, fontSize: 22, marginBottom: 8 }}>
                                             Message Sent! 🎉
                                         </h3>
-                                        <p className="text-sm max-w-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                                            Thank you for reaching out, {name}! We&apos;ll get back to you at{" "}
-                                            <strong style={{ color: "var(--heading-color)" }}>{email}</strong> within 2 hours.
+                                        <p style={{ color: "#A1A1A6", fontSize: 14, maxWidth: 280, lineHeight: 1.55 }}>
+                                            Thank you, {name}! We&apos;ll get back to you at <strong style={{ color: "#F5F5F7" }}>{email}</strong> within 2 hours.
                                         </p>
                                     </motion.div>
                                 ) : (
                                     <>
                                         <h3
-                                            className="font-bold text-3xl mb-2"
-                                            style={{ fontFamily: "Poppins", color: "var(--heading-color)" }}
+                                            style={{
+                                                fontWeight: 700,
+                                                fontSize: 22,
+                                                marginBottom: 6,
+                                                color: "#F5F5F7",
+                                                letterSpacing: "-0.02em",
+                                            }}
                                         >
                                             Start Your Project
                                         </h3>
-                                        <p className="text-base mb-8" style={{ color: "var(--text-secondary)" }}>
+                                        <p style={{ color: "#A1A1A6", fontSize: 14, marginBottom: 28 }}>
                                             Free consultation · No commitment
                                         </p>
 
-                                        <form onSubmit={handleSubmit} className="space-y-6">
-                                            {/* Name + Email */}
-                                            <div className="custom-grid sm-grid-cols-2" style={{ gap: 20 }}>
+                                        <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                                            <div className="custom-grid sm-grid-cols-2" style={{ gap: 16 }}>
                                                 <div>
-                                                    <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
+                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
                                                         Full Name *
                                                     </label>
                                                     <input
@@ -184,11 +197,10 @@ export default function CTASection() {
                                                         placeholder="Your Name"
                                                         className="form-input"
                                                         id="contact-name"
-                                                        style={{ padding: "14px 18px" }}
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
+                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
                                                         Email Address *
                                                     </label>
                                                     <input
@@ -199,40 +211,28 @@ export default function CTASection() {
                                                         placeholder="you@company.com"
                                                         className="form-input"
                                                         id="contact-email"
-                                                        style={{ padding: "14px 18px" }}
                                                     />
                                                 </div>
                                             </div>
 
-                                            {/* Service selector */}
+                                            {/* Service pills */}
                                             <div>
-                                                <label className="block text-xs mb-3 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 10, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
                                                     Service Needed
                                                 </label>
-                                                <div className="flex flex-wrap gap-2">
+                                                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                                                     {services.map((s) => (
                                                         <button
                                                             key={s}
                                                             type="button"
-                                                            onClick={() =>
-                                                                setSelectedService(s === selectedService ? null : s)
-                                                            }
+                                                            onClick={() => setSelectedService(s === selectedService ? null : s)}
                                                             style={{
-                                                                fontSize: 13,
-                                                                padding: "8px 14px",
-                                                                borderRadius: 100,
-                                                                border: `1px solid ${selectedService === s
-                                                                    ? "rgba(var(--primary-rgb),0.6)"
-                                                                    : "var(--border)"
-                                                                    }`,
-                                                                background:
-                                                                    selectedService === s
-                                                                        ? "rgba(var(--primary-rgb),0.18)"
-                                                                        : "transparent",
-                                                                color:
-                                                                    selectedService === s
-                                                                        ? "var(--primary-light)"
-                                                                        : "var(--text-secondary)",
+                                                                fontSize: 12,
+                                                                padding: "7px 14px",
+                                                                borderRadius: 980,
+                                                                border: `1px solid ${selectedService === s ? "#2997FF" : "rgba(255,255,255,0.08)"}`,
+                                                                background: selectedService === s ? "rgba(41,151,255,0.12)" : "rgba(255,255,255,0.03)",
+                                                                color: selectedService === s ? "#64D2FF" : "#A1A1A6",
                                                                 cursor: "pointer",
                                                                 transition: "all 0.2s ease",
                                                                 fontWeight: 500,
@@ -246,14 +246,10 @@ export default function CTASection() {
 
                                             {/* Budget */}
                                             <div>
-                                                <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
                                                     Budget Range
                                                 </label>
-                                                <select
-                                                    className="form-input"
-                                                    id="contact-budget"
-                                                    style={{ background: "var(--muted)", cursor: "pointer", padding: "14px 18px" }}
-                                                >
+                                                <select className="form-input" id="contact-budget" style={{ cursor: "pointer" }}>
                                                     <option value="">Select your budget</option>
                                                     <option value="starter">₹10,000 – ₹20,000 (Starter)</option>
                                                     <option value="business">₹20,000 – ₹50,000 (Business)</option>
@@ -264,7 +260,7 @@ export default function CTASection() {
 
                                             {/* Message */}
                                             <div>
-                                                <label className="block text-xs mb-2.5 font-medium uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
                                                     Tell us about your project
                                                 </label>
                                                 <textarea
@@ -273,26 +269,25 @@ export default function CTASection() {
                                                     onChange={(e) => setMessage(e.target.value)}
                                                     placeholder="Describe your business, goals, and what you're looking for..."
                                                     className="form-input"
-                                                    style={{ resize: "none", padding: "14px 18px" }}
+                                                    style={{ resize: "none" }}
                                                     id="contact-message"
                                                 />
                                             </div>
 
-                                            {/* Submit */}
                                             <motion.button
                                                 type="submit"
                                                 whileHover={{ scale: 1.01 }}
                                                 whileTap={{ scale: 0.99 }}
-                                                className="btn-primary w-full"
-                                                style={{ padding: "18px 32px", fontSize: "16px", marginTop: "8px" }}
+                                                className="btn-pill"
+                                                style={{ width: "100%", justifyContent: "center", padding: "14px 28px", fontSize: 16 }}
                                                 id="contact-submit"
                                             >
-                                                <Send size={18} />
+                                                <Send size={16} />
                                                 Send Message — It&apos;s Free
-                                                <ArrowRight size={18} />
+                                                <ArrowRight size={16} />
                                             </motion.button>
 
-                                            <p className="text-center text-xs" style={{ color: "var(--text-tertiary)" }}>
+                                            <p style={{ textAlign: "center", color: "#6E6E73", fontSize: 11 }}>
                                                 🔒 We respect your privacy. No spam, ever.
                                             </p>
                                         </form>

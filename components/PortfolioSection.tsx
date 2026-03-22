@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Layers } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 const categories = ["All", "Restaurant", "Healthcare", "Wellness", "Interior Design", "Fashion"];
 
@@ -10,66 +10,60 @@ const projects = [
     {
         title: "VÔGE — Modern Clothing",
         category: "Fashion",
-        description: "Luxury fashion brand website featuring the SS 2026 collection, lookbooks, new arrivals, and an immersive 'Where Style Meets Soul' shopping experience.",
+        description: "Luxury fashion brand website featuring the SS 2026 collection with an immersive shopping experience.",
         tech: ["Next.js", "Framer Motion", "Vercel"],
-        color: "linear-gradient(135deg, #3b82f6, #6366f1)",
+        gradient: "linear-gradient(135deg, #3b82f6, #6366f1)",
         metrics: { visits: "28K+/mo", conversion: "12%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(59,130,246,0.85), rgba(99,102,241,0.85))",
         link: "https://voge-three.vercel.app/",
     },
     {
-        title: "MISO — Artisan Café & Kitchen",
+        title: "MISO — Artisan Café",
         category: "Restaurant",
-        description: "Farm-to-table artisan café with seasonal menus, online reservations, gallery, and a crafted dining experience — 'Craft. Culture. Coffee.'",
+        description: "Farm-to-table artisan café with seasonal menus and online reservations.",
         tech: ["Next.js", "Tailwind CSS", "Vercel"],
-        color: "linear-gradient(135deg, #10b981, #0d9488)",
+        gradient: "linear-gradient(135deg, #10b981, #14b8a6)",
         metrics: { visits: "7K+/mo", conversion: "9.1%", rating: "4.9★" },
-        gradient: "linear-gradient(135deg, rgba(16,185,129,0.85), rgba(20,184,166,0.85))",
         link: "https://miso-6r4l.vercel.app/",
     },
     {
-        title: "HealthFirst Clinic — Dr. Arjun Mehta",
+        title: "HealthFirst Clinic",
         category: "Healthcare",
-        description: "A comprehensive healthcare clinic website featuring online appointment booking, specialist services showcase, and bilingual patient support.",
-        tech: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
-        color: "linear-gradient(135deg, #06b6d4, #2563eb)",
+        description: "Comprehensive healthcare clinic with online appointment booking and bilingual support.",
+        tech: ["Next.js", "Tailwind", "Framer Motion"],
+        gradient: "linear-gradient(135deg, #06b6d4, #2563eb)",
         metrics: { visits: "5K+/mo", conversion: "15%", rating: "4.9★" },
-        gradient: "linear-gradient(135deg, rgba(6,182,212,0.85), rgba(37,99,235,0.85))",
         link: "https://health-first-five.vercel.app/",
     },
     {
         title: "Aura Luxe Salon",
         category: "Wellness",
-        description: "Premium beauty salon website with appointment booking, service menu, and elegant signature style showcase.",
-        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        color: "linear-gradient(135deg, #ec4899, #d946ef)",
+        description: "Premium beauty salon website with appointment booking and service showcase.",
+        tech: ["Next.js", "Framer Motion", "Tailwind"],
+        gradient: "linear-gradient(135deg, #ec4899, #d946ef)",
         metrics: { visits: "8K+/mo", conversion: "11%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(236,72,153,0.85), rgba(217,70,239,0.85))",
         link: "https://aura-luxe-two.vercel.app/",
     },
     {
-        title: "Elara Voss — Interior Design Studio",
+        title: "Elara Voss Interiors",
         category: "Interior Design",
-        description: "A premium interior design studio focusing on residential and hospitality interiors that prioritize beauty, comfort, and human-scale luxury.",
+        description: "Premium interior design studio focusing on residential and hospitality projects.",
         tech: ["Next.js", "Vercel", "Framer Motion"],
-        color: "linear-gradient(135deg, #d4a373, #9d8189)",
+        gradient: "linear-gradient(135deg, #d4a373, #a98467)",
         metrics: { visits: "14K+/mo", conversion: "15%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(212,163,115,0.85), rgba(169,132,103,0.85))",
         link: "https://interiordesigner-alpha.vercel.app/",
     },
     {
-        title: "Aria Chen — Interior & Creative Studio",
+        title: "Aria Chen Studio",
         category: "Interior Design",
-        description: "Sophisticated portfolio website for a high-end designer, featuring a minimalist aesthetic, project galleries, and immersive visual storytelling.",
-        tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
-        color: "linear-gradient(135deg, #4b5563, #1f2937)",
+        description: "Sophisticated portfolio with minimalist aesthetic and immersive visual storytelling.",
+        tech: ["Next.js", "Framer Motion", "Tailwind"],
+        gradient: "linear-gradient(135deg, #6b7280, #374151)",
         metrics: { visits: "4K+/mo", conversion: "18%", rating: "5★" },
-        gradient: "linear-gradient(135deg, rgba(75,85,99,0.85), rgba(31,41,55,0.85))",
         link: "https://designer-protfolio.vercel.app/#work",
     },
 ];
 
-function ProjectCard({ project, index }: { project: typeof projects[0] & { link?: string }; index: number }) {
+function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.2 });
     const [hovered, setHovered] = useState(false);
@@ -77,9 +71,9 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 36 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
             style={{
                 position: "relative",
                 borderRadius: 20,
@@ -88,92 +82,64 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 aspectRatio: "4/3",
             }}
             onClick={() => {
-                if (window.innerWidth < 1024) {
-                    setHovered(!hovered);
-                }
+                if (window.innerWidth < 1024) setHovered(!hovered);
             }}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
         >
-            {/* Background gradient */}
+            {/* BG gradient */}
+            <div style={{ position: "absolute", inset: 0, background: project.gradient }} />
+
+            {/* Pattern */}
             <div
                 style={{
                     position: "absolute",
                     inset: 0,
-                    background: project.gradient,
-                    transition: "transform 0.7s ease",
-                }}
-                className="group-hover:scale-110"
-            />
-
-            {/* Pattern overlay */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0.15,
-                    backgroundImage: `repeating-linear-gradient(
-                        45deg,
-                        rgba(255,255,255,0.12) 0px,
-                        rgba(255,255,255,0.12) 1px,
-                        transparent 1px,
-                        transparent 20px
-                    )`,
+                    opacity: 0.08,
+                    backgroundImage: `repeating-linear-gradient(45deg, rgba(255,255,255,0.15) 0px, rgba(255,255,255,0.15) 1px, transparent 1px, transparent 24px)`,
                 }}
             />
 
-            {/* Mock UI elements */}
+            {/* Mock browser */}
             <div
                 style={{
                     position: "absolute",
-                    inset: 16,
-                    borderRadius: 12,
-                    background: "rgba(255,255,255,0.05)",
+                    inset: 20,
+                    borderRadius: 14,
+                    background: "rgba(255,255,255,0.08)",
                     backdropFilter: "blur(4px)",
-                    border: "1px solid rgba(255,255,255,0.2)",
+                    border: "1px solid rgba(255,255,255,0.18)",
                     display: "flex",
                     flexDirection: "column",
                     padding: 16,
                 }}
             >
-                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 12 }}>
-                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(248,113,113,0.7)" }} />
-                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(250,204,21,0.7)" }} />
-                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(74,222,128,0.7)" }} />
-                    <div style={{ flex: 1, height: 12, borderRadius: 100, background: "rgba(255,255,255,0.12)", marginLeft: 6 }} />
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 14 }}>
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(248,113,113,0.8)" }} />
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(250,204,21,0.8)" }} />
+                    <div style={{ width: 10, height: 10, borderRadius: "50%", background: "rgba(74,222,128,0.8)" }} />
+                    <div style={{ flex: 1, height: 14, borderRadius: 100, background: "rgba(255,255,255,0.12)", marginLeft: 6 }} />
                 </div>
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
-                    <div style={{ height: 28, background: "rgba(255,255,255,0.12)", borderRadius: 8 }} />
-                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "75%" }} />
-                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "50%" }} />
-                    <div style={{ flex: 1 }} />
-                    <div style={{ display: "flex", gap: 8 }}>
-                        <div
-                            style={{
-                                height: 28,
-                                flex: 1,
-                                borderRadius: 8,
-                                background: project.color,
-                                opacity: 0.7,
-                            }}
-                        />
-                        <div style={{ height: 28, width: 56, borderRadius: 8, background: "rgba(255,255,255,0.12)" }} />
-                    </div>
+                    <div style={{ height: 30, background: "rgba(255,255,255,0.12)", borderRadius: 8, width: "60%" }} />
+                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "80%" }} />
+                    <div style={{ height: 14, background: "rgba(255,255,255,0.08)", borderRadius: 6, width: "55%" }} />
+                    <div style={{ marginTop: "auto", height: 32, background: "rgba(255,255,255,0.1)", borderRadius: 8, width: "40%" }} />
                 </div>
             </div>
 
-            {/* Category badge */}
+            {/* Category pill */}
             <div style={{ position: "absolute", top: 16, left: 16, zIndex: 10 }}>
                 <span
                     style={{
                         fontSize: 11,
                         color: "#fff",
                         fontWeight: 600,
-                        padding: "5px 12px",
-                        borderRadius: 100,
+                        padding: "5px 14px",
+                        borderRadius: 980,
                         background: "rgba(0,0,0,0.35)",
                         backdropFilter: "blur(8px)",
-                        border: "1px solid rgba(255,255,255,0.2)",
+                        border: "1px solid rgba(255,255,255,0.1)",
                     }}
                 >
                     {project.category}
@@ -194,33 +160,25 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                 style={{
                     position: "absolute",
                     inset: 0,
-                    background: "rgba(0,0,0,0.75)",
-                    backdropFilter: "blur(4px)",
+                    background: "rgba(0,0,0,0.85)",
+                    backdropFilter: "blur(8px)",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "flex-end",
-                    padding: 24,
+                    padding: 28,
                     zIndex: 10,
                     pointerEvents: hovered ? "auto" : "none",
                 }}
             >
-                <h3
-                    style={{
-                        color: "#fff",
-                        fontWeight: 700,
-                        fontSize: 18,
-                        marginBottom: 8,
-                        fontFamily: "Poppins, sans-serif",
-                    }}
-                >
+                <h3 style={{ color: "#fff", fontWeight: 600, fontSize: 19, marginBottom: 8, letterSpacing: "-0.02em" }}>
                     {project.title}
                 </h3>
-                <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 16, lineHeight: 1.6 }}>
+                <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, marginBottom: 16, lineHeight: 1.55 }}>
                     {project.description}
                 </p>
 
                 {/* Metrics */}
-                <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+                <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
                     {[
                         { val: project.metrics.visits, lbl: "Visits" },
                         { val: project.metrics.conversion, lbl: "CVR" },
@@ -231,80 +189,53 @@ function ProjectCard({ project, index }: { project: typeof projects[0] & { link?
                             style={{
                                 flex: 1,
                                 textAlign: "center",
-                                background: "rgba(255,255,255,0.1)",
+                                background: "rgba(255,255,255,0.06)",
+                                border: "1px solid rgba(255,255,255,0.08)",
                                 borderRadius: 10,
                                 padding: "8px 4px",
                             }}
                         >
-                            <div style={{ color: "#fff", fontWeight: 600, fontSize: 13 }}>{m.val}</div>
-                            <div style={{ color: "rgba(255,255,255,0.5)", fontSize: 11 }}>{m.lbl}</div>
+                            <div style={{ color: "#fff", fontWeight: 700, fontSize: 14 }}>{m.val}</div>
+                            <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 11 }}>{m.lbl}</div>
                         </div>
                     ))}
                 </div>
 
-                {/* Tech tags */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 14 }}>
+                {/* Tech */}
+                <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
                     {project.tech.map((t) => (
-                        <span
-                            key={t}
-                            style={{
-                                fontSize: 11,
-                                padding: "4px 10px",
-                                borderRadius: 100,
-                                background: "rgba(255,255,255,0.15)",
-                                color: "rgba(255,255,255,0.85)",
-                                fontWeight: 500,
-                            }}
-                        >
+                        <span key={t} style={{
+                            fontSize: 11,
+                            padding: "4px 10px",
+                            borderRadius: 980,
+                            background: "rgba(255,255,255,0.06)",
+                            border: "1px solid rgba(255,255,255,0.1)",
+                            color: "rgba(255,255,255,0.6)",
+                            fontWeight: 500,
+                        }}>
                             {t}
                         </span>
                     ))}
                 </div>
 
-                {project.link ? (
+                {project.link && (
                     <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                            display: "flex",
+                            display: "inline-flex",
                             alignItems: "center",
                             gap: 6,
-                            color: "#fff",
-                            fontSize: 13,
+                            color: "#2997FF",
+                            fontSize: 14,
                             fontWeight: 500,
-                            background: "transparent",
-                            border: "none",
-                            cursor: "pointer",
-                            padding: 0,
-                            transition: "color 0.2s",
                             textDecoration: "none",
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--secondary)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
                     >
-                        <ExternalLink size={13} /> View Live Site
+                        View live site
+                        <ExternalLink size={13} />
                     </a>
-                ) : (
-                    <button
-                        style={{
-                            display: "flex",
-                            alignItems: "center",
-                            gap: 6,
-                            color: "#fff",
-                            fontSize: 13,
-                            fontWeight: 500,
-                            background: "transparent",
-                            border: "none",
-                            cursor: "pointer",
-                            padding: 0,
-                            transition: "color 0.2s",
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = "var(--secondary)")}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = "#fff")}
-                    >
-                        <ExternalLink size={13} /> View Case Study
-                    </button>
                 )}
             </motion.div>
         </motion.div>
@@ -315,29 +246,17 @@ export default function PortfolioSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
     const [active, setActive] = useState("All");
-
     const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
     return (
-        <section id="portfolio" className="section-alt">
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    pointerEvents: "none",
-                    background: "radial-gradient(ellipse at 50% 50%, rgba(var(--primary-rgb),0.07) 0%, transparent 60%)",
-                }}
-            />
-
+        <section id="portfolio" className="section-light">
             <div className="container" style={{ position: "relative", zIndex: 10 }}>
-                {/* Header */}
                 <div ref={ref} style={{ textAlign: "center", marginBottom: 48 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        style={{ display: "flex", justifyContent: "center" }}
                     >
-                        <div className="section-tag">✦ Our Work</div>
+                        <div className="section-tag">Our Work</div>
                     </motion.div>
 
                     <motion.h2
@@ -345,75 +264,73 @@ export default function PortfolioSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
                         style={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
-                            fontWeight: 800,
-                            marginBottom: 16,
+                            fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
+                            fontWeight: 700,
+                            marginBottom: 14,
                             color: "var(--heading-color)",
-                            lineHeight: 1.15,
+                            lineHeight: 1.08,
+                            letterSpacing: "-0.03em",
                         }}
                     >
-                        Websites We&apos;re
+                        Websites we&apos;re
                         <br />
-                        <span className="gradient-text">Proud to Show Off</span>
+                        <span className="gradient-text">proud to show off.</span>
                     </motion.h2>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        style={{
-                            color: "var(--text-secondary)",
-                            fontSize: 17,
-                            maxWidth: 560,
-                            margin: "0 auto",
-                            marginBottom: 32,
-                            lineHeight: 1.7,
-                        }}
+                        style={{ color: "var(--text-secondary)", fontSize: 17, maxWidth: 440, margin: "0 auto 28px", lineHeight: 1.55 }}
                     >
-                        Every project is a unique story of business transformation. Here are some of our favorites.
+                        Every project is a unique story of business transformation.
                     </motion.p>
 
-                    {/* Filter tabs */}
+                    {/* Filter pills */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.3 }}
-                        style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8 }}
+                        style={{
+                            display: "inline-flex",
+                            flexWrap: "wrap",
+                            justifyContent: "center",
+                            gap: 6,
+                            background: "rgba(var(--foreground-rgb), 0.04)",
+                            border: "1px solid rgba(var(--foreground-rgb), 0.06)",
+                            borderRadius: 980,
+                            padding: 4,
+                        }}
                     >
                         {categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActive(cat)}
                                 style={{
-                                    padding: "8px 18px",
-                                    borderRadius: 100,
+                                    padding: "7px 16px",
+                                    borderRadius: 980,
                                     fontSize: 13,
                                     fontWeight: 500,
                                     cursor: "pointer",
-                                    border: `1px solid ${active === cat ? "var(--primary)" : "var(--border)"}`,
+                                    border: "none",
                                     background: active === cat ? "var(--primary)" : "transparent",
                                     color: active === cat ? "#fff" : "var(--text-secondary)",
-                                    transition: "all 0.2s ease",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: 6,
+                                    transition: "all 0.25s ease",
+                                    boxShadow: active === cat ? "0 2px 8px rgba(var(--primary-rgb), 0.3)" : "none",
                                 }}
                             >
-                                <Layers size={11} style={{ opacity: 0.7 }} />
                                 {cat}
                             </button>
                         ))}
                     </motion.div>
                 </div>
 
-                {/* Grid */}
                 <motion.div
                     layout
                     style={{
                         display: "grid",
                         gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                        gap: 24,
+                        gap: 12,
                     }}
                 >
                     {filtered.map((project, index) => (
@@ -421,14 +338,13 @@ export default function PortfolioSection() {
                     ))}
                 </motion.div>
 
-                {/* CTA */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.5 }}
                     style={{ textAlign: "center", marginTop: 48 }}
                 >
-                    <button className="btn-secondary">View All Projects →</button>
+                    <button className="btn-outline">View All Projects</button>
                 </motion.div>
             </div>
         </section>
