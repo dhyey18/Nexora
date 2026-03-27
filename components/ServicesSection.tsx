@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
     Globe,
@@ -9,231 +8,60 @@ import {
     TrendingUp,
     Zap,
     ShoppingCart,
-    Layout,
-    ArrowRight,
 } from "lucide-react";
 
 const services = [
     {
         icon: Globe,
         title: "Website Development",
-        description:
-            "Custom-built, pixel-perfect websites tailored to your brand and business goals. Fast, secure, and built on modern tech.",
-        color: "from-indigo-500 to-blue-600",
-        gradient: "linear-gradient(135deg, #6366f1, #3b82f6)",
-        glow: "rgba(99,102,241,0.25)",
+        description: "Custom-built, pixel-perfect websites tailored to your brand. Fast, secure, and built on modern frameworks.",
         tags: ["React", "Next.js", "TypeScript"],
+        color: "#2997FF",
     },
     {
         icon: RefreshCw,
-        title: "Business Website Redesign",
-        description:
-            "Transform your outdated website into a modern, conversion-optimized digital experience that impresses visitors.",
-        color: "from-purple-500 to-pink-600",
-        gradient: "linear-gradient(135deg, #a855f7, #db2777)",
-        glow: "rgba(168,85,247,0.25)",
+        title: "Business Redesign",
+        description: "Transform your outdated site into a modern, conversion-optimized digital experience that drives growth.",
         tags: ["UI/UX", "Figma", "Branding"],
+        color: "#BF5AF2",
     },
     {
         icon: TrendingUp,
         title: "SEO Optimization",
-        description:
-            "Rank higher on Google with our data-driven SEO strategies. Get found by customers actively searching for your services.",
-        color: "from-green-500 to-emerald-600",
-        gradient: "linear-gradient(135deg, #22c55e, #059669)",
-        glow: "rgba(16,185,129,0.25)",
-        tags: ["On-Page SEO", "Schema", "Core Web Vitals"],
+        description: "Rank higher on Google with data-driven SEO strategies. Schema markup, Core Web Vitals, and content optimization.",
+        tags: ["On-Page", "Schema", "Analytics"],
+        color: "#30D158",
     },
     {
         icon: Zap,
-        title: "Performance Optimization",
-        description:
-            "Lightning-fast page speeds that boost user retention and conversion rates. Optimize every millisecond that counts.",
-        color: "from-yellow-500 to-orange-500",
-        gradient: "linear-gradient(135deg, #eab308, #f97316)",
-        glow: "rgba(245,158,11,0.25)",
+        title: "Performance",
+        description: "Lightning-fast page speeds that boost retention, improve SEO rankings, and increase your conversion rate.",
         tags: ["Web Vitals", "CDN", "Caching"],
+        color: "#FF9F0A",
     },
     {
         icon: ShoppingCart,
-        title: "E-commerce Websites",
-        description:
-            "Powerful online stores with seamless checkout experiences, inventory management, and payment gateway integrations.",
-        color: "from-sky-500 to-cyan-600",
-        gradient: "linear-gradient(135deg, #0ea5e9, #0891b2)",
-        glow: "rgba(14,165,233,0.25)",
-        tags: ["Shopify", "WooCommerce", "Stripe"],
-    },
-    {
-        icon: Layout,
-        title: "Landing Pages",
-        description:
-            "High-converting landing pages engineered to turn visitors into leads and leads into loyal customers.",
-        color: "from-rose-500 to-red-600",
-        gradient: "linear-gradient(135deg, #f43f5e, #dc2626)",
-        glow: "rgba(244,63,94,0.25)",
-        tags: ["A/B Testing", "CRO", "Analytics"],
+        title: "E-Commerce",
+        description: "Powerful online stores with seamless checkout, inventory management, and payment gateway integration.",
+        tags: ["Shopify", "Stripe", "UPI"],
+        color: "#FF375F",
     },
 ];
-
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.2 });
-    const Icon = service.icon;
-
-    return (
-        <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="glass-card rounded-2xl group"
-            style={{
-                padding: "28px",
-                position: "relative",
-                overflow: "hidden",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-            }}
-        >
-            {/* Hover glow */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    opacity: 0,
-                    transition: "opacity 0.5s ease",
-                    background: `radial-gradient(circle at center, ${service.glow} 0%, transparent 70%)`,
-                    borderRadius: "inherit",
-                    pointerEvents: "none",
-                }}
-                className="group-hover:opacity-100"
-            />
-
-            {/* Icon */}
-            <div
-                style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 12,
-                    background: service.gradient,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 16,
-                    flexShrink: 0,
-                    transition: "transform 0.3s ease",
-                }}
-                className="group-hover:scale-110"
-            >
-                <Icon size={22} color="#ffffff" />
-            </div>
-
-            {/* Content */}
-            <h3
-                style={{
-                    color: "#f8fafc",
-                    fontWeight: 600,
-                    fontSize: 17,
-                    marginBottom: 10,
-                    lineHeight: 1.3,
-                }}
-            >
-                {service.title}
-            </h3>
-            <p style={{ color: "rgba(248,250,252,0.55)", fontSize: 14, lineHeight: 1.65, marginBottom: 16 }}>
-                {service.description}
-            </p>
-
-            {/* Tags (Wrapped in a container that allows the parent to breathe) */}
-            <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-                    {service.tags.map((tag) => (
-                        <span
-                            key={tag}
-                            style={{
-                                fontSize: 11,
-                                padding: "4px 10px",
-                                borderRadius: 100,
-                                background: "rgba(255,255,255,0.05)",
-                                border: "1px solid rgba(255,255,255,0.1)",
-                                color: "rgba(248,250,252,0.6)",
-                                fontWeight: 500,
-                            }}
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-            </div>
-
-            {/* CTA */}
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    color: "#818cf8",
-                    fontSize: 13,
-                    fontWeight: 500,
-                    transition: "gap 0.2s ease",
-                }}
-                className="group-hover:gap-2"
-            >
-                Learn more{" "}
-                <ArrowRight
-                    size={14}
-                    style={{ transition: "transform 0.2s ease" }}
-                    className="group-hover:translate-x-1"
-                />
-            </div>
-
-            {/* Corner decoration */}
-            <div
-                style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    width: 96,
-                    height: 96,
-                    borderBottomLeftRadius: "100%",
-                    opacity: 0.1,
-                    background: service.gradient,
-                    pointerEvents: "none",
-                }}
-            />
-        </motion.div>
-    );
-}
 
 export default function ServicesSection() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section id="services" className="section">
-            {/* Background */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    pointerEvents: "none",
-                    background:
-                        "radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.07) 0%, transparent 70%)",
-                }}
-            />
-
+        <section id="services" className="section-alt">
             <div className="container" style={{ position: "relative", zIndex: 10 }}>
                 {/* Header */}
-                <div ref={ref} style={{ textAlign: "center", marginBottom: 64 }}>
+                <div ref={ref} style={{ textAlign: "center", marginBottom: 56 }}>
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        style={{ display: "flex", justifyContent: "center" }}
                     >
-                        <div className="section-tag">✦ Our Services</div>
+                        <div className="section-tag">Our Services</div>
                     </motion.div>
 
                     <motion.h2
@@ -241,17 +69,17 @@ export default function ServicesSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.1 }}
                         style={{
-                            fontFamily: "Poppins, sans-serif",
-                            fontSize: "clamp(1.875rem, 4vw, 3rem)",
-                            fontWeight: 800,
-                            marginBottom: 16,
-                            color: "#f8fafc",
-                            lineHeight: 1.15,
+                            fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
+                            fontWeight: 700,
+                            marginBottom: 14,
+                            color: "var(--heading-color)",
+                            lineHeight: 1.08,
+                            letterSpacing: "-0.03em",
                         }}
                     >
-                        Everything You Need to
+                        Everything you need to
                         <br />
-                        <span className="gradient-text">Dominate Online</span>
+                        <span className="gradient-text">dominate online.</span>
                     </motion.h2>
 
                     <motion.p
@@ -259,29 +87,142 @@ export default function ServicesSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "rgba(248,250,252,0.55)",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
-                            maxWidth: 560,
+                            maxWidth: 460,
                             margin: "0 auto",
-                            lineHeight: 1.7,
+                            lineHeight: 1.55,
                         }}
                     >
-                        From initial concept to launch and beyond, we provide end-to-end web solutions
-                        that make your business stand out in a crowded digital landscape.
+                        End-to-end web solutions designed to make your business stand out and grow.
                     </motion.p>
                 </div>
 
-                {/* Grid */}
-                <div
-                    style={{
-                        display: "grid",
-                        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                        gap: 24,
-                    }}
-                >
-                    {services.map((service, index) => (
-                        <ServiceCard key={service.title} service={service} index={index} />
-                    ))}
+                {/* Bento grid — 2 large + 3 small */}
+                <div style={{ display: "grid", gap: 12 }}>
+                    {/* Top: 2 large */}
+                    <div className="custom-grid lg-grid-cols-2" style={{ gap: 12 }}>
+                        {services.slice(0, 2).map((service, i) => {
+                            const Icon = service.icon;
+                            return (
+                                <motion.div
+                                    key={service.title}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                    transition={{ delay: 0.15 + i * 0.1 }}
+                                    className="bento-card"
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    {/* Subtle colored glow */}
+                                    <div style={{
+                                        position: "absolute",
+                                        top: -40,
+                                        right: -40,
+                                        width: 200,
+                                        height: 200,
+                                        borderRadius: "50%",
+                                        background: `radial-gradient(circle, ${service.color}10 0%, transparent 70%)`,
+                                        pointerEvents: "none",
+                                    }} />
+
+                                    <div
+                                        style={{
+                                            width: 48,
+                                            height: 48,
+                                            borderRadius: 14,
+                                            background: `${service.color}14`,
+                                            border: `1px solid ${service.color}20`,
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            marginBottom: 20,
+                                        }}
+                                    >
+                                        <Icon size={22} style={{ color: service.color }} />
+                                    </div>
+                                    <h3
+                                        style={{
+                                            color: "var(--heading-color)",
+                                            fontWeight: 600,
+                                            fontSize: 22,
+                                            marginBottom: 10,
+                                            letterSpacing: "-0.02em",
+                                        }}
+                                    >
+                                        {service.title}
+                                    </h3>
+                                    <p style={{ color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6, marginBottom: 20 }}>
+                                        {service.description}
+                                    </p>
+                                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                                        {service.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                style={{
+                                                    fontSize: 12,
+                                                    padding: "5px 12px",
+                                                    borderRadius: 980,
+                                                    background: "rgba(var(--foreground-rgb), 0.05)",
+                                                    border: "1px solid rgba(var(--foreground-rgb), 0.08)",
+                                                    color: "var(--text-secondary)",
+                                                    fontWeight: 500,
+                                                }}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
+
+                    {/* Bottom: 3 small */}
+                    <div className="custom-grid lg-grid-cols-3" style={{ gap: 12 }}>
+                        {services.slice(2).map((service, i) => {
+                            const Icon = service.icon;
+                            return (
+                                <motion.div
+                                    key={service.title}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                                    transition={{ delay: 0.35 + i * 0.08 }}
+                                    className="bento-card"
+                                    style={{ cursor: "pointer" }}
+                                >
+                                    <div
+                                        style={{
+                                            width: 42,
+                                            height: 42,
+                                            borderRadius: 12,
+                                            background: `${service.color}14`,
+                                            border: `1px solid ${service.color}20`,
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            marginBottom: 16,
+                                        }}
+                                    >
+                                        <Icon size={18} style={{ color: service.color }} />
+                                    </div>
+                                    <h3
+                                        style={{
+                                            color: "var(--heading-color)",
+                                            fontWeight: 600,
+                                            fontSize: 17,
+                                            marginBottom: 8,
+                                            letterSpacing: "-0.02em",
+                                        }}
+                                    >
+                                        {service.title}
+                                    </h3>
+                                    <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.55 }}>
+                                        {service.description}
+                                    </p>
+                                </motion.div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,220 +1,123 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Zap, Twitter, Linkedin, Instagram, Github, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
 
 const footerLinks = {
-    Company: [
-        { label: "About Us", href: "#" },
-        { label: "Our Team", href: "#" },
-        { label: "Careers", href: "#" },
-        { label: "Blog", href: "#" },
-    ],
     Services: [
         { label: "Website Development", href: "#services" },
         { label: "Business Redesign", href: "#services" },
         { label: "SEO Optimization", href: "#services" },
-        { label: "E-commerce", href: "#services" },
+        { label: "E-Commerce", href: "#services" },
         { label: "Landing Pages", href: "#services" },
     ],
-    Resources: [
+    Company: [
         { label: "Portfolio", href: "#portfolio" },
         { label: "Process", href: "#process" },
         { label: "Pricing", href: "#pricing" },
+        { label: "About Us", href: "#" },
+        { label: "Blog", href: "#" },
+    ],
+    Support: [
+        { label: "Contact", href: "#contact" },
         { label: "FAQ", href: "#" },
         { label: "Privacy Policy", href: "#" },
+        { label: "Terms of Service", href: "#" },
     ],
 };
 
-const socials = [
-    { icon: Twitter, label: "Twitter", href: "#" },
-    { icon: Linkedin, label: "LinkedIn", href: "#" },
-    { icon: Instagram, label: "Instagram", href: "#" },
-    { icon: Github, label: "GitHub", href: "#" },
-];
-
 export default function Footer() {
+    const handleNav = (href: string) => {
+        if (href.startsWith("#")) {
+            document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <footer
             style={{
-                position: "relative",
-                borderTop: "1px solid rgba(255,255,255,0.07)",
-                overflow: "hidden",
-                paddingTop: 80,
-                paddingBottom: 32,
+                background: "var(--background)",
+                borderTop: "1px solid var(--border)",
+                paddingTop: 56,
+                paddingBottom: 24,
             }}
         >
-            {/* Background */}
-            <div
-                style={{
-                    position: "absolute",
-                    inset: 0,
-                    pointerEvents: "none",
-                    background:
-                        "radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.07) 0%, transparent 50%)",
-                }}
-            />
-
-            <div className="container" style={{ position: "relative", zIndex: 10 }}>
-                {/* Main grid */}
+            <div className="container">
+                {/* Links grid */}
                 <div
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "repeat(auto-fit, minmax(min(160px, 100%), 1fr))",
-                        gap: 40,
-                        marginBottom: 64,
+                        gridTemplateColumns: "1.5fr repeat(3, 1fr)",
+                        gap: "48px 32px",
+                        marginBottom: 48,
                     }}
+                    className="custom-grid md-grid-cols-4"
                 >
                     {/* Brand */}
-                    <div style={{ minWidth: 280, gridColumn: "span min(2, 100%)" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
+                    <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
                             <div
                                 style={{
-                                    width: 36,
-                                    height: 36,
-                                    borderRadius: 10,
-                                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                                    width: 28,
+                                    height: 28,
+                                    borderRadius: 8,
+                                    background: "linear-gradient(135deg, #2997FF, #BF5AF2)",
                                     display: "flex",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    flexShrink: 0,
+                                    color: "#fff",
+                                    fontWeight: 800,
+                                    fontSize: 13,
                                 }}
                             >
-                                <Zap size={17} color="#fff" />
+                                C
                             </div>
-                            <span
-                                style={{
-                                    color: "#f8fafc",
-                                    fontWeight: 700,
-                                    fontSize: 19,
-                                    fontFamily: "Poppins, sans-serif",
-                                }}
-                            >
-                                Cata<span className="gradient-text">lyq</span>
+                            <span style={{
+                                color: "var(--heading-color)",
+                                fontWeight: 600,
+                                fontSize: 17,
+                                letterSpacing: "-0.02em",
+                            }}>
+                                Catalyq
                             </span>
                         </div>
                         <p
                             style={{
-                                color: "rgba(248,250,252,0.5)",
-                                fontSize: 14,
-                                lineHeight: 1.7,
-                                marginBottom: 12,
-                                maxWidth: 280,
-                            }}
-                        >
-                            We build modern, high-performance websites that help businesses grow their online
-                            presence and drive real revenue results.
-                        </p>
-                        <p
-                            style={{
-                                color: "rgba(248,250,252,0.4)",
+                                color: "var(--text-secondary)",
                                 fontSize: 13,
-                                lineHeight: 1.7,
-                                marginBottom: 8,
-                                maxWidth: 280,
-                            }}
-                        >
-                            📍 Prahlad Nagar, Ahmedabad, Gujarat 380015
-                        </p>
-                        <p
-                            style={{
-                                color: "rgba(248,250,252,0.4)",
-                                fontSize: 13,
-                                lineHeight: 1.7,
-                                marginBottom: 8,
-                                maxWidth: 280,
-                            }}
-                        >
-                            📞 +91 94291 84788 &nbsp;|&nbsp; +91 93238 30436
-                        </p>
-                        <p
-                            style={{
-                                color: "rgba(248,250,252,0.4)",
-                                fontSize: 13,
-                                lineHeight: 1.7,
+                                lineHeight: 1.65,
                                 marginBottom: 24,
-                                maxWidth: 280,
+                                maxWidth: 260,
                             }}
                         >
-                            Founded by <strong style={{ color: "rgba(248,250,252,0.6)" }}>Dhyey Patel</strong> &amp; <strong style={{ color: "rgba(248,250,252,0.6)" }}>Manasvi Shah</strong>
+                            We build modern, high-performance websites that help businesses grow their online presence and drive real results.
                         </p>
 
-                        {/* Social links */}
-                        <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
-                            {socials.map(({ icon: Icon, label, href }) => (
-                                <motion.a
-                                    key={label}
-                                    href={href}
-                                    aria-label={label}
-                                    whileHover={{ y: -3, scale: 1.1 }}
-                                    style={{
-                                        width: 36,
-                                        height: 36,
-                                        borderRadius: 10,
-                                        background: "rgba(255,255,255,0.05)",
-                                        border: "1px solid rgba(255,255,255,0.1)",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        color: "rgba(248,250,252,0.5)",
-                                        textDecoration: "none",
-                                        transition: "color 0.2s, border-color 0.2s, background 0.2s",
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "#f8fafc";
-                                        el.style.borderColor = "rgba(99,102,241,0.4)";
-                                        el.style.background = "rgba(99,102,241,0.1)";
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        const el = e.currentTarget as HTMLAnchorElement;
-                                        el.style.color = "rgba(248,250,252,0.5)";
-                                        el.style.borderColor = "rgba(255,255,255,0.1)";
-                                        el.style.background = "rgba(255,255,255,0.05)";
-                                    }}
-                                >
-                                    <Icon size={15} />
-                                </motion.a>
-                            ))}
-                        </div>
-
-                        {/* Status badge */}
-                        <div
-                            style={{
-                                display: "inline-flex",
-                                alignItems: "center",
-                                gap: 8,
-                                background: "rgba(16,185,129,0.1)",
-                                border: "1px solid rgba(16,185,129,0.25)",
-                                borderRadius: 100,
-                                padding: "6px 14px",
-                            }}
-                        >
-                            <span
-                                style={{
-                                    width: 8,
-                                    height: 8,
-                                    borderRadius: "50%",
-                                    background: "#4ade80",
-                                    display: "inline-block",
-                                    animation: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                                }}
-                            />
-                            <span style={{ color: "#4ade80", fontSize: 12, fontWeight: 500 }}>
-                                Accepting new projects
-                            </span>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                                <MapPin size={13} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                                <span style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
+                                    Ahmedabad, Gujarat, India
+                                </span>
+                            </div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                                <Phone size={13} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                                <span style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
+                                    +91 94291 84788
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Links */}
+                    {/* Link columns */}
                     {Object.entries(footerLinks).map(([category, links]) => (
                         <div key={category}>
                             <div
                                 style={{
-                                    color: "#f8fafc",
+                                    color: "var(--heading-color)",
                                     fontWeight: 600,
-                                    fontSize: 13,
-                                    marginBottom: 16,
+                                    fontSize: 12,
+                                    marginBottom: 18,
                                     textTransform: "uppercase",
                                     letterSpacing: "0.06em",
                                 }}
@@ -229,34 +132,23 @@ export default function Footer() {
                                             onClick={(e) => {
                                                 if (link.href.startsWith("#")) {
                                                     e.preventDefault();
-                                                    document
-                                                        .querySelector(link.href)
-                                                        ?.scrollIntoView({ behavior: "smooth" });
+                                                    handleNav(link.href);
                                                 }
                                             }}
                                             style={{
-                                                color: "rgba(248,250,252,0.45)",
-                                                fontSize: 14,
+                                                color: "var(--text-tertiary)",
+                                                fontSize: 13,
                                                 textDecoration: "none",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                gap: 4,
                                                 transition: "color 0.2s",
                                             }}
                                             onMouseEnter={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "#f8fafc";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--foreground)";
                                             }}
                                             onMouseLeave={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color =
-                                                    "rgba(248,250,252,0.45)";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                             }}
                                         >
                                             {link.label}
-                                            <ArrowUpRight
-                                                size={10}
-                                                style={{ opacity: 0, transition: "opacity 0.2s" }}
-                                                className="group-hover:opacity-100"
-                                            />
                                         </a>
                                     </li>
                                 ))}
@@ -265,85 +157,37 @@ export default function Footer() {
                     ))}
                 </div>
 
-                {/* CTA bar */}
+                {/* Bottom */}
                 <div
                     style={{
-                        borderRadius: 20,
-                        padding: "28px 32px",
-                        marginBottom: 40,
+                        borderTop: "1px solid var(--border)",
+                        paddingTop: 20,
                         display: "flex",
                         flexWrap: "wrap",
-                        alignItems: "center",
                         justifyContent: "space-between",
-                        gap: 20,
-                        background: "linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1))",
-                        border: "1px solid rgba(99,102,241,0.3)",
+                        alignItems: "center",
+                        gap: 8,
                     }}
                 >
-                    <div>
-                        <div
-                            style={{
-                                color: "#f8fafc",
-                                fontWeight: 700,
-                                fontSize: 18,
-                                marginBottom: 4,
-                                fontFamily: "Poppins, sans-serif",
-                            }}
-                        >
-                            Ready to upgrade your website?
-                        </div>
-                        <div style={{ color: "rgba(248,250,252,0.55)", fontSize: 14 }}>
-                            Free consultation call · No commitment required
-                        </div>
-                    </div>
-                    <motion.a
-                        href="#contact"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="btn-primary"
-                        style={{ whiteSpace: "nowrap" }}
-                    >
-                        Get Started Free →
-                    </motion.a>
-                </div>
-
-                {/* Bottom bar */}
-                <div
-                    style={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        gap: 12,
-                        paddingTop: 24,
-                        borderTop: "1px solid rgba(255,255,255,0.07)",
-                    }}
-                >
-                    <p style={{ color: "rgba(248,250,252,0.3)", fontSize: 13 }}>
-                        © 2026 Catalyq. All rights reserved. Built with ❤️ from Ahmedabad, India.
+                    <p style={{ color: "var(--text-tertiary)", fontSize: 12 }}>
+                        Copyright © 2026 Catalyq. All rights reserved.
                     </p>
-                    <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-                        {["Privacy Policy", "Terms of Service", "Cookie Settings"].map((item) => (
+                    <div style={{ display: "flex", gap: 20 }}>
+                        {["Privacy Policy", "Terms of Use", "Legal"].map((item) => (
                             <a
                                 key={item}
                                 href="#"
                                 style={{
-                                    color: "rgba(248,250,252,0.3)",
-                                    fontSize: 13,
+                                    color: "var(--text-tertiary)",
+                                    fontSize: 12,
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color =
-                                        "rgba(248,250,252,0.6)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color =
-                                        "rgba(248,250,252,0.3)";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                 }}
                             >
                                 {item}
