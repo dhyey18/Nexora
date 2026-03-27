@@ -72,7 +72,7 @@ export default function WhyUsSection() {
                         style={{
                             fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
                             fontWeight: 700,
-                            color: "#F5F5F7",
+                            color: "var(--heading-color)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.03em",
                             marginBottom: 16,
@@ -88,7 +88,7 @@ export default function WhyUsSection() {
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
                         style={{
-                            color: "#A1A1A6",
+                            color: "var(--text-secondary)",
                             fontSize: 17,
                             maxWidth: 460,
                             margin: "0 auto",
@@ -143,7 +143,7 @@ export default function WhyUsSection() {
 
                                 <h3
                                     style={{
-                                        color: "#F5F5F7",
+                                        color: "var(--heading-color)",
                                         fontWeight: 600,
                                         fontSize: 17,
                                         marginBottom: 8,
@@ -152,7 +152,7 @@ export default function WhyUsSection() {
                                 >
                                     {feature.title}
                                 </h3>
-                                <p style={{ color: "#A1A1A6", fontSize: 14, lineHeight: 1.6 }}>
+                                <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6 }}>
                                     {feature.description}
                                 </p>
                             </motion.div>

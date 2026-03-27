@@ -199,7 +199,7 @@ export default function PricingSection() {
                             fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
                             fontWeight: 700,
                             marginBottom: 14,
-                            color: "#F5F5F7",
+                            color: "var(--heading-color)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.03em",
                         }}
@@ -213,7 +213,7 @@ export default function PricingSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        style={{ color: "#A1A1A6", fontSize: 17, maxWidth: 440, margin: "0 auto", lineHeight: 1.55 }}
+                        style={{ color: "var(--text-secondary)", fontSize: 17, maxWidth: 440, margin: "0 auto", lineHeight: 1.55 }}
                     >
                         No hidden fees. No surprises. Pay once, own forever.
                     </motion.p>

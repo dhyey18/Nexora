@@ -57,7 +57,7 @@ export default function CTASection() {
                                 fontSize: "clamp(2rem, 4.5vw, 3rem)",
                                 fontWeight: 700,
                                 marginBottom: 16,
-                                color: "#F5F5F7",
+                                color: "var(--heading-color)",
                                 lineHeight: 1.08,
                                 letterSpacing: "-0.03em",
                             }}
@@ -72,7 +72,7 @@ export default function CTASection() {
                             animate={isInView ? { opacity: 1, x: 0 } : {}}
                             transition={{ delay: 0.2 }}
                             style={{
-                                color: "#A1A1A6",
+                                color: "var(--text-secondary)",
                                 fontSize: 17,
                                 maxWidth: 460,
                                 lineHeight: 1.55,
@@ -112,8 +112,8 @@ export default function CTASection() {
                                         <item.icon size={17} style={{ color: item.color }} />
                                     </div>
                                     <div>
-                                        <div style={{ color: "#6E6E73", fontSize: 12, marginBottom: 2 }}>{item.label}</div>
-                                        <div style={{ color: "#F5F5F7", fontSize: 14, fontWeight: 500 }}>{item.value}</div>
+                                        <div style={{ color: "var(--text-tertiary)", fontSize: 12, marginBottom: 2 }}>{item.label}</div>
+                                        <div style={{ color: "var(--heading-color)", fontSize: 14, fontWeight: 500 }}>{item.value}</div>
                                     </div>
                                 </div>
                             ))}
@@ -159,11 +159,11 @@ export default function CTASection() {
                                         >
                                             <CheckCircle size={32} style={{ color: "#30D158" }} />
                                         </div>
-                                        <h3 style={{ color: "#F5F5F7", fontWeight: 700, fontSize: 22, marginBottom: 8 }}>
+                                        <h3 style={{ color: "var(--heading-color)", fontWeight: 700, fontSize: 22, marginBottom: 8 }}>
                                             Message Sent! 🎉
                                         </h3>
-                                        <p style={{ color: "#A1A1A6", fontSize: 14, maxWidth: 280, lineHeight: 1.55 }}>
-                                            Thank you, {name}! We&apos;ll get back to you at <strong style={{ color: "#F5F5F7" }}>{email}</strong> within 2 hours.
+                                        <p style={{ color: "var(--text-secondary)", fontSize: 14, maxWidth: 280, lineHeight: 1.55 }}>
+                                            Thank you, {name}! We&apos;ll get back to you at <strong style={{ color: "var(--heading-color)" }}>{email}</strong> within 2 hours.
                                         </p>
                                     </motion.div>
                                 ) : (
@@ -173,20 +173,20 @@ export default function CTASection() {
                                                 fontWeight: 700,
                                                 fontSize: 22,
                                                 marginBottom: 6,
-                                                color: "#F5F5F7",
+                                                color: "var(--heading-color)",
                                                 letterSpacing: "-0.02em",
                                             }}
                                         >
                                             Start Your Project
                                         </h3>
-                                        <p style={{ color: "#A1A1A6", fontSize: 14, marginBottom: 28 }}>
+                                        <p style={{ color: "var(--text-secondary)", fontSize: 14, marginBottom: 28 }}>
                                             Free consultation · No commitment
                                         </p>
 
                                         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                                             <div className="custom-grid sm-grid-cols-2" style={{ gap: 16 }}>
                                                 <div>
-                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
+                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)" }}>
                                                         Full Name *
                                                     </label>
                                                     <input
@@ -200,7 +200,7 @@ export default function CTASection() {
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
+                                                    <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)" }}>
                                                         Email Address *
                                                     </label>
                                                     <input
@@ -217,7 +217,7 @@ export default function CTASection() {
 
                                             {/* Service pills */}
                                             <div>
-                                                <label style={{ display: "block", fontSize: 11, marginBottom: 10, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 10, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)" }}>
                                                     Service Needed
                                                 </label>
                                                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -230,9 +230,9 @@ export default function CTASection() {
                                                                 fontSize: 12,
                                                                 padding: "7px 14px",
                                                                 borderRadius: 980,
-                                                                border: `1px solid ${selectedService === s ? "#2997FF" : "rgba(255,255,255,0.08)"}`,
-                                                                background: selectedService === s ? "rgba(41,151,255,0.12)" : "rgba(255,255,255,0.03)",
-                                                                color: selectedService === s ? "#64D2FF" : "#A1A1A6",
+                                                                border: `1px solid ${selectedService === s ? "var(--primary)" : "rgba(var(--foreground-rgb),0.1)"}`,
+                                                                background: selectedService === s ? "rgba(var(--primary-rgb),0.12)" : "rgba(var(--foreground-rgb),0.04)",
+                                                                color: selectedService === s ? "var(--primary)" : "var(--text-secondary)",
                                                                 cursor: "pointer",
                                                                 transition: "all 0.2s ease",
                                                                 fontWeight: 500,
@@ -246,7 +246,7 @@ export default function CTASection() {
 
                                             {/* Budget */}
                                             <div>
-                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)" }}>
                                                     Budget Range
                                                 </label>
                                                 <select className="form-input" id="contact-budget" style={{ cursor: "pointer" }}>
@@ -260,7 +260,7 @@ export default function CTASection() {
 
                                             {/* Message */}
                                             <div>
-                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "#A1A1A6" }}>
+                                                <label style={{ display: "block", fontSize: 11, marginBottom: 8, fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-secondary)" }}>
                                                     Tell us about your project
                                                 </label>
                                                 <textarea
@@ -287,7 +287,7 @@ export default function CTASection() {
                                                 <ArrowRight size={16} />
                                             </motion.button>
 
-                                            <p style={{ textAlign: "center", color: "#6E6E73", fontSize: 11 }}>
+                                            <p style={{ textAlign: "center", color: "var(--text-tertiary)", fontSize: 11 }}>
                                                 🔒 We respect your privacy. No spam, ever.
                                             </p>
                                         </form>

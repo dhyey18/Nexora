@@ -21,6 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Inline script prevents flash of wrong theme before React hydrates */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          try {
+            var m = localStorage.getItem('theme-mode');
+            if (!m) m = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', m);
+          } catch(e) {}
+        ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

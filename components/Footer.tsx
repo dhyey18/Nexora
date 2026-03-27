@@ -36,8 +36,8 @@ export default function Footer() {
     return (
         <footer
             style={{
-                background: "#000000",
-                borderTop: "1px solid rgba(255,255,255,0.06)",
+                background: "var(--background)",
+                borderTop: "1px solid var(--border)",
                 paddingTop: 56,
                 paddingBottom: 24,
             }}
@@ -73,7 +73,7 @@ export default function Footer() {
                                 C
                             </div>
                             <span style={{
-                                color: "#F5F5F7",
+                                color: "var(--heading-color)",
                                 fontWeight: 600,
                                 fontSize: 17,
                                 letterSpacing: "-0.02em",
@@ -83,7 +83,7 @@ export default function Footer() {
                         </div>
                         <p
                             style={{
-                                color: "#A1A1A6",
+                                color: "var(--text-secondary)",
                                 fontSize: 13,
                                 lineHeight: 1.65,
                                 marginBottom: 24,
@@ -95,14 +95,14 @@ export default function Footer() {
 
                         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                                <MapPin size={13} style={{ color: "#6E6E73", flexShrink: 0 }} />
-                                <span style={{ color: "#6E6E73", fontSize: 13 }}>
+                                <MapPin size={13} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                                <span style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
                                     Ahmedabad, Gujarat, India
                                 </span>
                             </div>
                             <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                                <Phone size={13} style={{ color: "#6E6E73", flexShrink: 0 }} />
-                                <span style={{ color: "#6E6E73", fontSize: 13 }}>
+                                <Phone size={13} style={{ color: "var(--text-tertiary)", flexShrink: 0 }} />
+                                <span style={{ color: "var(--text-tertiary)", fontSize: 13 }}>
                                     +91 94291 84788
                                 </span>
                             </div>
@@ -114,7 +114,7 @@ export default function Footer() {
                         <div key={category}>
                             <div
                                 style={{
-                                    color: "#F5F5F7",
+                                    color: "var(--heading-color)",
                                     fontWeight: 600,
                                     fontSize: 12,
                                     marginBottom: 18,
@@ -136,16 +136,16 @@ export default function Footer() {
                                                 }
                                             }}
                                             style={{
-                                                color: "#6E6E73",
+                                                color: "var(--text-tertiary)",
                                                 fontSize: 13,
                                                 textDecoration: "none",
                                                 transition: "color 0.2s",
                                             }}
                                             onMouseEnter={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "#F5F5F7";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--foreground)";
                                             }}
                                             onMouseLeave={(e) => {
-                                                (e.currentTarget as HTMLAnchorElement).style.color = "#6E6E73";
+                                                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                             }}
                                         >
                                             {link.label}
@@ -160,7 +160,7 @@ export default function Footer() {
                 {/* Bottom */}
                 <div
                     style={{
-                        borderTop: "1px solid rgba(255,255,255,0.06)",
+                        borderTop: "1px solid var(--border)",
                         paddingTop: 20,
                         display: "flex",
                         flexWrap: "wrap",
@@ -169,7 +169,7 @@ export default function Footer() {
                         gap: 8,
                     }}
                 >
-                    <p style={{ color: "#48484A", fontSize: 12 }}>
+                    <p style={{ color: "var(--text-tertiary)", fontSize: 12 }}>
                         Copyright © 2026 Catalyq. All rights reserved.
                     </p>
                     <div style={{ display: "flex", gap: 20 }}>
@@ -178,16 +178,16 @@ export default function Footer() {
                                 key={item}
                                 href="#"
                                 style={{
-                                    color: "#48484A",
+                                    color: "var(--text-tertiary)",
                                     fontSize: 12,
                                     textDecoration: "none",
                                     transition: "color 0.2s",
                                 }}
                                 onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "#A1A1A6";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-secondary)";
                                 }}
                                 onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLAnchorElement).style.color = "#48484A";
+                                    (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-tertiary)";
                                 }}
                             >
                                 {item}

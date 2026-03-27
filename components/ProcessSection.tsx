@@ -67,7 +67,7 @@ export default function ProcessSection() {
                             fontSize: "clamp(2rem, 4.5vw, 3.2rem)",
                             fontWeight: 700,
                             marginBottom: 14,
-                            color: "#F5F5F7",
+                            color: "var(--heading-color)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.03em",
                         }}
@@ -81,7 +81,7 @@ export default function ProcessSection() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.2 }}
-                        style={{ color: "#A1A1A6", fontSize: 17, maxWidth: 440, margin: "0 auto", lineHeight: 1.55 }}
+                        style={{ color: "var(--text-secondary)", fontSize: 17, maxWidth: 440, margin: "0 auto", lineHeight: 1.55 }}
                     >
                         No surprises. No delays. Exceptional results, every time.
                     </motion.p>
@@ -146,7 +146,7 @@ export default function ProcessSection() {
 
                                 <div style={{ flex: 1, minWidth: 0 }}>
                                     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 8, marginBottom: 10 }}>
-                                        <h3 style={{ color: "#F5F5F7", fontWeight: 600, fontSize: 18, letterSpacing: "-0.02em" }}>
+                                        <h3 style={{ color: "var(--heading-color)", fontWeight: 600, fontSize: 18, letterSpacing: "-0.02em" }}>
                                             {step.title}
                                         </h3>
                                         <span
@@ -163,14 +163,14 @@ export default function ProcessSection() {
                                             ⏱ {step.duration}
                                         </span>
                                     </div>
-                                    <p style={{ color: "#A1A1A6", fontSize: 14, lineHeight: 1.6, marginBottom: 18 }}>
+                                    <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6, marginBottom: 18 }}>
                                         {step.description}
                                     </p>
                                     <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
                                         {step.deliverables.map((item) => (
                                             <div key={item} style={{ display: "flex", alignItems: "center", gap: 8 }}>
                                                 <CheckCircle2 size={13} style={{ color: step.color, flexShrink: 0 }} />
-                                                <span style={{ color: "#A1A1A6", fontSize: 13 }}>{item}</span>
+                                                <span style={{ color: "var(--text-secondary)", fontSize: 13 }}>{item}</span>
                                             </div>
                                         ))}
                                     </div>
