@@ -7,9 +7,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const ROTATING_PHRASES = [
     "actually grow",
     "convert faster",
-    "rank higher",
     "impress clients",
     "stand out online",
+    // "rank higher",
 ];
 
 const PARTICLES = Array.from({ length: 28 }, (_, i) => ({
